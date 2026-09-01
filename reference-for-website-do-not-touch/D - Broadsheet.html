@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Work Sans',sans-serif;color:#241812;background:#f6f1e6;-webkit-font-smoothing:antialiased}
+  a{color:#5c0e17;text-decoration:none}a:hover{color:#7d141f}
+  ::selection{background:#5c0e17;color:#f6f1e6}
+  .ph{background-image:repeating-linear-gradient(45deg,#e6ddc9,#e6ddc9 11px,#ded3ba 11px,#ded3ba 22px)}
+  .rule{border-top:1px solid #241812}.rule2{border-top:3px double #241812}
+  .kick{font-family:'Work Sans',sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#8a6b28}
+  @keyframes track{0%{opacity:0;letter-spacing:-.05em}100%{opacity:1;letter-spacing:.01em}}
+  @keyframes fadeU{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:none}}
+  @keyframes lineW{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+  .t1{animation:track 1.4s cubic-bezier(.2,.7,.2,1) .2s both}
+  .t2{animation:fadeU 1s ease .8s both}
+  .t3{animation:fadeU 1s ease 1.05s both}
+  .t4{animation:fadeU 1s ease 1.3s both}
+  .lw{transform-origin:center;animation:lineW 1.1s cubic-bezier(.2,.7,.2,1) .7s both}
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+  .rv.in,.rv[data-shown]{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.t1,.t2,.t3,.t4,.lw{animation:none!important}.rv{transition:none;opacity:1;transform:none}}
+  .svc{grid-template-columns:1fr}
+  @media(min-width:860px){.svc{grid-template-columns:1fr 1fr}.svc.rev>.m{order:2}.dropcap::first-letter{float:left;font-family:'Bodoni Moda',serif;font-size:76px;line-height:.72;padding:6px 12px 0 0;color:#5c0e17}}
+  .dcol{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,36px)}
+  .dstep{display:grid;grid-template-columns:1fr}
+  @media(min-width:820px){.dcol{grid-template-columns:1fr 1fr;gap:0}.dcol>.rcol{border-left:1px solid #241812;padding-left:clamp(28px,4vw,48px)}.dcol>.lcol{padding-right:clamp(28px,4vw,48px)}}
+  @media(min-width:640px){.dstep{grid-template-columns:130px 1fr}}
+  .c2{display:none}
+</style>
+</helmet>
+<div style="max-width:100%;overflow-x:hidden;background:#f6f1e6">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(246,241,230,.95);backdrop-filter:blur(8px);border-bottom:1px solid #241812">
+  <div style="max-width:1220px;margin:0 auto;padding:11px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:20px;color:#5c0e17">Mary Matha</span><span class="kick c2">Est. 1996</span></a>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="tel:+918087555144" style="display:flex;align-items:center;gap:7px;border:1px solid #5c0e17;color:#5c0e17;padding:9px 15px;font-size:13px;font-weight:600">&#9742;<span class="c2">Call</span></a>
+      <a href="https://wa.me/918087555144" style="display:flex;align-items:center;gap:7px;background:#1faf54;color:#fff;padding:9px 15px;font-size:13px;font-weight:600">&#9993;<span class="c2">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position:relative;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px clamp(18px,5vw,40px)">
+  <div class="ph" style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,#3d0910,#3d0910 15px,#4c0c14 15px,#4c0c14 30px)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,8,14,.6),rgba(45,8,14,.78))"></div>
+  <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);font-family:monospace;font-size:11px;color:rgba(246,241,230,.5)">full-bleed hero photograph &mdash; flagship facade at dusk</div>
+  <div style="position:relative;width:100%;max-width:1000px">
+    <div class="t2" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:26px;color:#e4c876">
+      <span style="flex:1;max-width:80px;height:1px;background:#b98f34"></span>
+      <span class="kick" style="color:#e4c876">Vasai&ndash;Virar &middot; Real Estate &amp; Construction</span>
+      <span style="flex:1;max-width:80px;height:1px;background:#b98f34"></span>
+    </div>
+    <h1 class="t1" style="font-family:'Bodoni Moda',serif;font-weight:600;color:#f6f1e6;font-size:clamp(46px,13vw,120px);line-height:.9;letter-spacing:.01em">MARY MATHA</h1>
+    <div class="lw" style="width:min(500px,86%);height:1px;background:#b98f34;margin:20px auto"></div>
+    <div class="t3" style="font-family:'Bodoni Moda',serif;font-style:italic;color:#e4c876;font-size:clamp(19px,4.6vw,34px)">Real Estate &amp; Construction</div>
+    <p class="t3" style="color:#efe3ce;font-size:clamp(15px,2.4vw,18px);line-height:1.65;max-width:520px;margin:24px auto 30px;font-weight:300">Trusted real estate solutions and construction services built on quality, trust and excellence.</p>
+    <div class="t4" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;font-family:'Bodoni Moda',serif;font-size:clamp(15px,3.6vw,22px);color:#f6f1e6;font-weight:500">
+      <span style="padding:0 clamp(8px,2vw,16px)">Buy</span><span style="color:#b98f34">&mdash;</span><span style="padding:0 clamp(8px,2vw,16px)">Sell</span><span style="color:#b98f34">&mdash;</span><span style="padding:0 clamp(8px,2vw,16px)">Rent</span><span style="color:#b98f34">&mdash;</span><span style="padding:0 clamp(8px,2vw,16px)">Build</span><span style="color:#b98f34">&mdash;</span><span style="padding:0 clamp(8px,2vw,16px);color:#e4c876">Renovate</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="rv rule2" style="padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:clamp(34px,5vw,54px)">
+      <h2 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(30px,6.6vw,54px);color:#5c0e17;line-height:1">The Practice</h2>
+      <span class="kick">Two disciplines &middot; No. 01</span>
+    </div>
+    <div class="dcol">
+      <div class="rv lcol">
+        <div class="kick" style="color:#b98f34;margin-bottom:12px">I. Property</div>
+        <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(28px,5vw,42px);color:#241812;margin-bottom:14px;line-height:1.02">Buy, Sell &amp; Rent</h3>
+        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(17px,2.4vw,21px);line-height:1.5;color:#5c0e17;margin-bottom:16px">One trusted desk for every property need across Vasai&ndash;Virar &mdash; and no broker games.</p>
+        <p class="dropcap" style="font-size:16px;line-height:1.8;color:#4a3a2e;font-weight:300">Flats, plots, shops and bungalows matched to your budget and your life. We arrange the site visits, scrutinise every document, and steer the home loan, stamp duty and registration from first enquiry to the day the keys are in your hand &mdash; with nothing hidden in between.</p>
+      </div>
+      <div class="rv rcol">
+        <div class="kick" style="color:#b98f34;margin-bottom:12px">II. Construction</div>
+        <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(28px,5vw,42px);color:#241812;margin-bottom:14px;line-height:1.02">Build &amp; Renovate</h3>
+        <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(17px,2.4vw,21px);line-height:1.5;color:#5c0e17;margin-bottom:16px">A deliberate method: you approve the vision before a single line is built.</p>
+        <p class="dropcap" style="font-size:16px;line-height:1.8;color:#4a3a2e;font-weight:300">New construction, whole-home renovation, repair and fine finishing. We render the expected result and revise it with you until it is exactly right, then build to that approved vision with quality materials and daily supervision on the site &mdash; straight through to handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTIES -->
+<section style="padding:0 clamp(16px,4vw,32px) clamp(56px,9vw,104px);background:#efe8d7">
+  <div style="max-width:1180px;margin:0 auto;padding-top:clamp(48px,8vw,90px)">
+    <div class="rv rule2" style="padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:clamp(28px,4vw,48px)">
+      <h2 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(30px,6.6vw,54px);color:#5c0e17;line-height:1">On the Market</h2>
+      <a href="#contact" class="kick" style="color:#5c0e17">Full index &rarr;</a>
+    </div>
+    <sc-if value="{{ hasProps }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.5vw,28px)">
+        <sc-for list="{{ props }}" as="p" hint-placeholder-count="3">
+          <div style="background:#f6f1e6;border:1px solid #241812;display:flex;flex-direction:column">
+            <div class="ph" style="position:relative;height:220px;overflow:hidden;border-bottom:1px solid #241812">
+              <div class="kick" style="position:absolute;top:12px;left:12px;background:#5c0e17;color:#e4c876;padding:5px 11px">{{ p.tag }}</div>
+              <div style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:10.5px;color:#5c0e17;background:rgba(246,241,230,.9);padding:3px 8px">{{ p.shot }} &middot; {{ p.imgLabel }}</div>
+              <button onClick="{{ p.prev }}" aria-label="Previous image" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);width:34px;height:34px;border:none;background:rgba(45,8,14,.72);color:#f6f1e6;font-size:16px;cursor:pointer">&#8249;</button>
+              <button onClick="{{ p.next }}" aria-label="Next image" style="position:absolute;top:50%;right:8px;transform:translateY(-50%);width:34px;height:34px;border:none;background:rgba(45,8,14,.72);color:#f6f1e6;font-size:16px;cursor:pointer">&#8250;</button>
+              <div style="position:absolute;bottom:12px;right:12px;display:flex;gap:5px">{{ p.dots }}</div>
+            </div>
+            <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+              <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:25px;color:#241812">{{ p.title }}</h3>
+              <p style="font-size:14px;line-height:1.6;color:#4a3a2e;font-weight:300;margin:8px 0 16px">{{ p.desc }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">{{ p.specs }}</div>
+              <div class="rule" style="margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center">
+                <div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:26px;color:#5c0e17">{{ p.price }}</div>
+                <a href="#contact" style="font-weight:600;font-size:13.5px;border-bottom:2px solid #b98f34;padding-bottom:2px">Enquire &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid #241812;padding:60px 24px;text-align:center;background:#f6f1e6">
+        <div class="kick" style="margin-bottom:14px">Notice</div>
+        <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:30px;color:#5c0e17;margin-bottom:8px">No properties currently listed</h3>
+        <p style="font-size:15px;color:#4a3a2e;font-weight:300;max-width:440px;margin:0 auto 22px">Fresh listings are posted regularly. Register your requirement and we will be in touch the moment a suitable property is available.</p>
+        <a href="#contact" style="display:inline-block;background:#5c0e17;color:#f6f1e6;padding:13px 28px;font-size:14px;font-weight:600">Register requirement</a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- CONSTRUCTION -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="rv rule2" style="padding-top:18px;margin-bottom:clamp(34px,5vw,54px)">
+      <span class="kick">The Method &middot; No. 02</span>
+      <h2 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(30px,6.6vw,54px);color:#5c0e17;line-height:1.02;margin-top:8px;max-width:800px">We render it before we raise it</h2>
+    </div>
+    <div class="rv" style="border-top:3px double #241812;margin-bottom:clamp(44px,7vw,68px)">
+      <div class="dstep" style="border-bottom:1px solid #241812;align-items:start">
+        <div style="padding:clamp(18px,3vw,28px) clamp(14px,2vw,20px) 0;font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(52px,9vw,82px);color:#d8c9ac;line-height:.8">01</div>
+        <div style="padding:clamp(20px,3vw,30px) clamp(0px,2vw,24px) clamp(24px,3vw,32px) 0">
+          <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(22px,3.4vw,28px);color:#241812;margin-bottom:10px">Requirement gathering</h3>
+          <p style="font-size:15px;line-height:1.75;color:#4a3a2e;font-weight:300">We study the plot, the budget and the way you intend to live in the space &mdash; and set it all down in writing before a line is drawn.</p>
+        </div>
+      </div>
+      <div class="dstep" style="border-bottom:1px solid #241812;background:#5c0e17;align-items:start">
+        <div style="padding:clamp(18px,3vw,28px) clamp(14px,2vw,20px) 0;font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(52px,9vw,82px);color:#b98f34;line-height:.8">02</div>
+        <div style="padding:clamp(20px,3vw,30px) clamp(16px,2vw,28px) clamp(24px,3vw,32px) 0">
+          <div class="kick" style="color:#e4c876;margin-bottom:6px">The step others skip</div>
+          <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(22px,3.4vw,28px);color:#f6f1e6;margin-bottom:10px">Prototype &amp; iterate</h3>
+          <p style="font-size:15px;line-height:1.75;color:#f0e2cd;font-weight:300">We present the expected output &mdash; plans, elevation, finishes &mdash; and revise through as many rounds as it takes until you approve. Nothing is left to chance.</p>
+        </div>
+      </div>
+      <div class="dstep" style="align-items:start">
+        <div style="padding:clamp(18px,3vw,28px) clamp(14px,2vw,20px) 0;font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(52px,9vw,82px);color:#d8c9ac;line-height:.8">03</div>
+        <div style="padding:clamp(20px,3vw,30px) clamp(16px,2vw,28px) clamp(24px,3vw,32px) 0">
+          <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(22px,3.4vw,28px);color:#241812;margin-bottom:10px">Work begins</h3>
+          <p style="font-size:15px;line-height:1.75;color:#4a3a2e;font-weight:300">We build to the approved drawings with quality materials, staged updates and daily supervision, through to a snag-free handover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-bottom:34px">
+      <div class="rule" style="padding-top:14px;display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:9px;height:9px;border-radius:50%;background:#1faf54;box-shadow:0 0 0 4px rgba(31,175,84,.2)"></span><h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(20px,4vw,28px);color:#5c0e17">Currently on site</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px">
+        <sc-for list="{{ ongoing }}" as="j" hint-placeholder-count="2">
+          <button onClick="{{ j.open }}" style="text-align:left;border:1px solid #241812;background:#f6f1e6;padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:190px;position:relative;border-bottom:1px solid #241812"><span class="kick" style="position:absolute;top:12px;left:12px;background:#1faf54;color:#fff;padding:5px 10px">In progress &middot; {{ j.pct }}</span><span style="position:absolute;bottom:12px;right:12px;background:rgba(45,8,14,.82);color:#e4c876;font-size:11px;padding:5px 10px">&#9654; view</span></div>
+            <div style="padding:18px"><h4 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:20px;color:#241812">{{ j.title }}</h4><div style="font-size:13px;color:#7a6448;margin-top:5px">{{ j.meta }}</div></div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="rule" style="padding-top:14px;display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:9px;height:9px;background:#b98f34"></span><h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(20px,4vw,28px);color:#5c0e17">In the record &mdash; completed</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px">
+        <sc-for list="{{ completed }}" as="j" hint-placeholder-count="3">
+          <button onClick="{{ j.open }}" style="text-align:left;border:1px solid #cdbf9e;background:#efe8d7;padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:160px;position:relative"><span class="kick" style="position:absolute;top:12px;left:12px;background:#b98f34;color:#3d0910;padding:5px 10px">{{ j.year }}</span><span style="position:absolute;bottom:12px;right:12px;background:rgba(45,8,14,.82);color:#e4c876;font-size:11px;padding:5px 9px">&#9654;</span></div>
+            <div style="padding:16px"><h4 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:19px;color:#241812">{{ j.title }}</h4><div style="font-size:12.5px;color:#7a6448;margin-top:4px">{{ j.meta }}</div></div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS: running band -->
+<section style="background:#5c0e17;color:#f6f1e6;padding:clamp(44px,7vw,80px) clamp(16px,4vw,32px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(28px,4vw,44px)"><span class="kick" style="color:#e4c876">Thirty years, on the record</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;border-top:1px solid rgba(185,143,52,.4);border-bottom:1px solid rgba(185,143,52,.4)">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+        <div style="padding:clamp(22px,3vw,38px) 14px;text-align:center;border-right:1px solid rgba(185,143,52,.25)">
+          <div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(40px,8vw,68px);color:#e4c876;line-height:.9">{{ s.n }}</div>
+          <div class="kick" style="color:#d9c396;margin-top:12px">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:clamp(56px,9vw,100px) clamp(16px,4vw,32px)">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="rule2" style="padding-top:16px;margin-bottom:clamp(28px,4vw,44px)"><span class="kick">Testimony &middot; No. 03</span></div>
+    <div style="text-align:center;min-height:210px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:60px;color:#b98f34;line-height:.5;margin-bottom:18px">&ldquo;</div>
+      <p style="font-family:'Bodoni Moda',serif;font-style:italic;font-weight:500;font-size:clamp(20px,3.8vw,32px);line-height:1.42;color:#241812">{{ tQuote }}</p>
+      <div style="margin-top:24px;font-family:'Bodoni Moda',serif;font-weight:600;font-size:17px;color:#5c0e17">{{ tName }}</div>
+      <div class="kick" style="margin-top:5px">{{ tMeta }}</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px">
+      <button onClick="{{ tPrev }}" aria-label="Previous" style="width:42px;height:42px;border:1px solid #241812;background:transparent;color:#5c0e17;font-size:18px;cursor:pointer">&#8249;</button>
+      <div style="display:flex;gap:8px">{{ tDots }}</div>
+      <button onClick="{{ tNext }}" aria-label="Next" style="width:42px;height:42px;border:1px solid #241812;background:transparent;color:#5c0e17;font-size:18px;cursor:pointer">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:clamp(56px,9vw,100px) clamp(16px,4vw,32px);background:#efe8d7">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="rule2" style="padding-top:18px;margin-bottom:clamp(28px,4vw,44px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px">
+      <h2 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(30px,6.6vw,54px);color:#5c0e17;line-height:1">Make an Enquiry</h2>
+      <span class="kick">Reply within 24 hours &middot; No. 04</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:28px" class="cGrid">
+      <div>
+        <div class="kick" style="margin-bottom:12px">Select your interest</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0;border:1px solid #241812;margin-bottom:26px">{{ intentPills }}</div>
+        <div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(20px,3.4vw,26px);color:#241812;margin-bottom:18px">{{ formHead }}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <input placeholder="Full name" style="padding:13px;border:1px solid #241812;background:#f6f1e6;font-family:inherit;font-size:14px">
+          <input placeholder="Phone / WhatsApp" style="padding:13px;border:1px solid #241812;background:#f6f1e6;font-family:inherit;font-size:14px">
+        </div>
+        <div style="margin-bottom:14px">{{ dynField }}</div>
+        <textarea rows="3" placeholder="Further details" style="width:100%;padding:13px;border:1px solid #241812;background:#f6f1e6;font-family:inherit;font-size:14px;resize:none;margin-bottom:18px"></textarea>
+        <button style="width:100%;background:#5c0e17;color:#f6f1e6;border:none;padding:16px;font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;cursor:pointer">Submit enquiry</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;border:1px solid #241812">
+        <a href="tel:+918087555144" style="padding:20px;border-bottom:1px solid #241812;display:flex;flex-direction:column;gap:3px"><span class="kick">Telephone</span><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:#5c0e17">+91 80875 55144</span></a>
+        <a href="https://wa.me/918087555144" style="padding:20px;border-bottom:1px solid #241812;background:#1faf54;display:flex;flex-direction:column;gap:3px"><span class="kick" style="color:#d5f2df">Fastest reply</span><span style="font-family:'Bodoni Moda',serif;font-size:19px;color:#fff">Message on WhatsApp</span></a>
+        <div style="padding:20px;flex:1"><span class="kick">Office</span><p style="font-size:14px;line-height:1.6;color:#4a3a2e;margin-top:6px">Shop no. 5, Galaxy 2 CHS, Dhruti Complex, Om Nagar, Vasai West, Vasai&ndash;Virar 401202</p>
+          <div class="ph" style="height:120px;margin-top:12px;position:relative"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:#5c0e17">map embed</span></div></div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:clamp(40px,6vw,60px);text-align:center">
+      <div class="kick" style="margin-bottom:16px">Areas served</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid #cdbf9e;max-width:820px;margin:0 auto">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="8"><span style="flex:1;min-width:120px;text-align:center;font-family:'Bodoni Moda',serif;font-size:16px;color:#5c0e17;padding:12px 10px;border-right:1px solid #e0d3b8">{{ a }}</span></sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#3d0910;color:#c9b48c;padding:clamp(40px,6vw,58px) clamp(16px,4vw,32px) 24px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;border-bottom:1px solid rgba(185,143,52,.25);padding-bottom:28px;margin-bottom:24px">
+      <div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(26px,5vw,38px);color:#f6f1e6">Mary Matha</div>
+      <div class="kick" style="color:#b98f34;margin-top:6px">Real Estate &amp; Construction &middot; Vasai&ndash;Virar since 1996</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,4vw,44px);font-size:13.5px;margin-bottom:22px">
+      <a href="#top" style="color:#c9b48c">Home</a><a href="#contact" style="color:#c9b48c">Properties</a><a href="#contact" style="color:#c9b48c">Construction</a><a href="#contact" style="color:#c9b48c">Enquire</a><a href="#" style="color:#c9b48c">Privacy</a><a href="#" style="color:#c9b48c">Terms</a>
+    </div>
+    <div style="text-align:center;font-size:12px;color:#8a6f47;line-height:1.7">
+      +91 80875 55144 &middot; marymatha1970@gmail.com &middot; MahaRERA: A00000000000000<br>
+      &copy; 1996&ndash;2026 Mary Matha Real Estate &amp; Construction. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:100;background:rgba(30,5,9,.84);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)">
+    <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="background:#f6f1e6;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #241812">
+      <div style="position:relative"><div class="ph" style="height:clamp(200px,40vw,320px);position:relative;border-bottom:1px solid #241812"><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#5c0e17;background:rgba(246,241,230,.9);padding:4px 8px">{{ mShot }}</span></div>
+        <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:12px;right:12px;width:40px;height:40px;border:none;background:rgba(45,8,14,.85);color:#f6f1e6;font-size:20px;cursor:pointer">&times;</button></div>
+      <div style="padding:clamp(22px,4vw,36px)">
+        <div class="kick" style="color:#b98f34;margin-bottom:8px">{{ mStatus }}</div>
+        <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(24px,4.4vw,32px);color:#5c0e17;margin-bottom:6px">{{ mTitle }}</h3>
+        <div style="font-size:13px;color:#7a6448;margin-bottom:16px">{{ mMeta }}</div>
+        <p style="font-size:15px;line-height:1.75;color:#4a3a2e;font-weight:300;margin-bottom:20px">{{ mDesc }}</p>
+        <div class="ph" style="height:clamp(160px,32vw,220px);position:relative;display:flex;align-items:center;justify-content:center;border:1px solid #241812"><span style="width:62px;height:62px;border-radius:50%;background:rgba(45,8,14,.85);color:#f6f1e6;display:flex;align-items:center;justify-content:center;font-size:22px">&#9654;</span><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#5c0e17;background:rgba(246,241,230,.9);padding:4px 8px">walkthrough video</span></div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<a href="https://wa.me/918087555144" aria-label="WhatsApp us" style="position:fixed;bottom:20px;right:20px;z-index:90;width:58px;height:58px;border-radius:50%;background:#1faf54;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 22px rgba(31,175,84,.45)">&#9993;</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state={propImg:[0,0,0],t:0,modal:null,intent:'Buy'};
+  componentDidMount(){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.setAttribute('data-shown','');}),{threshold:.12});
+    if('IntersectionObserver' in window){document.querySelectorAll('.rv').forEach(n=>io.observe(n));}else{document.querySelectorAll('.rv').forEach(n=>n.setAttribute('data-shown',''));}
+    if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)this._iv=setInterval(()=>this.setState(s=>({t:(s.t+1)%this.T.length})),6500);
+    this._key=e=>{if(e.key==='Escape')this.setState({modal:null});};window.addEventListener('keydown',this._key);
+    const mq=window.matchMedia('(min-width:760px)');
+    this._apply=()=>{document.querySelectorAll('.c2').forEach(n=>n.style.display=mq.matches?'inline':'none');document.querySelectorAll('.cGrid').forEach(n=>n.style.gridTemplateColumns=mq.matches?'1.5fr 1fr':'1fr');};
+    this._apply();mq.addEventListener('change',this._apply);this._mq=mq;
+  }
+  componentWillUnmount(){clearInterval(this._iv);window.removeEventListener('keydown',this._key);this._mq&&this._mq.removeEventListener('change',this._apply);}
+  P=[
+    {tag:'No brokerage',title:'1 BHK Flat',price:'\u20b943 L',desc:'A bright, east-facing flat in a family building, a short walk from station and market. Ready to move in.',specs:['444 sq.ft','1 Bed','1 Bath','Vasai West'],shots:['living room','kitchen','balcony']},
+    {tag:'Loan assistance',title:'2 BHK Flat',price:'\u20b965 L',desc:'A spacious two-bedroom home with covered parking and lift in a well-kept society. Loan and registration assisted.',specs:['677 sq.ft','2 Bed','2 Bath','Nalasopara'],shots:['master bedroom','hall','building']},
+    {tag:'Clear title',title:'Residential Plot',price:'\u20b928 L',desc:'A clear-title NA plot with proper road access \u2014 an ideal foundation on which to build your own home.',specs:['1200 sq.ft','Plot','Corner','Virar East'],shots:['plot boundary','access road','locality']}
+  ];
+  ONG=[
+    {title:'Saldanha Residence',meta:'G+2 bungalow \u00b7 Vasai West',pct:'60%',shot:'foundation & columns cast',status:'On site \u00b7 60% complete',desc:'A three-level family bungalow. The structure is complete and internal plumbing is underway, with finishing to begin next month. The family approved the elevation and interior layout at prototype stage before ground was broken.'},
+    {title:'Green Court Interiors',meta:'3 BHK renovation \u00b7 Nalasopara',pct:'40%',shot:'stripped interior, new wiring',status:'On site \u00b7 40% complete',desc:'A complete renovation of a three-bedroom flat \u2014 new electricals, false ceiling, modular kitchen and bathrooms. The client signed off on the 3D interiors before demolition began.'}
+  ];
+  COMP=[
+    {title:'D\u2019Souza Villa',meta:'G+1 new build \u00b7 Vasai',year:'2024',shot:'completed white villa facade',status:'Delivered 2024',desc:'A four-bedroom villa built foundation to finish in fourteen months, handed over on schedule following a snag-free walkthrough.'},
+    {title:'Rodrigues Flat',meta:'2 BHK renovation \u00b7 Virar',year:'2023',shot:'finished modern living room',status:'Delivered 2023',desc:'A full interior renovation \u2014 flooring, kitchen, wardrobes and painting \u2014 completed in six weeks while the family remained nearby.'},
+    {title:'Holy Family Shop',meta:'Commercial fit-out \u00b7 Vasai West',year:'2023',shot:'retail shopfront finished',status:'Delivered 2023',desc:'A ground-floor retail fit-out comprising shopfront, flooring and lighting, ready for the tenant to occupy immediately.'}
+  ];
+  S=[{n:'30',l:'Years of service'},{n:'500+',l:'Projects delivered'},{n:'1.2M',l:'Sq.ft built'},{n:'800+',l:'Families served'},{n:'12',l:'Locations covered'}];
+  A=['Vasai West','Vasai East','Nalasopara','Virar','Naigaon','Bhayandar','Mira Road','Palghar'];
+  T=[
+    {q:'They showed us the entire flat and answered every question before we paid a rupee. No broker games, no hidden charges \u2014 we felt safe placing our savings here.',n:'Priya & Joseph S.',m:'Bought a 2 BHK \u00b7 Vasai West'},
+    {q:'We were anxious about building. They revised the plan until it matched the home we pictured, then delivered it exactly \u2014 supervised, on time.',n:'Anthony D.',m:'New home build \u00b7 Virar East'},
+    {q:'Our old flat was made new in six weeks, and we never moved out. Clean work, quality materials, and every call answered.',n:'Sunita R.',m:'Full renovation \u00b7 Nalasopara'}
+  ];
+  dots(a,n){return Array.from({length:n},(_,i)=>React.createElement('span',{key:i,style:{width:i===a?'16px':'6px',height:'6px',borderRadius:'3px',background:i===a?'#e4c876':'rgba(246,241,230,.55)',transition:'width .3s'}}));}
+  renderVals(){
+    const st=this.state;
+    const props=this.P.map((p,i)=>({...p,imgLabel:(st.propImg[i]%p.shots.length)+1+'/'+p.shots.length,shot:p.shots[st.propImg[i]%p.shots.length],
+      prev:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]-1+p.shots.length)%p.shots.length;return{propImg:a};}),
+      next:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]+1)%p.shots.length;return{propImg:a};}),
+      dots:this.dots(st.propImg[i]%p.shots.length,p.shots.length),
+      specs:p.specs.map((x,k)=>React.createElement('span',{key:k,style:{fontSize:'11px',fontFamily:"'Work Sans',sans-serif",letterSpacing:'.06em',textTransform:'uppercase',color:'#5c0e17',border:'1px solid #cdbf9e',padding:'5px 10px'}},x))}));
+    const openJ=j=>()=>this.setState({modal:j});
+    const intents=['Buy','Sell','Rent','Build','Renovate'];
+    const intentPills=intents.map((it,i)=>React.createElement('button',{key:it,onClick:()=>this.setState({intent:it}),
+      style:{flex:'1',minWidth:'92px',fontFamily:"'Bodoni Moda',serif",fontWeight:600,fontSize:'15px',padding:'13px 8px',cursor:'pointer',
+        background:st.intent===it?'#5c0e17':'transparent',color:st.intent===it?'#f6f1e6':'#5c0e17',border:'none',borderRight:i<4?'1px solid #241812':'none'}},it));
+    const cfg={Buy:{h:'Property you wish to buy',l:'Budget & preferred area',ph:'e.g. up to \u20b960L, 2 BHK in Vasai West'},
+      Sell:{h:'Property you wish to sell',l:'What are you selling?',ph:'e.g. 1 BHK, 444 sq.ft, Nalasopara'},
+      Rent:{h:'Property you wish to rent',l:'Rental need & area',ph:'e.g. 2 BHK on rent, Virar'},
+      Build:{h:'A home you wish to build',l:'Plot size & location',ph:'e.g. 1200 sq.ft plot, Virar East'},
+      Renovate:{h:'A space to renovate',l:'What needs renovating?',ph:'e.g. full 2 BHK, kitchen + bathrooms'}}[st.intent];
+    const dynField=React.createElement('input',{placeholder:cfg.ph,'aria-label':cfg.l,style:{width:'100%',padding:'13px',border:'1px solid #241812',background:'#f6f1e6',fontFamily:'inherit',fontSize:'14px'}});
+    const m=st.modal;
+    return {hasProps:props.length>0,noProps:props.length===0,props,
+      ongoing:this.ONG.map(j=>({...j,open:openJ(j)})),completed:this.COMP.map(j=>({...j,open:openJ(j)})),
+      stats:this.S,areas:this.A,
+      tQuote:this.T[st.t].q,tName:this.T[st.t].n,tMeta:this.T[st.t].m,
+      tPrev:()=>this.setState(s=>({t:(s.t-1+this.T.length)%this.T.length})),tNext:()=>this.setState(s=>({t:(s.t+1)%this.T.length})),
+      tDots:this.T.map((_,i)=>React.createElement('span',{key:i,onClick:()=>this.setState({t:i}),style:{width:i===st.t?'22px':'8px',height:'8px',borderRadius:'4px',background:i===st.t?'#5c0e17':'#cdbf9e',cursor:'pointer',transition:'width .3s'}})),
+      intentPills,formHead:cfg.h,dynField,
+      modalOpen:!!m,closeModal:()=>this.setState({modal:null}),stop:e=>e.stopPropagation(),
+      mShot:m?m.shot:'',mStatus:m?m.status:'',mTitle:m?m.title:'',mMeta:m?m.meta:'',mDesc:m?m.desc:''};
+  }
+}
+</script>
+</body>
+</html>

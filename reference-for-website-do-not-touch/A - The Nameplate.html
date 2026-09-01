@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Spectral',serif;color:#33241a;background:#f7efdd;-webkit-font-smoothing:antialiased}
+  a{color:#6b1120;text-decoration:none}
+  a:hover{color:#8b1a2b}
+  ::selection{background:#6b1120;color:#f7efdd}
+  .ph{background-image:repeating-linear-gradient(45deg,#e7dcc2,#e7dcc2 11px,#e0d3b4 11px,#e0d3b4 22px)}
+  .seal{position:relative}
+  .seal::before,.seal::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:64px;height:1px;background:#c29a43}
+  .seal::before{top:-4px}.seal::after{top:-1px;width:34px}
+  @keyframes settle{0%{opacity:0;letter-spacing:.6em;filter:blur(4px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;letter-spacing:.18em}}
+  @keyframes settleSub{0%{opacity:0;letter-spacing:.4em}100%{opacity:1;letter-spacing:.26em}}
+  @keyframes riseIn{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes barGrow{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+  .hName{animation:settle 1.5s cubic-bezier(.2,.7,.2,1) both}
+  .hSub{animation:settleSub 1.4s ease .5s both}
+  .hLead{animation:riseIn .9s ease .95s both}
+  .hPills{animation:riseIn 1s ease 1.25s both}
+  .hRule{transform-origin:center;animation:barGrow 1.1s cubic-bezier(.2,.7,.2,1) 1.15s both}
+  .fadeSlide{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .fadeSlide.in,.fadeSlide[data-shown]{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .hName,.hSub,.hLead,.hPills,.hRule{animation:none!important}
+    .fadeSlide{transition:none;opacity:1;transform:none}
+  }
+  .navlink{color:#5a4636}
+  .svcRow{grid-template-columns:1fr}
+  @media(min-width:820px){.svcRow{grid-template-columns:1fr 1fr}.svcRow.rev>.svcMedia{order:2}}
+  .nsvc{grid-template-columns:1fr}
+  .proc{display:grid;grid-template-columns:1fr;gap:32px}
+  .procline{display:none}
+  @media(min-width:820px){.nsvc{grid-template-columns:92px 1fr 208px}}
+  @media(min-width:760px){.proc{grid-template-columns:repeat(3,1fr);gap:0}.procline{display:block}}
+</style>
+</helmet>
+<div style="max-width:100%;overflow-x:hidden;background:#f7efdd">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(247,239,221,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e3d6b8">
+  <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#top" style="display:flex;align-items:center;gap:11px">
+      <span style="width:40px;height:40px;border:1px solid #c29a43;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;color:#6b1120;font-size:20px;flex-shrink:0">M</span>
+      <span style="line-height:1.05"><span style="display:block;font-family:'Marcellus',serif;font-size:16px;letter-spacing:.14em;color:#6b1120">MARY MATHA</span><span style="display:block;font-size:9px;letter-spacing:.26em;color:#a08a5f;text-transform:uppercase">Real Estate &amp; Construction</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="#contact" class="deskNav" style="display:none">Enquire</a>
+      <a href="tel:+918087555144" style="display:flex;align-items:center;gap:7px;border:1px solid #6b1120;color:#6b1120;padding:9px 15px;border-radius:4px;font-size:13.5px;font-weight:500">&#9742;<span style="display:none" class="ctaLbl">Call</span></a>
+      <a href="https://wa.me/918087555144" style="display:flex;align-items:center;gap:7px;background:#1faf54;color:#fff;padding:9px 15px;border-radius:4px;font-size:13.5px;font-weight:600">&#9993;<span style="display:none" class="ctaLbl">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px clamp(18px,5vw,40px)">
+  <div class="ph" style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,#3a0a12,#3a0a12 14px,#480b14 14px,#480b14 28px)"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 30%,rgba(74,11,20,.45) 0%,rgba(58,10,18,.82) 100%)"></div>
+  <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);font-family:monospace;font-size:11px;color:rgba(247,239,221,.5);letter-spacing:.08em">architectural detail crop &mdash; carved threshold / stone facade</div>
+  <div style="position:relative;max-width:860px">
+    <div style="font-family:monospace;font-size:11px;letter-spacing:.34em;color:#e0c176;text-transform:uppercase;margin-bottom:26px" class="hSub">Vasai&ndash;Virar &middot; Est. 1996</div>
+    <h1 class="hName" style="font-family:'Marcellus',serif;color:#f7efdd;font-size:clamp(42px,10vw,88px);line-height:1;letter-spacing:.18em;margin-bottom:14px">MARY MATHA</h1>
+    <div class="hRule" style="width:min(360px,70%);height:1px;background:linear-gradient(90deg,transparent,#c29a43 20%,#c29a43 80%,transparent);margin:0 auto 16px"></div>
+    <div class="hSub" style="font-family:'Marcellus',serif;color:#e0c176;font-size:clamp(17px,4.4vw,28px);letter-spacing:.26em;text-transform:uppercase;margin-bottom:28px">Real Estate &amp; Construction</div>
+    <p class="hLead" style="color:#efe4cf;font-size:clamp(15px,2.4vw,18px);line-height:1.65;max-width:520px;margin:0 auto 34px;font-weight:300">Trusted real estate solutions and construction services built on quality, trust and excellence.</p>
+    <div class="hPills" style="display:flex;flex-wrap:wrap;gap:0;justify-content:center;align-items:center;font-family:'Marcellus',serif;color:#f7efdd;font-size:clamp(13px,3.4vw,18px);letter-spacing:.2em;text-transform:uppercase">
+      <span>Buy</span><span style="color:#c29a43;padding:0 clamp(8px,2.4vw,18px)">&bull;</span><span>Sell</span><span style="color:#c29a43;padding:0 clamp(8px,2.4vw,18px)">&bull;</span><span>Rent</span><span style="color:#c29a43;padding:0 clamp(8px,2.4vw,18px)">&bull;</span><span>Build</span><span style="color:#c29a43;padding:0 clamp(8px,2.4vw,18px)">&bull;</span><span>Renovate</span>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:#c29a43;font-size:20px;opacity:.8">&#8595;</div>
+</section>
+
+<!-- SERVICES -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div class="fadeSlide" style="text-align:center;margin-bottom:clamp(36px,6vw,64px)">
+      <div class="seal" style="display:inline-block;font-family:monospace;font-size:11px;letter-spacing:.3em;color:#a08a5f;text-transform:uppercase;padding-top:14px">Our Services</div>
+      <h2 style="font-family:'Marcellus',serif;font-size:clamp(28px,6vw,46px);color:#6b1120;margin-top:14px">Two crafts, one trusted name</h2>
+    </div>
+    <div class="fadeSlide" style="border:1px solid #d8c79b;background:#fbf6e8">
+      <div class="nsvc" style="display:grid;align-items:stretch">
+        <div style="display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:46px;color:#c29a43;background:#f7efdd;border-bottom:1px solid #e0d3b4;padding:22px 0">I</div>
+        <div style="padding:clamp(24px,4vw,42px)">
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.24em;color:#a08a5f;margin-bottom:10px">Register I &mdash; Property</div>
+          <h3 style="font-family:'Marcellus',serif;font-size:clamp(22px,4.5vw,32px);color:#33241a;margin-bottom:12px">Buy, Sell &amp; Rent</h3>
+          <p style="font-size:15.5px;line-height:1.7;color:#5a4636;font-weight:300">Flats, plots, shops and bungalows across Vasai&ndash;Virar. We shortlist by budget and need, arrange site visits, verify the paperwork, and help with home loan, stamp duty and registration &mdash; end to end, no hidden charges.</p>
+        </div>
+        <div class="ph" style="min-height:150px;position:relative;border-top:1px solid #e0d3b4"><span style="position:absolute;bottom:10px;left:10px;font-family:monospace;font-size:10px;color:#6b1120;background:rgba(251,246,232,.85);padding:3px 7px">family at new flat</span></div>
+      </div>
+      <div style="border-top:3px double #c29a43;margin:0 clamp(20px,4vw,42px)"></div>
+      <div class="nsvc" style="display:grid;align-items:stretch">
+        <div style="display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:46px;color:#c29a43;background:#f7efdd;border-bottom:1px solid #e0d3b4;padding:22px 0">II</div>
+        <div style="padding:clamp(24px,4vw,42px)">
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.24em;color:#a08a5f;margin-bottom:10px">Register II &mdash; Construction</div>
+          <h3 style="font-family:'Marcellus',serif;font-size:clamp(22px,4.5vw,32px);color:#33241a;margin-bottom:12px">Build &amp; Renovate</h3>
+          <p style="font-size:15.5px;line-height:1.7;color:#5a4636;font-weight:300">New construction, full-home renovation, repair and finishing work. We show you the expected result before we start and refine it until you approve &mdash; then build with quality materials and personal supervision at every stage.</p>
+        </div>
+        <div class="ph" style="min-height:150px;position:relative;border-top:1px solid #e0d3b4"><span style="position:absolute;bottom:10px;left:10px;font-family:monospace;font-size:10px;color:#6b1120;background:rgba(251,246,232,.85);padding:3px 7px">site under construction</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTIES -->
+<section style="padding:0 clamp(16px,4vw,32px) clamp(56px,9vw,104px);background:#f2e8d2">
+  <div style="max-width:1160px;margin:0 auto;padding-top:clamp(48px,8vw,90px)">
+    <div class="fadeSlide" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:clamp(30px,5vw,52px)">
+      <div>
+        <div style="font-family:monospace;font-size:11px;letter-spacing:.3em;color:#a08a5f;text-transform:uppercase;margin-bottom:10px">Available Now</div>
+        <h2 style="font-family:'Marcellus',serif;font-size:clamp(28px,6vw,46px);color:#6b1120">Featured Properties</h2>
+      </div>
+      <a href="#contact" style="font-size:14px;border-bottom:1px solid #c29a43;padding-bottom:3px">See all listings &rarr;</a>
+    </div>
+    <sc-if value="{{ hasProps }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.5vw,28px)">
+        <sc-for list="{{ props }}" as="p" hint-placeholder-count="3">
+          <div style="background:#fbf6e8;border:1px solid #e0d3b4;display:flex;flex-direction:column">
+            <div class="ph" style="position:relative;height:210px;overflow:hidden">
+              <div style="position:absolute;top:12px;left:12px;background:#6b1120;color:#e0c176;font-size:10.5px;font-weight:500;letter-spacing:.1em;padding:5px 11px;font-family:monospace">{{ p.tag }}</div>
+              <div style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:10.5px;color:#6b1120;background:rgba(251,246,232,.85);padding:3px 8px">{{ p.shot }} &mdash; photo {{ p.imgLabel }}</div>
+              <button onClick="{{ p.prev }}" aria-label="Previous image" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);width:34px;height:34px;border:none;border-radius:50%;background:rgba(72,11,20,.72);color:#f7efdd;font-size:16px;cursor:pointer">&#8249;</button>
+              <button onClick="{{ p.next }}" aria-label="Next image" style="position:absolute;top:50%;right:8px;transform:translateY(-50%);width:34px;height:34px;border:none;border-radius:50%;background:rgba(72,11,20,.72);color:#f7efdd;font-size:16px;cursor:pointer">&#8250;</button>
+              <div style="position:absolute;bottom:12px;right:12px;display:flex;gap:5px">{{ p.dots }}</div>
+            </div>
+            <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+                <h3 style="font-family:'Marcellus',serif;font-size:22px;color:#33241a">{{ p.title }}</h3>
+                <div style="font-family:'Marcellus',serif;font-size:21px;color:#6b1120;white-space:nowrap">{{ p.price }}</div>
+              </div>
+              <p style="font-size:14px;line-height:1.6;color:#5a4636;font-weight:300;margin:10px 0 16px">{{ p.desc }}</p>
+              <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #e6dabd;padding-top:14px;margin-bottom:16px">{{ p.specs }}</div>
+              <a href="#contact" style="text-align:center;background:#6b1120;color:#f7efdd;padding:12px;font-size:13.5px;letter-spacing:.06em">Enquire about this</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed #c9b784;background:#fbf6e8;padding:56px 24px;text-align:center">
+        <div style="font-size:34px;color:#c29a43;margin-bottom:14px">&#8962;</div>
+        <h3 style="font-family:'Marcellus',serif;font-size:24px;color:#6b1120;margin-bottom:8px">No properties listed right now</h3>
+        <p style="font-size:15px;color:#5a4636;font-weight:300;max-width:420px;margin:0 auto 20px">New listings are added regularly. Tell us what you&rsquo;re looking for and we&rsquo;ll call you the moment something matches.</p>
+        <a href="#contact" style="display:inline-block;background:#6b1120;color:#f7efdd;padding:12px 26px;font-size:14px">Register your requirement</a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- CONSTRUCTION -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div class="fadeSlide" style="text-align:center;margin-bottom:clamp(36px,6vw,60px)">
+      <div class="seal" style="display:inline-block;font-family:monospace;font-size:11px;letter-spacing:.3em;color:#a08a5f;text-transform:uppercase;padding-top:14px">How We Build</div>
+      <h2 style="font-family:'Marcellus',serif;font-size:clamp(28px,6vw,46px);color:#6b1120;margin-top:14px">You approve it before we pour concrete</h2>
+      <p style="font-size:15.5px;line-height:1.7;color:#5a4636;font-weight:300;max-width:560px;margin:16px auto 0">The step most builders skip is the one we lead with &mdash; we show you the expected output and refine it until you&rsquo;re happy. Nothing is a surprise.</p>
+    </div>
+    <div class="fadeSlide" style="position:relative;margin-bottom:clamp(40px,6vw,64px)">
+      <div class="procline" style="position:absolute;top:39px;left:17%;right:17%;height:0;border-top:2px dotted #c29a43;z-index:1"></div>
+      <div class="proc" style="position:relative;z-index:2">
+        <div style="text-align:center;padding:0 clamp(10px,2vw,22px)">
+          <div style="width:78px;height:78px;border-radius:50%;border:1px solid #c29a43;background:#f7efdd;display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:30px;color:#6b1120;margin:0 auto 18px">I</div>
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.2em;color:#a08a5f;margin-bottom:8px">STEP ONE</div>
+          <h3 style="font-family:'Marcellus',serif;font-size:21px;color:#33241a;margin-bottom:10px">Requirement gathering</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#5a4636;font-weight:300">We sit with you, understand the plot, the budget and how you want to live in the space &mdash; then put it in writing.</p>
+        </div>
+        <div style="text-align:center;padding:clamp(20px,2vw,26px) clamp(10px,2vw,22px);background:#6b1120;border-radius:4px">
+          <div style="width:78px;height:78px;border-radius:50%;background:#c29a43;display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:30px;color:#3a0a12;margin:0 auto 18px">II</div>
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.2em;color:#e0c176;margin-bottom:8px">STEP TWO &mdash; THE TRUST STEP</div>
+          <h3 style="font-family:'Marcellus',serif;font-size:21px;color:#f7efdd;margin-bottom:10px">Prototype &amp; iterate</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#efdcc4;font-weight:300">We show you the expected output &mdash; layouts, finishes, elevation &mdash; and change it as many times as it takes until you approve. No guesswork.</p>
+        </div>
+        <div style="text-align:center;padding:0 clamp(10px,2vw,22px)">
+          <div style="width:78px;height:78px;border-radius:50%;border:1px solid #c29a43;background:#f7efdd;display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:30px;color:#6b1120;margin:0 auto 18px">III</div>
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.2em;color:#a08a5f;margin-bottom:8px">STEP THREE</div>
+          <h3 style="font-family:'Marcellus',serif;font-size:21px;color:#33241a;margin-bottom:10px">Work begins</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#5a4636;font-weight:300">Construction proceeds against the approved plan with quality materials, staged updates and personal supervision to handover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fadeSlide" style="margin-bottom:36px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:9px;height:9px;border-radius:50%;background:#1faf54;box-shadow:0 0 0 4px rgba(31,175,84,.2)"></span><h3 style="font-family:'Marcellus',serif;font-size:clamp(20px,4vw,26px);color:#6b1120">Ongoing Projects</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+        <sc-for list="{{ ongoing }}" as="j" hint-placeholder-count="2">
+          <button onClick="{{ j.open }}" style="text-align:left;border:1px solid #e0d3b4;background:#fbf6e8;padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:180px;position:relative"><span style="position:absolute;top:10px;left:10px;background:#1faf54;color:#fff;font-size:10.5px;font-family:monospace;padding:4px 9px">IN PROGRESS &middot; {{ j.pct }}</span><span style="position:absolute;bottom:10px;right:10px;background:rgba(72,11,20,.8);color:#f7efdd;font-size:11px;padding:4px 9px">&#9654; view</span></div>
+            <div style="padding:18px">
+              <h4 style="font-family:'Marcellus',serif;font-size:19px;color:#33241a;margin-bottom:5px">{{ j.title }}</h4>
+              <div style="font-size:13px;color:#8a745a;font-family:monospace">{{ j.meta }}</div>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div class="fadeSlide">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:9px;height:9px;border-radius:50%;background:#c29a43"></span><h3 style="font-family:'Marcellus',serif;font-size:clamp(20px,4vw,26px);color:#6b1120">Completed Projects</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+        <sc-for list="{{ completed }}" as="j" hint-placeholder-count="3">
+          <button onClick="{{ j.open }}" style="text-align:left;border:1px solid #e0d3b4;background:#f4ead4;padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:160px;position:relative;filter:none"><span style="position:absolute;top:10px;left:10px;background:#c29a43;color:#3a0a12;font-size:10.5px;font-family:monospace;padding:4px 9px">DELIVERED {{ j.year }}</span><span style="position:absolute;bottom:10px;right:10px;background:rgba(72,11,20,.8);color:#f7efdd;font-size:11px;padding:4px 9px">&#9654; view</span></div>
+            <div style="padding:16px">
+              <h4 style="font-family:'Marcellus',serif;font-size:18px;color:#33241a;margin-bottom:4px">{{ j.title }}</h4>
+              <div style="font-size:12.5px;color:#8a745a;font-family:monospace">{{ j.meta }}</div>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section style="background:#480b14;position:relative">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(16px,4vw,32px)">
+    <div style="text-align:center;margin-bottom:clamp(30px,5vw,48px)">
+      <div class="seal" style="display:inline-block;font-family:monospace;font-size:11px;letter-spacing:.3em;color:#d8b878;text-transform:uppercase;padding-top:14px">By The Numbers</div>
+      <h2 style="font-family:'Marcellus',serif;font-size:clamp(24px,5vw,38px);color:#f7efdd;margin-top:14px">Three decades, quietly stated</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(194,154,67,.28);border:1px solid rgba(194,154,67,.28)">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+        <div style="background:#480b14;padding:clamp(24px,4vw,40px) 18px;text-align:center">
+          <div style="font-family:'Marcellus',serif;font-size:clamp(34px,7vw,56px);color:#e0c176;line-height:1">{{ s.n }}</div>
+          <div style="font-size:12.5px;letter-spacing:.08em;color:#d3bd97;margin-top:10px;text-transform:uppercase">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <div class="seal" style="display:inline-block;font-family:monospace;font-size:11px;letter-spacing:.3em;color:#a08a5f;text-transform:uppercase;padding-top:14px;margin-bottom:34px">In Their Words</div>
+    <div style="min-height:220px">
+      <div style="font-family:'Marcellus',serif;font-size:48px;color:#c29a43;line-height:.6;margin-bottom:14px">&ldquo;</div>
+      <p style="font-family:'Spectral',serif;font-style:italic;font-size:clamp(19px,3.4vw,27px);line-height:1.5;color:#33241a;font-weight:400">{{ tQuote }}</p>
+      <div style="margin-top:26px;font-family:'Marcellus',serif;font-size:16px;color:#6b1120">{{ tName }}</div>
+      <div style="font-size:12.5px;font-family:monospace;letter-spacing:.06em;color:#a08a5f;margin-top:4px">{{ tMeta }}</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:30px">
+      <button onClick="{{ tPrev }}" aria-label="Previous testimonial" style="width:42px;height:42px;border:1px solid #c9b784;background:transparent;color:#6b1120;font-size:18px;cursor:pointer;border-radius:50%">&#8249;</button>
+      <div style="display:flex;gap:8px">{{ tDots }}</div>
+      <button onClick="{{ tNext }}" aria-label="Next testimonial" style="width:42px;height:42px;border:1px solid #c9b784;background:transparent;color:#6b1120;font-size:18px;cursor:pointer;border-radius:50%">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section style="padding:0 clamp(16px,4vw,32px) clamp(56px,9vw,90px)">
+  <div style="max-width:1160px;margin:0 auto;border-top:1px solid #e0d3b4;padding-top:clamp(40px,6vw,64px);text-align:center">
+    <div style="font-family:monospace;font-size:11px;letter-spacing:.3em;color:#a08a5f;text-transform:uppercase;margin-bottom:18px">Areas We Serve</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ areas }}" as="a" hint-placeholder-count="8">
+        <span style="border:1px solid #d8c79b;color:#5a4636;padding:9px 18px;font-size:14px;font-family:'Marcellus',serif;letter-spacing:.04em">{{ a }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#6b1120;color:#f7efdd;padding:clamp(56px,9vw,100px) clamp(16px,4vw,32px)">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(30px,5vw,48px)">
+      <div class="seal" style="display:inline-block;font-family:monospace;font-size:11px;letter-spacing:.3em;color:#e0c176;text-transform:uppercase;padding-top:14px">Enquire</div>
+      <h2 style="font-family:'Marcellus',serif;font-size:clamp(28px,6vw,46px);color:#f7efdd;margin-top:14px">Tell us what you need</h2>
+      <p style="font-size:15px;color:#e7d3bd;font-weight:300;margin-top:12px">Pick what you&rsquo;re here for &mdash; the form adjusts to ask only what matters.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px">{{ intentPills }}</div>
+    <div style="display:grid;grid-template-columns:1fr;gap:26px;max-width:940px;margin:0 auto" class="contactGrid">
+      <div style="background:rgba(247,239,221,.05);border:1px solid rgba(224,193,118,.3);padding:clamp(22px,3vw,34px)">
+        <div style="font-family:'Marcellus',serif;font-size:20px;color:#e0c176;margin-bottom:6px">{{ formHead }}</div>
+        <p style="font-size:13px;color:#d3bd97;margin-bottom:20px;font-weight:300">{{ formSub }}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <input placeholder="Full name" style="padding:13px;background:rgba(58,10,18,.4);border:1px solid rgba(224,193,118,.35);color:#f7efdd;font-family:inherit;font-size:14px">
+          <input placeholder="Phone / WhatsApp" style="padding:13px;background:rgba(58,10,18,.4);border:1px solid rgba(224,193,118,.35);color:#f7efdd;font-family:inherit;font-size:14px">
+        </div>
+        <div style="margin-bottom:12px">{{ dynField }}</div>
+        <textarea rows="3" placeholder="Anything else we should know?" style="width:100%;padding:13px;background:rgba(58,10,18,.4);border:1px solid rgba(224,193,118,.35);color:#f7efdd;font-family:inherit;font-size:14px;resize:none;margin-bottom:16px"></textarea>
+        <button style="width:100%;background:#c29a43;color:#3a0a12;border:none;padding:15px;font-family:'Marcellus',serif;font-size:15px;letter-spacing:.06em;cursor:pointer">Send enquiry &mdash; we call back within a day</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:+918087555144" style="display:flex;align-items:center;gap:14px;background:rgba(247,239,221,.05);border:1px solid rgba(224,193,118,.3);padding:18px">
+          <span style="font-size:20px">&#9742;</span><span><span style="display:block;font-size:11px;letter-spacing:.2em;color:#d3bd97;text-transform:uppercase">Call directly</span><span style="display:block;color:#f7efdd;font-size:16px">+91 80875 55144</span></span>
+        </a>
+        <a href="https://wa.me/918087555144" style="display:flex;align-items:center;gap:14px;background:#1faf54;padding:18px">
+          <span style="font-size:20px">&#9993;</span><span><span style="display:block;font-size:11px;letter-spacing:.2em;color:#d5f2df;text-transform:uppercase">Fastest reply</span><span style="display:block;color:#fff;font-size:16px">Message on WhatsApp</span></span>
+        </a>
+        <div style="background:rgba(247,239,221,.05);border:1px solid rgba(224,193,118,.3);padding:18px">
+          <span style="display:block;font-size:11px;letter-spacing:.2em;color:#d3bd97;text-transform:uppercase;margin-bottom:6px">Visit the office</span>
+          <span style="display:block;color:#efe4cf;font-size:14px;line-height:1.55;font-weight:300">Shop no. 5, Galaxy 2 CHS, Dhruti Complex, Om Nagar, Vasai West, Vasai&ndash;Virar 401202</span>
+          <div class="ph" style="height:120px;margin-top:12px;position:relative"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:#6b1120">map embed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#3a0a12;color:#c9b48f;padding:clamp(40px,6vw,60px) clamp(16px,4vw,32px) 26px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;align-items:start">
+      <div>
+        <div style="font-family:'Marcellus',serif;font-size:18px;letter-spacing:.14em;color:#f7efdd">MARY MATHA</div>
+        <div style="font-size:11px;letter-spacing:.22em;color:#a08a5f;text-transform:uppercase;margin-top:4px">Real Estate &amp; Construction</div>
+        <p style="font-size:13px;line-height:1.6;font-weight:300;margin-top:14px;color:#b39c76">Buy &bull; Sell &bull; Rent &bull; Build &bull; Renovate. Serving Vasai&ndash;Virar families since 1996.</p>
+      </div>
+      <div style="font-size:13.5px;line-height:2"><div style="color:#e0c176;font-family:monospace;font-size:11px;letter-spacing:.2em;margin-bottom:6px">EXPLORE</div><a href="#top" style="color:#c9b48f;display:block">Home</a><a href="#contact" style="color:#c9b48f;display:block">Properties</a><a href="#contact" style="color:#c9b48f;display:block">Construction</a><a href="#contact" style="color:#c9b48f;display:block">Enquire</a></div>
+      <div style="font-size:13.5px;line-height:1.9"><div style="color:#e0c176;font-family:monospace;font-size:11px;letter-spacing:.2em;margin-bottom:6px">CONTACT</div><div>+91 80875 55144</div><div>+91 98650 64257</div><div>marymatha1970@gmail.com</div></div>
+      <div style="font-size:13.5px;line-height:1.9"><div style="color:#e0c176;font-family:monospace;font-size:11px;letter-spacing:.2em;margin-bottom:6px">LEGAL</div><a href="#" style="color:#c9b48f;display:block">Privacy Policy</a><a href="#" style="color:#c9b48f;display:block">Terms of Use</a><div style="margin-top:8px;font-size:12px;color:#8a745a">MahaRERA: A00000000000000</div></div>
+    </div>
+    <div style="border-top:1px solid rgba(194,154,67,.2);margin-top:32px;padding-top:20px;text-align:center;font-size:12px;color:#8a745a">&copy; 1996&ndash;2026 Mary Matha Real Estate &amp; Construction. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:100;background:rgba(28,8,12,.82);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)">
+    <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="background:#f7efdd;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #c29a43">
+      <div style="position:relative">
+        <div class="ph" style="height:clamp(200px,40vw,320px);position:relative"><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#6b1120;background:rgba(247,239,221,.85);padding:4px 9px">{{ mShot }}</span></div>
+        <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:12px;right:12px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(58,10,18,.85);color:#f7efdd;font-size:20px;cursor:pointer">&times;</button>
+      </div>
+      <div style="padding:clamp(22px,4vw,36px)">
+        <div style="font-family:monospace;font-size:11px;letter-spacing:.2em;color:#c29a43;margin-bottom:8px">{{ mStatus }}</div>
+        <h3 style="font-family:'Marcellus',serif;font-size:clamp(22px,4vw,30px);color:#6b1120;margin-bottom:8px">{{ mTitle }}</h3>
+        <div style="font-size:13px;font-family:monospace;color:#8a745a;margin-bottom:16px">{{ mMeta }}</div>
+        <p style="font-size:15px;line-height:1.7;color:#5a4636;font-weight:300;margin-bottom:20px">{{ mDesc }}</p>
+        <div class="ph" style="height:clamp(160px,32vw,220px);position:relative;display:flex;align-items:center;justify-content:center"><span style="width:64px;height:64px;border-radius:50%;background:rgba(58,10,18,.8);color:#f7efdd;display:flex;align-items:center;justify-content:center;font-size:24px">&#9654;</span><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#6b1120;background:rgba(247,239,221,.85);padding:4px 9px">walkthrough video</span></div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<a href="https://wa.me/918087555144" aria-label="WhatsApp us" style="position:fixed;bottom:20px;right:20px;z-index:90;width:58px;height:58px;border-radius:50%;background:#1faf54;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 22px rgba(31,175,84,.45)">&#9993;</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { propImg:[0,0,0], t:0, modal:null, intent:'Buy' };
+
+  componentDidMount(){
+    const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.setAttribute('data-shown','');});},{threshold:.12});
+    if('IntersectionObserver' in window){document.querySelectorAll('.fadeSlide').forEach(n=>io.observe(n));}else{document.querySelectorAll('.fadeSlide').forEach(n=>n.setAttribute('data-shown',''));}
+    if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+      this._iv = setInterval(()=>this.setState(s=>({t:(s.t+1)%this.T.length})),6500);
+    }
+    this._key = (e)=>{ if(e.key==='Escape') this.setState({modal:null}); };
+    window.addEventListener('keydown',this._key);
+    const mq = window.matchMedia('(min-width:760px)');
+    const apply=()=>{document.querySelectorAll('.ctaLbl,.deskNav').forEach(n=>n.style.display=mq.matches?'inline':'none');
+      document.querySelectorAll('.contactGrid').forEach(n=>n.style.gridTemplateColumns=mq.matches?'1.3fr 1fr':'1fr');};
+    apply(); mq.addEventListener('change',apply); this._mq=mq; this._apply=apply;
+  }
+  componentWillUnmount(){ clearInterval(this._iv); window.removeEventListener('keydown',this._key); this._mq&&this._mq.removeEventListener('change',this._apply); }
+
+  P=[
+    {tag:'NO BROKERAGE',shot:'living room',title:'1 BHK Flat',price:'\u20b943 L',desc:'Bright east-facing flat in a family building, walk to station and market. Ready to move.',specs:[['444 sq.ft'],['1 Bed'],['1 Bath'],['Vasai West']],shots:['living room','kitchen','balcony']},
+    {tag:'LOAN ASSISTANCE',shot:'master bedroom',title:'2 BHK Flat',price:'\u20b965 L',desc:'Spacious 2 BHK with covered parking and lift. Loan and registration help included.',specs:[['677 sq.ft'],['2 Bed'],['2 Bath'],['Nalasopara']],shots:['master bedroom','hall','building']},
+    {tag:'CLEAR TITLE',shot:'plot boundary',title:'Residential Plot',price:'\u20b928 L',desc:'NA plot with clear title and road access, ideal to build your own home on.',specs:['1200 sq.ft','Plot','Corner','Virar East'].map(x=>[x]),shots:['plot boundary','access road','locality']}
+  ];
+  ONG=[
+    {title:'Saldanha Residence',meta:'Ground+2 bungalow \u00b7 Vasai West',pct:'60% done',shot:'foundation & columns cast',status:'ONGOING \u00b7 60% COMPLETE',desc:'A three-level family bungalow. Structure is up and internal plumbing is underway; finishing begins next month. The family approved the elevation and interior layout at prototype stage before we broke ground.'},
+    {title:'Green Court Interiors',meta:'3 BHK full renovation \u00b7 Nalasopara',pct:'40% done',shot:'stripped interior, new wiring',status:'ONGOING \u00b7 40% COMPLETE',desc:'Complete gut renovation of a 3 BHK \u2014 new electricals, false ceiling, modular kitchen and bathrooms. Client signed off on 3D interiors before demolition.'}
+  ];
+  COMP=[
+    {title:'D\u2019Souza Villa',meta:'G+1 new build \u00b7 Vasai',year:'2024',shot:'completed white villa facade',status:'DELIVERED 2024',desc:'A four-bedroom villa built foundation to finish in fourteen months, handed over on schedule with a full snag-free walkthrough.'},
+    {title:'Rodrigues Flat',meta:'2 BHK renovation \u00b7 Virar',year:'2023',shot:'finished modern living room',status:'DELIVERED 2023',desc:'Full interior renovation \u2014 flooring, kitchen, wardrobes and painting \u2014 completed in six weeks while the family stayed nearby.'},
+    {title:'Holy Family Shop',meta:'Commercial fit-out \u00b7 Vasai West',year:'2023',shot:'retail shopfront finished',status:'DELIVERED 2023',desc:'Ground-floor retail fit-out including shopfront, flooring and lighting, ready for the tenant to move straight in.'}
+  ];
+  S=[{n:'30 yrs',l:'Of service'},{n:'500+',l:'Projects delivered'},{n:'1.2M',l:'Sq.ft built'},{n:'800+',l:'Families served'},{n:'12',l:'Locations covered'}];
+  A=['Vasai West','Vasai East','Nalasopara','Virar','Naigaon','Bhayandar','Mira Road','Palghar'];
+  T=[
+    {q:'They showed us the whole flat layout before we paid anything and answered every doubt. No broker games, no hidden charges \u2014 we felt safe with our savings.',n:'Priya & Joseph S.',m:'Bought a 2 BHK \u00b7 Vasai West'},
+    {q:'We were nervous about building on our plot. Mary Matha kept revising the plan until it matched what we imagined, then delivered it exactly. Supervised daily.',n:'Anthony D.',m:'New home build \u00b7 Virar East'},
+    {q:'Renovated our old flat in six weeks while we stayed next door. Clean work, quality materials, and they picked up the phone every single time.',n:'Sunita R.',m:'Full renovation \u00b7 Nalasopara'}
+  ];
+
+  dots(active,n,color){return Array.from({length:n},(_,i)=>React.createElement('span',{key:i,style:{width:i===active?'16px':'6px',height:'6px',borderRadius:'3px',background:i===active?color:'rgba(247,239,221,.5)',transition:'width .3s'}}));}
+
+  renderVals(){
+    const st=this.state;
+    const props=this.P.map((p,i)=>({...p,imgLabel:(st.propImg[i]%p.shots.length)+1+'/'+p.shots.length,shot:p.shots[st.propImg[i]%p.shots.length],
+      prev:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]-1+p.shots.length)%p.shots.length;return{propImg:a};}),
+      next:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]+1)%p.shots.length;return{propImg:a};}),
+      dots:this.dots(st.propImg[i]%p.shots.length,p.shots.length,'#e0c176'),
+      specs:p.specs.map((sp,k)=>React.createElement('span',{key:k,style:{fontSize:'12px',fontFamily:'monospace',color:'#6b1120',border:'1px solid #d8c79b',padding:'4px 9px'}},sp[0]))}));
+
+    const openJ=(j)=>()=>this.setState({modal:j});
+    const ongoing=this.ONG.map(j=>({...j,open:openJ(j)}));
+    const completed=this.COMP.map(j=>({...j,open:openJ(j)}));
+
+    const intents=['Buy','Sell','Rent','Build','Renovate'];
+    const intentPills=intents.map(it=>React.createElement('button',{key:it,onClick:()=>this.setState({intent:it}),
+      style:{fontFamily:"'Marcellus',serif",fontSize:'15px',letterSpacing:'.06em',padding:'11px 22px',cursor:'pointer',
+        background:st.intent===it?'#c29a43':'transparent',color:st.intent===it?'#3a0a12':'#f7efdd',
+        border:'1px solid '+(st.intent===it?'#c29a43':'rgba(224,193,118,.4)')}},it));
+
+    const cfg={
+      Buy:{h:'Looking to buy',s:'Tell us your budget and area \u2014 we\u2019ll shortlist and call.',f:{label:'Budget & preferred area',ph:'e.g. up to \u20b960L, 2 BHK in Vasai West'}},
+      Sell:{h:'Want to sell',s:'Share the property details \u2014 we\u2019ll value it fairly.',f:{label:'What are you selling?',ph:'e.g. 1 BHK, 444 sq.ft, Nalasopara'}},
+      Rent:{h:'Looking to rent',s:'Tell us what and where \u2014 we\u2019ll match reliable options.',f:{label:'Rental need & area',ph:'e.g. 2 BHK on rent, Virar, family'}},
+      Build:{h:'Want to build',s:'Tell us about the plot \u2014 we\u2019ll start with a prototype.',f:{label:'Plot size & location',ph:'e.g. 1200 sq.ft plot, Virar East'}},
+      Renovate:{h:'Want to renovate',s:'Describe the space \u2014 we\u2019ll show expected output first.',f:{label:'What needs renovating?',ph:'e.g. full 2 BHK, kitchen + bathrooms'}}
+    }[st.intent];
+    const dynField=React.createElement('input',{placeholder:cfg.f.ph,'aria-label':cfg.f.label,
+      style:{width:'100%',padding:'13px',background:'rgba(58,10,18,.4)',border:'1px solid rgba(224,193,118,.35)',color:'#f7efdd',fontFamily:'inherit',fontSize:'14px'}});
+
+    const m=st.modal;
+    return {
+      hasProps:props.length>0, noProps:props.length===0, props,
+      ongoing, completed,
+      stats:this.S.map(s=>({n:s.n,l:s.l})), areas:this.A,
+      tQuote:this.T[st.t].q, tName:this.T[st.t].n, tMeta:this.T[st.t].m,
+      tPrev:()=>this.setState(s=>({t:(s.t-1+this.T.length)%this.T.length})),
+      tNext:()=>this.setState(s=>({t:(s.t+1)%this.T.length})),
+      tDots:this.T.map((_,i)=>React.createElement('span',{key:i,onClick:()=>this.setState({t:i}),style:{width:i===st.t?'22px':'8px',height:'8px',borderRadius:'4px',background:i===st.t?'#6b1120':'#d8c79b',cursor:'pointer',transition:'width .3s'}})),
+      intentPills, formHead:cfg.h, formSub:cfg.s, dynField,
+      modalOpen:!!m, closeModal:()=>this.setState({modal:null}), stop:(e)=>e.stopPropagation(),
+      mShot:m?m.shot:'', mStatus:m?m.status:'', mTitle:m?m.title:'', mMeta:m?m.meta:'', mDesc:m?m.desc:''
+    };
+  }
+}
+</script>
+</body>
+</html>
