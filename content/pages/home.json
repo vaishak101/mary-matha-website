@@ -1,0 +1,21 @@
+{
+  "title": "Home",
+  "heroTitle": "Vaishak Testing",
+  "heroSubtitle": "Mary Matha Construction & Real Estate combines trusted construction expertise with strategic property guidance to deliver quality spaces and strong long-term investment outcomes.",
+  "ctaLabel": "Book a consultation",
+  "ctaLink": "#contact",
+  "highlights": [
+    {
+      "title": "Construction Management",
+      "description": "End-to-end planning, execution, and project oversight designed to keep quality high and timelines reliable."
+    },
+    {
+      "title": "Real Estate Advisory",
+      "description": "Insight-led guidance for buying, selling, and investing in residential and commercial opportunities."
+    },
+    {
+      "title": "Property Development",
+      "description": "Thoughtful development strategies focused on sustainable value, neighborhood fit, and profitable growth."
+    }
+  ]
+}
