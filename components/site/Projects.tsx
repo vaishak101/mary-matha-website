@@ -45,7 +45,10 @@ export function Projects() {
   }));
 
   return (
-    <section id="projects" className="section container-x bg-cream-alt">
+    <section
+      id="projects"
+      className="section container-x border-t border-line bg-cream"
+    >
       <div className="wrap">
         <Reveal className="mx-auto mb-[clamp(2.25rem,6vw,3.5rem)] max-w-[38rem] text-center">
           <Kicker>On site & delivered</Kicker>

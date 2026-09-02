@@ -25,8 +25,8 @@ export function FeaturedProperties() {
 
         {properties.length > 0 ? (
           <div className="grid gap-[clamp(1.125rem,2.5vw,1.75rem)] sm:grid-cols-2 lg:grid-cols-3">
-            {properties.map((property) => (
-              <Reveal key={property._slug}>
+            {properties.map((property, i) => (
+              <Reveal key={property._slug} delay={i * 90} className="h-full">
                 <PropertyCard property={property} />
               </Reveal>
             ))}

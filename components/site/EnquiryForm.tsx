@@ -117,14 +117,14 @@ export function EnquiryForm() {
       <form onSubmit={onSubmit} noValidate>
         <fieldset>
           <legend className={labelClass}>I&rsquo;m here to —</legend>
-          <div className="mb-6 grid grid-cols-3 gap-px bg-line-strong sm:grid-cols-5">
+          <div className="mb-6 flex flex-wrap gap-px bg-line-strong">
             {(Object.keys(INTENTS) as Intent[]).map((key) => (
               <button
                 key={key}
                 type="button"
                 onClick={() => setIntent(key)}
                 aria-pressed={intent === key}
-                className={`py-3 text-[0.875rem] tracking-[0.04em] transition-colors ${
+                className={`flex-1 basis-[30%] py-3 text-[0.875rem] tracking-[0.04em] transition-colors sm:basis-0 ${
                   intent === key
                     ? "bg-maroon text-cream"
                     : "bg-cream text-maroon hover:bg-cream-alt"

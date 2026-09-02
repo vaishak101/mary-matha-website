@@ -11,7 +11,10 @@ export function Testimonials() {
     <section id="testimonials" className="section container-x">
       <div className="wrap">
         <Reveal className="mb-[clamp(2rem,5vw,2.5rem)] text-center">
-          <Kicker>In their words</Kicker>
+          <h2>
+            <Kicker>In their words</Kicker>
+            <span className="sr-only">— testimonials</span>
+          </h2>
         </Reveal>
 
         {testimonials.length > 0 ? (

@@ -20,10 +20,10 @@ function Card({
     <button
       type="button"
       onClick={onOpen}
-      className={`group flex flex-col border text-left transition-colors ${
+      className={`group flex h-full flex-col border border-l-2 text-left transition-colors ${
         ongoing
-          ? "border-line bg-cream-panel hover:border-line-strong"
-          : "border-line bg-cream-alt hover:border-gold"
+          ? "border-line border-l-green bg-cream-panel hover:border-line-strong hover:border-l-green"
+          : "border-line border-l-gold bg-cream-alt hover:border-gold"
       }`}
     >
       <div className={`relative ${ongoing ? "aspect-[16/10]" : "aspect-[16/11]"}`}>

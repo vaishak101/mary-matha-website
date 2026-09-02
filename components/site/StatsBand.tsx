@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Stat } from "@/lib/content";
 
-/** Split "₹250 Cr" -> { prefix: "₹", value: 250, suffix: " Cr", decimals: 0 } */
+/** Split "₹250 Cr" -> { prefix: "₹", target: 250, suffix: " Cr", decimals: 0 } */
 function parseStat(raw: string) {
   const match = raw.match(/^(\D*?)([\d,]*\.?\d+)(.*)$/);
   if (!match) return null;
@@ -16,6 +16,13 @@ function parseStat(raw: string) {
     target: parseFloat(clean),
     decimals: dot === -1 ? 0 : clean.length - dot - 1,
   };
+}
+
+function formatNum(value: number, decimals: number) {
+  return value.toLocaleString("en-IN", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
 }
 
 /** Cubic-bezier(0.16, 1, 0.3, 1) — the requested "smooth, decelerating" curve. */
@@ -44,35 +51,28 @@ function makeBezier(x1: number, y1: number, x2: number, y2: number) {
 const ease = makeBezier(0.16, 1, 0.3, 1);
 const DURATION = 2000;
 
-function useCountUp(target: number, decimals: number, run: boolean) {
-  const [value, setValue] = useState(target);
-  const frame = useRef<number>(0);
-
-  useLayoutEffect(() => {
-    if (!run) return;
-    setValue(0);
-    const start = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / DURATION, 1);
-      setValue(target * ease(p));
-      if (p < 1) frame.current = requestAnimationFrame(tick);
-    };
-    frame.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame.current);
-  }, [target, run]);
-
-  return value.toLocaleString("en-IN", {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  });
-}
-
 function StatItem({ stat, run }: { stat: Stat; run: boolean }) {
-  const parsed = parseStat(stat.value);
-  const display = useCountUp(parsed?.target ?? 0, parsed?.decimals ?? 0, run && !!parsed);
+  const parsed = useMemo(() => parseStat(stat.value), [stat.value]);
+  const numRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!run || !parsed || !numRef.current) return;
+    const node = numRef.current;
+    const { target, decimals } = parsed;
+    const startedAt = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min((now - startedAt) / DURATION, 1);
+      node.textContent = formatNum(target * ease(p), decimals);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    node.textContent = formatNum(0, decimals);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [run, parsed]);
 
   return (
-    <div className="bg-maroon-deep px-[18px] py-[clamp(1.5rem,4vw,2.5rem)] text-center">
+    <div className="grow basis-1/2 border-b border-r border-gold/20 bg-maroon-deep px-[18px] py-[clamp(1.5rem,4vw,2.5rem)] text-center sm:basis-1/3 sm:grow-0 lg:basis-1/5">
       <div
         className="tnum leading-none text-gold-light"
         style={{
@@ -83,7 +83,7 @@ function StatItem({ stat, run }: { stat: Stat; run: boolean }) {
         {parsed ? (
           <>
             {parsed.prefix}
-            {display}
+            <span ref={numRef}>{formatNum(parsed.target, parsed.decimals)}</span>
             {parsed.suffix}
           </>
         ) : (
@@ -110,7 +110,6 @@ export function StatsBand({ items }: { items: Stat[] }) {
     ) {
       return; // leave numbers at their final value
     }
-    setRun(false);
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -129,8 +128,7 @@ export function StatsBand({ items }: { items: Stat[] }) {
   return (
     <div
       ref={ref}
-      className="grid gap-px bg-gold/25"
-      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))" }}
+      className="flex flex-wrap justify-center border-l border-t border-gold/20 bg-maroon-deep"
     >
       {items.map((stat) => (
         <StatItem key={stat.label} stat={stat} run={run} />

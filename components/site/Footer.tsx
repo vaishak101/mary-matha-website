@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
 
 const year = new Date().getFullYear();
@@ -72,14 +73,14 @@ export function Footer() {
             </p>
             <ul className="space-y-1 text-[0.875rem]">
               <li>
-                <a href="/privacy-policy" className="text-cream/70 hover:text-cream">
+                <Link href="/privacy-policy" className="text-cream/70 hover:text-cream">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="text-cream/70 hover:text-cream">
+                <Link href="/terms" className="text-cream/70 hover:text-cream">
                   Terms of Use
-                </a>
+                </Link>
               </li>
             </ul>
             <p className="mt-2 text-[12px] text-cream/45">

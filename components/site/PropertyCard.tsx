@@ -18,7 +18,7 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
   const chips = specChips(property);
 
   return (
-    <article className="flex flex-col border border-line bg-cream-panel">
+    <article className="flex h-full flex-col border border-line bg-cream-panel">
       <Carousel
         images={property.gallery}
         sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
@@ -51,14 +51,15 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
           {property.description}
         </p>
 
-        <div className="mt-auto mb-4 flex flex-wrap border border-line">
-          {chips.map((chip, i) => (
+        <div
+          className={`mt-auto mb-4 grid border-l border-t border-line ${
+            chips.length > 1 ? "grid-cols-2" : "grid-cols-1"
+          }`}
+        >
+          {chips.map((chip) => (
             <span
               key={chip}
-              className={`flex-1 py-2 text-center font-mono text-[11.5px] uppercase tracking-[0.06em] text-maroon ${
-                i < chips.length - 1 ? "border-r border-line" : ""
-              }`}
-              style={{ minWidth: "5.5rem" }}
+              className="border-b border-r border-line px-2 py-2 text-center font-mono text-[11.5px] uppercase tracking-[0.06em] text-maroon [&:last-child:nth-child(odd)]:col-span-2"
             >
               {chip}
             </span>

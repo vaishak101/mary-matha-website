@@ -8,6 +8,8 @@ type PlaceholderProps = {
   style?: CSSProperties;
   /** Aspect ratio as "w / h" for a CLS-free box. Ignored if the parent sizes it. */
   ratio?: string;
+  /** Where the caption sits inside the box. */
+  align?: "center" | "top";
 };
 
 /**
@@ -20,17 +22,19 @@ export function Placeholder({
   dark = false,
   style,
   ratio,
+  align = "center",
 }: PlaceholderProps) {
   return (
     <div
-      className={`${dark ? "hatch-dark" : "hatch"} relative flex items-center justify-center overflow-hidden ${className}`}
+      className={`${dark ? "hatch-dark" : "hatch"} flex justify-center overflow-hidden p-3 ${
+        align === "top" ? "items-start" : "items-center"
+      } ${className}`}
       style={{ aspectRatio: ratio, ...style }}
     >
       <span
-        className={`kicker px-3 py-1 text-center ${
-          dark ? "bg-maroon-dark/70 text-cream/80" : "bg-cream/85 text-maroon"
-        }`}
-        style={{ letterSpacing: "0.16em" }}
+        className={`max-w-[80%] text-center font-mono text-[10px] uppercase leading-snug tracking-[0.1em] ${
+          dark ? "bg-maroon-dark/70 text-cream/75" : "bg-cream/85 text-maroon/80"
+        } px-2 py-1`}
       >
         {label}
       </span>

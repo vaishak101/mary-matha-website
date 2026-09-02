@@ -19,7 +19,7 @@ export function Stats() {
             Three decades, quietly stated
           </h2>
         </Reveal>
-        <Reveal className="border border-gold/25">
+        <Reveal>
           <StatsBand items={stats} />
         </Reveal>
       </div>

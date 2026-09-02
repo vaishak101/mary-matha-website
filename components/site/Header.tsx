@@ -44,7 +44,7 @@ export function Header() {
           </span>
           <span className="leading-none">
             <span
-              className="block text-maroon"
+              className="block whitespace-nowrap text-maroon"
               style={{
                 fontFamily: "var(--font-wordmark)",
                 fontWeight: 500,
@@ -55,7 +55,7 @@ export function Header() {
             >
               MARY MATHA
             </span>
-            <span className="mt-[3px] block font-mono text-[9px] uppercase tracking-[0.24em] text-muted">
+            <span className="mt-[3px] hidden whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.24em] text-muted min-[380px]:block">
               {SITE.tagline}
             </span>
           </span>
@@ -76,10 +76,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <a
             href={`tel:${SITE.phonePrimary.tel}`}
-            className="btn btn-call"
+            className="btn btn-call px-3 sm:px-4"
             aria-label={`Call ${SITE.phonePrimary.display}`}
           >
             <PhoneIcon />
@@ -89,7 +89,7 @@ export function Header() {
             href={SITE.whatsapp.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-wa"
+            className="btn btn-wa px-3 sm:px-4"
             aria-label="Message us on WhatsApp"
           >
             <WhatsAppIcon />
@@ -100,7 +100,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="btn btn-call min-[960px]:hidden"
+            className="btn btn-call px-2.5 min-[960px]:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
           >
             <span

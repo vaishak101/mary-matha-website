@@ -8,12 +8,22 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden px-[clamp(1.125rem,5vw,2.5rem)] py-24 text-center"
+      className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
       {/* two background image slots — real art comes later */}
       <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
-        <Placeholder label="Hero image — left / carved threshold" dark className="h-full" />
-        <Placeholder label="Hero image — right / stone facade" dark className="h-full" />
+        <Placeholder
+          label="Hero image — left / carved threshold"
+          dark
+          align="top"
+          className="h-full"
+        />
+        <Placeholder
+          label="Hero image — right / stone facade"
+          dark
+          align="top"
+          className="h-full"
+        />
       </div>
       <div
         className="absolute inset-0"
@@ -44,7 +54,9 @@ export function Hero() {
           {SITE.region} · Est. {SITE.established}
         </p>
 
-        <h1 className="hero-wipe h-hero mx-auto text-cream">MARY MATHA</h1>
+        <h1 className="hero-wipe h-hero mx-auto whitespace-nowrap tracking-[0.09em] text-cream sm:tracking-[0.18em]">
+          MARY MATHA
+        </h1>
 
         <div
           className="hero-rule mx-auto my-4 h-px w-[min(360px,72%)]"
@@ -71,11 +83,11 @@ export function Hero() {
           quality, trust and excellence.
         </p>
 
-        <div className="hero-pills flex flex-wrap justify-center border border-gold/45">
+        <div className="hero-pills mx-auto flex max-w-[32rem] border border-gold/45">
           {PILLS.map((pill, i) => (
             <span
               key={pill}
-              className={`px-[clamp(0.625rem,2.4vw,1.25rem)] py-[0.7rem] text-[clamp(0.8rem,3vw,0.95rem)] uppercase tracking-[0.18em] text-cream ${
+              className={`flex-1 py-[0.7rem] text-center text-[clamp(0.7rem,2.5vw,0.9rem)] uppercase tracking-[0.14em] text-cream ${
                 i > 0 ? "border-l border-gold/35" : ""
               } ${pill === "Renovate" ? "text-gold-light" : ""}`}
               style={{ fontFamily: "var(--font-display)" }}

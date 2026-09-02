@@ -35,14 +35,14 @@ export function Services() {
           <Kicker align="left">Our Services</Kicker>
         </Reveal>
 
-        <div className="mt-[clamp(2.25rem,5vw,3.5rem)] grid gap-[clamp(1.75rem,4vw,0px)] md:grid-cols-2">
+        <div className="mt-[clamp(2.25rem,5vw,3.5rem)] grid gap-8 md:grid-cols-2 md:gap-0">
           {CRAFTS.map((craft, i) => (
             <Reveal
               key={craft.numeral}
               delay={i * 120}
               className={
                 i === 1
-                  ? "md:border-l md:border-ink md:pl-[clamp(1.75rem,4vw,3rem)]"
+                  ? "border-t border-line pt-8 md:border-t-0 md:border-l md:border-ink md:pl-[clamp(1.75rem,4vw,3rem)] md:pt-0"
                   : "md:pr-[clamp(1.75rem,4vw,3rem)]"
               }
             >
@@ -51,7 +51,7 @@ export function Services() {
               </p>
               <h3 className="h-3 text-ink">{craft.heading}</h3>
               <p
-                className="mt-3.5 mb-4 text-maroon"
+                className="mt-4 mb-4 text-maroon"
                 style={{
                   fontFamily: "var(--font-body)",
                   fontStyle: "italic",
