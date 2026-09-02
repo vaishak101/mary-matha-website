@@ -1,0 +1,20 @@
+{
+  "title": "1 BHK Flat",
+  "tag": "No brokerage",
+  "description": "Bright east-facing flat in a friendly family building, a short walk to the station and market. Ready to move in.",
+  "price": "₹43 L",
+  "areaSqft": 444,
+  "propertyType": "Flat",
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "locality": "Vasai West",
+  "possession": "Ready to move",
+  "facing": "East",
+  "gallery": [
+    { "image": "", "alt": "Placeholder — living room of the 1 BHK flat" },
+    { "image": "", "alt": "Placeholder — kitchen" },
+    { "image": "", "alt": "Placeholder — balcony view" }
+  ],
+  "featured": true,
+  "order": 1
+}

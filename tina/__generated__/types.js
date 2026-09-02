@@ -5,36 +5,88 @@ export function gql(strings, ...args) {
   });
   return str;
 }
-export const PagePartsFragmentDoc = gql`
-    fragment PageParts on Page {
+export const FeaturedPropertyPartsFragmentDoc = gql`
+    fragment FeaturedPropertyParts on FeaturedProperty {
   __typename
   title
-  heroTitle
-  heroSubtitle
-  ctaLabel
-  ctaLink
-  highlights {
+  tag
+  description
+  price
+  areaSqft
+  propertyType
+  bedrooms
+  bathrooms
+  locality
+  possession
+  facing
+  gallery {
     __typename
-    title
-    description
+    image
+    alt
   }
+  featured
+  order
 }
     `;
-export const SiteSettingsPartsFragmentDoc = gql`
-    fragment SiteSettingsParts on SiteSettings {
+export const OngoingProjectPartsFragmentDoc = gql`
+    fragment OngoingProjectParts on OngoingProject {
   __typename
-  companyName
-  tagline
-  nav {
+  title
+  description
+  location
+  projectType
+  percentComplete
+  expectedCompletion
+  gallery {
     __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+    `;
+export const CompletedProjectPartsFragmentDoc = gql`
+    fragment CompletedProjectParts on CompletedProject {
+  __typename
+  title
+  description
+  location
+  projectType
+  completedYear
+  durationMonths
+  gallery {
+    __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+    `;
+export const StatsPartsFragmentDoc = gql`
+    fragment StatsParts on Stats {
+  __typename
+  items {
+    __typename
+    value
     label
-    href
   }
 }
     `;
-export const PageDocument = gql`
-    query page($relativePath: String!) {
-  page(relativePath: $relativePath) {
+export const TestimonialPartsFragmentDoc = gql`
+    fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  name
+  location
+  service
+  order
+}
+    `;
+export const FeaturedPropertyDocument = gql`
+    query featuredProperty($relativePath: String!) {
+  featuredProperty(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -47,13 +99,13 @@ export const PageDocument = gql`
       }
       id
     }
-    ...PageParts
+    ...FeaturedPropertyParts
   }
 }
-    ${PagePartsFragmentDoc}`;
-export const PageConnectionDocument = gql`
-    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
-  pageConnection(
+    ${FeaturedPropertyPartsFragmentDoc}`;
+export const FeaturedPropertyConnectionDocument = gql`
+    query featuredPropertyConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: FeaturedPropertyFilter) {
+  featuredPropertyConnection(
     before: $before
     after: $after
     first: $first
@@ -83,15 +135,15 @@ export const PageConnectionDocument = gql`
           }
           id
         }
-        ...PageParts
+        ...FeaturedPropertyParts
       }
     }
   }
 }
-    ${PagePartsFragmentDoc}`;
-export const SiteSettingsDocument = gql`
-    query siteSettings($relativePath: String!) {
-  siteSettings(relativePath: $relativePath) {
+    ${FeaturedPropertyPartsFragmentDoc}`;
+export const OngoingProjectDocument = gql`
+    query ongoingProject($relativePath: String!) {
+  ongoingProject(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -104,13 +156,13 @@ export const SiteSettingsDocument = gql`
       }
       id
     }
-    ...SiteSettingsParts
+    ...OngoingProjectParts
   }
 }
-    ${SiteSettingsPartsFragmentDoc}`;
-export const SiteSettingsConnectionDocument = gql`
-    query siteSettingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteSettingsFilter) {
-  siteSettingsConnection(
+    ${OngoingProjectPartsFragmentDoc}`;
+export const OngoingProjectConnectionDocument = gql`
+    query ongoingProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: OngoingProjectFilter) {
+  ongoingProjectConnection(
     before: $before
     after: $after
     first: $first
@@ -140,25 +192,214 @@ export const SiteSettingsConnectionDocument = gql`
           }
           id
         }
-        ...SiteSettingsParts
+        ...OngoingProjectParts
       }
     }
   }
 }
-    ${SiteSettingsPartsFragmentDoc}`;
+    ${OngoingProjectPartsFragmentDoc}`;
+export const CompletedProjectDocument = gql`
+    query completedProject($relativePath: String!) {
+  completedProject(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...CompletedProjectParts
+  }
+}
+    ${CompletedProjectPartsFragmentDoc}`;
+export const CompletedProjectConnectionDocument = gql`
+    query completedProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: CompletedProjectFilter) {
+  completedProjectConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...CompletedProjectParts
+      }
+    }
+  }
+}
+    ${CompletedProjectPartsFragmentDoc}`;
+export const StatsDocument = gql`
+    query stats($relativePath: String!) {
+  stats(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StatsParts
+  }
+}
+    ${StatsPartsFragmentDoc}`;
+export const StatsConnectionDocument = gql`
+    query statsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StatsFilter) {
+  statsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StatsParts
+      }
+    }
+  }
+}
+    ${StatsPartsFragmentDoc}`;
+export const TestimonialDocument = gql`
+    query testimonial($relativePath: String!) {
+  testimonial(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...TestimonialParts
+  }
+}
+    ${TestimonialPartsFragmentDoc}`;
+export const TestimonialConnectionDocument = gql`
+    query testimonialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TestimonialFilter) {
+  testimonialConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...TestimonialParts
+      }
+    }
+  }
+}
+    ${TestimonialPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
-    page(variables, options) {
-      return requester(PageDocument, variables, options);
+    featuredProperty(variables, options) {
+      return requester(FeaturedPropertyDocument, variables, options);
     },
-    pageConnection(variables, options) {
-      return requester(PageConnectionDocument, variables, options);
+    featuredPropertyConnection(variables, options) {
+      return requester(FeaturedPropertyConnectionDocument, variables, options);
     },
-    siteSettings(variables, options) {
-      return requester(SiteSettingsDocument, variables, options);
+    ongoingProject(variables, options) {
+      return requester(OngoingProjectDocument, variables, options);
     },
-    siteSettingsConnection(variables, options) {
-      return requester(SiteSettingsConnectionDocument, variables, options);
+    ongoingProjectConnection(variables, options) {
+      return requester(OngoingProjectConnectionDocument, variables, options);
+    },
+    completedProject(variables, options) {
+      return requester(CompletedProjectDocument, variables, options);
+    },
+    completedProjectConnection(variables, options) {
+      return requester(CompletedProjectConnectionDocument, variables, options);
+    },
+    stats(variables, options) {
+      return requester(StatsDocument, variables, options);
+    },
+    statsConnection(variables, options) {
+      return requester(StatsConnectionDocument, variables, options);
+    },
+    testimonial(variables, options) {
+      return requester(TestimonialDocument, variables, options);
+    },
+    testimonialConnection(variables, options) {
+      return requester(TestimonialConnectionDocument, variables, options);
     }
   };
 }

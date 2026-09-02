@@ -81,10 +81,16 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  page: Page;
-  pageConnection: PageConnection;
-  siteSettings: SiteSettings;
-  siteSettingsConnection: SiteSettingsConnection;
+  featuredProperty: FeaturedProperty;
+  featuredPropertyConnection: FeaturedPropertyConnection;
+  ongoingProject: OngoingProject;
+  ongoingProjectConnection: OngoingProjectConnection;
+  completedProject: CompletedProject;
+  completedProjectConnection: CompletedProjectConnection;
+  stats: Stats;
+  statsConnection: StatsConnection;
+  testimonial: Testimonial;
+  testimonialConnection: TestimonialConnection;
 };
 
 
@@ -109,38 +115,86 @@ export type QueryDocumentArgs = {
 };
 
 
-export type QueryPageArgs = {
+export type QueryFeaturedPropertyArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryPageConnectionArgs = {
+export type QueryFeaturedPropertyConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PageFilter>;
+  filter?: InputMaybe<FeaturedPropertyFilter>;
 };
 
 
-export type QuerySiteSettingsArgs = {
+export type QueryOngoingProjectArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QuerySiteSettingsConnectionArgs = {
+export type QueryOngoingProjectConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SiteSettingsFilter>;
+  filter?: InputMaybe<OngoingProjectFilter>;
+};
+
+
+export type QueryCompletedProjectArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryCompletedProjectConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<CompletedProjectFilter>;
+};
+
+
+export type QueryStatsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryStatsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<StatsFilter>;
+};
+
+
+export type QueryTestimonialArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryTestimonialConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<TestimonialFilter>;
 };
 
 export type DocumentFilter = {
-  page?: InputMaybe<PageFilter>;
-  siteSettings?: InputMaybe<SiteSettingsFilter>;
+  featuredProperty?: InputMaybe<FeaturedPropertyFilter>;
+  ongoingProject?: InputMaybe<OngoingProjectFilter>;
+  completedProject?: InputMaybe<CompletedProjectFilter>;
+  stats?: InputMaybe<StatsFilter>;
+  testimonial?: InputMaybe<TestimonialFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -180,22 +234,30 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Page | SiteSettings | Folder;
+export type DocumentNode = FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder;
 
-export type PageHighlights = {
-  __typename?: 'PageHighlights';
-  title: Scalars['String']['output'];
-  description: Scalars['String']['output'];
+export type FeaturedPropertyGallery = {
+  __typename?: 'FeaturedPropertyGallery';
+  image: Scalars['String']['output'];
+  alt: Scalars['String']['output'];
 };
 
-export type Page = Node & Document & {
-  __typename?: 'Page';
+export type FeaturedProperty = Node & Document & {
+  __typename?: 'FeaturedProperty';
   title: Scalars['String']['output'];
-  heroTitle: Scalars['String']['output'];
-  heroSubtitle: Scalars['String']['output'];
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  ctaLink?: Maybe<Scalars['String']['output']>;
-  highlights?: Maybe<Array<Maybe<PageHighlights>>>;
+  tag?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
+  price: Scalars['String']['output'];
+  areaSqft: Scalars['Float']['output'];
+  propertyType: Scalars['String']['output'];
+  bedrooms?: Maybe<Scalars['Float']['output']>;
+  bathrooms?: Maybe<Scalars['Float']['output']>;
+  locality: Scalars['String']['output'];
+  possession?: Maybe<Scalars['String']['output']>;
+  facing?: Maybe<Scalars['String']['output']>;
+  gallery: Array<FeaturedPropertyGallery>;
+  featured?: Maybe<Scalars['Boolean']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -208,71 +270,234 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type PageHighlightsFilter = {
+export type NumberFilter = {
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  eq?: InputMaybe<Scalars['Float']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+};
+
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type FeaturedPropertyGalleryFilter = {
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FeaturedPropertyFilter = {
   title?: InputMaybe<StringFilter>;
+  tag?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
+  price?: InputMaybe<StringFilter>;
+  areaSqft?: InputMaybe<NumberFilter>;
+  propertyType?: InputMaybe<StringFilter>;
+  bedrooms?: InputMaybe<NumberFilter>;
+  bathrooms?: InputMaybe<NumberFilter>;
+  locality?: InputMaybe<StringFilter>;
+  possession?: InputMaybe<StringFilter>;
+  facing?: InputMaybe<StringFilter>;
+  gallery?: InputMaybe<FeaturedPropertyGalleryFilter>;
+  featured?: InputMaybe<BooleanFilter>;
+  order?: InputMaybe<NumberFilter>;
 };
 
-export type PageFilter = {
-  title?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-  heroSubtitle?: InputMaybe<StringFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
-  highlights?: InputMaybe<PageHighlightsFilter>;
-};
-
-export type PageConnectionEdges = {
-  __typename?: 'PageConnectionEdges';
+export type FeaturedPropertyConnectionEdges = {
+  __typename?: 'FeaturedPropertyConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Page>;
+  node?: Maybe<FeaturedProperty>;
 };
 
-export type PageConnection = Connection & {
-  __typename?: 'PageConnection';
+export type FeaturedPropertyConnection = Connection & {
+  __typename?: 'FeaturedPropertyConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<PageConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<FeaturedPropertyConnectionEdges>>>;
 };
 
-export type SiteSettingsNav = {
-  __typename?: 'SiteSettingsNav';
-  label: Scalars['String']['output'];
-  href: Scalars['String']['output'];
+export type OngoingProjectGallery = {
+  __typename?: 'OngoingProjectGallery';
+  image: Scalars['String']['output'];
+  alt: Scalars['String']['output'];
 };
 
-export type SiteSettings = Node & Document & {
-  __typename?: 'SiteSettings';
-  companyName: Scalars['String']['output'];
-  tagline?: Maybe<Scalars['String']['output']>;
-  nav?: Maybe<Array<Maybe<SiteSettingsNav>>>;
+export type OngoingProject = Node & Document & {
+  __typename?: 'OngoingProject';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  location: Scalars['String']['output'];
+  projectType: Scalars['String']['output'];
+  percentComplete?: Maybe<Scalars['Float']['output']>;
+  expectedCompletion?: Maybe<Scalars['String']['output']>;
+  gallery: Array<OngoingProjectGallery>;
+  videoUrl?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type SiteSettingsNavFilter = {
-  label?: InputMaybe<StringFilter>;
-  href?: InputMaybe<StringFilter>;
+export type OngoingProjectGalleryFilter = {
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
 };
 
-export type SiteSettingsFilter = {
-  companyName?: InputMaybe<StringFilter>;
-  tagline?: InputMaybe<StringFilter>;
-  nav?: InputMaybe<SiteSettingsNavFilter>;
+export type OngoingProjectFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+  projectType?: InputMaybe<StringFilter>;
+  percentComplete?: InputMaybe<NumberFilter>;
+  expectedCompletion?: InputMaybe<StringFilter>;
+  gallery?: InputMaybe<OngoingProjectGalleryFilter>;
+  videoUrl?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
 };
 
-export type SiteSettingsConnectionEdges = {
-  __typename?: 'SiteSettingsConnectionEdges';
+export type OngoingProjectConnectionEdges = {
+  __typename?: 'OngoingProjectConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<SiteSettings>;
+  node?: Maybe<OngoingProject>;
 };
 
-export type SiteSettingsConnection = Connection & {
-  __typename?: 'SiteSettingsConnection';
+export type OngoingProjectConnection = Connection & {
+  __typename?: 'OngoingProjectConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<SiteSettingsConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<OngoingProjectConnectionEdges>>>;
+};
+
+export type CompletedProjectGallery = {
+  __typename?: 'CompletedProjectGallery';
+  image: Scalars['String']['output'];
+  alt: Scalars['String']['output'];
+};
+
+export type CompletedProject = Node & Document & {
+  __typename?: 'CompletedProject';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  location: Scalars['String']['output'];
+  projectType: Scalars['String']['output'];
+  completedYear: Scalars['Float']['output'];
+  durationMonths?: Maybe<Scalars['Float']['output']>;
+  gallery: Array<CompletedProjectGallery>;
+  videoUrl?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type CompletedProjectGalleryFilter = {
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type CompletedProjectFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+  projectType?: InputMaybe<StringFilter>;
+  completedYear?: InputMaybe<NumberFilter>;
+  durationMonths?: InputMaybe<NumberFilter>;
+  gallery?: InputMaybe<CompletedProjectGalleryFilter>;
+  videoUrl?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
+};
+
+export type CompletedProjectConnectionEdges = {
+  __typename?: 'CompletedProjectConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<CompletedProject>;
+};
+
+export type CompletedProjectConnection = Connection & {
+  __typename?: 'CompletedProjectConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<CompletedProjectConnectionEdges>>>;
+};
+
+export type StatsItems = {
+  __typename?: 'StatsItems';
+  value: Scalars['String']['output'];
+  label: Scalars['String']['output'];
+};
+
+export type Stats = Node & Document & {
+  __typename?: 'Stats';
+  items?: Maybe<Array<Maybe<StatsItems>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type StatsItemsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type StatsFilter = {
+  items?: InputMaybe<StatsItemsFilter>;
+};
+
+export type StatsConnectionEdges = {
+  __typename?: 'StatsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Stats>;
+};
+
+export type StatsConnection = Connection & {
+  __typename?: 'StatsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<StatsConnectionEdges>>>;
+};
+
+export type Testimonial = Node & Document & {
+  __typename?: 'Testimonial';
+  quote: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  location: Scalars['String']['output'];
+  service: Scalars['String']['output'];
+  order?: Maybe<Scalars['Float']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type TestimonialFilter = {
+  quote?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+  service?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
+};
+
+export type TestimonialConnectionEdges = {
+  __typename?: 'TestimonialConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Testimonial>;
+};
+
+export type TestimonialConnection = Connection & {
+  __typename?: 'TestimonialConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<TestimonialConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -282,10 +507,16 @@ export type Mutation = {
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
   createFolder: DocumentNode;
-  updatePage: Page;
-  createPage: Page;
-  updateSiteSettings: SiteSettings;
-  createSiteSettings: SiteSettings;
+  updateFeaturedProperty: FeaturedProperty;
+  createFeaturedProperty: FeaturedProperty;
+  updateOngoingProject: OngoingProject;
+  createOngoingProject: OngoingProject;
+  updateCompletedProject: CompletedProject;
+  createCompletedProject: CompletedProject;
+  updateStats: Stats;
+  createStats: Stats;
+  updateTestimonial: Testimonial;
+  createTestimonial: Testimonial;
 };
 
 
@@ -322,63 +553,153 @@ export type MutationCreateFolderArgs = {
 };
 
 
-export type MutationUpdatePageArgs = {
+export type MutationUpdateFeaturedPropertyArgs = {
   relativePath: Scalars['String']['input'];
-  params: PageMutation;
+  params: FeaturedPropertyMutation;
 };
 
 
-export type MutationCreatePageArgs = {
+export type MutationCreateFeaturedPropertyArgs = {
   relativePath: Scalars['String']['input'];
-  params: PageMutation;
+  params: FeaturedPropertyMutation;
 };
 
 
-export type MutationUpdateSiteSettingsArgs = {
+export type MutationUpdateOngoingProjectArgs = {
   relativePath: Scalars['String']['input'];
-  params: SiteSettingsMutation;
+  params: OngoingProjectMutation;
 };
 
 
-export type MutationCreateSiteSettingsArgs = {
+export type MutationCreateOngoingProjectArgs = {
   relativePath: Scalars['String']['input'];
-  params: SiteSettingsMutation;
+  params: OngoingProjectMutation;
+};
+
+
+export type MutationUpdateCompletedProjectArgs = {
+  relativePath: Scalars['String']['input'];
+  params: CompletedProjectMutation;
+};
+
+
+export type MutationCreateCompletedProjectArgs = {
+  relativePath: Scalars['String']['input'];
+  params: CompletedProjectMutation;
+};
+
+
+export type MutationUpdateStatsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StatsMutation;
+};
+
+
+export type MutationCreateStatsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: StatsMutation;
+};
+
+
+export type MutationUpdateTestimonialArgs = {
+  relativePath: Scalars['String']['input'];
+  params: TestimonialMutation;
+};
+
+
+export type MutationCreateTestimonialArgs = {
+  relativePath: Scalars['String']['input'];
+  params: TestimonialMutation;
 };
 
 export type DocumentUpdateMutation = {
-  page?: InputMaybe<PageMutation>;
-  siteSettings?: InputMaybe<SiteSettingsMutation>;
+  featuredProperty?: InputMaybe<FeaturedPropertyMutation>;
+  ongoingProject?: InputMaybe<OngoingProjectMutation>;
+  completedProject?: InputMaybe<CompletedProjectMutation>;
+  stats?: InputMaybe<StatsMutation>;
+  testimonial?: InputMaybe<TestimonialMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
-  page?: InputMaybe<PageMutation>;
-  siteSettings?: InputMaybe<SiteSettingsMutation>;
+  featuredProperty?: InputMaybe<FeaturedPropertyMutation>;
+  ongoingProject?: InputMaybe<OngoingProjectMutation>;
+  completedProject?: InputMaybe<CompletedProjectMutation>;
+  stats?: InputMaybe<StatsMutation>;
+  testimonial?: InputMaybe<TestimonialMutation>;
 };
 
-export type PageHighlightsMutation = {
+export type FeaturedPropertyGalleryMutation = {
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FeaturedPropertyMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  tag?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['String']['input']>;
+  areaSqft?: InputMaybe<Scalars['Float']['input']>;
+  propertyType?: InputMaybe<Scalars['String']['input']>;
+  bedrooms?: InputMaybe<Scalars['Float']['input']>;
+  bathrooms?: InputMaybe<Scalars['Float']['input']>;
+  locality?: InputMaybe<Scalars['String']['input']>;
+  possession?: InputMaybe<Scalars['String']['input']>;
+  facing?: InputMaybe<Scalars['String']['input']>;
+  gallery?: InputMaybe<Array<InputMaybe<FeaturedPropertyGalleryMutation>>>;
+  featured?: InputMaybe<Scalars['Boolean']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type OngoingProjectGalleryMutation = {
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OngoingProjectMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  projectType?: InputMaybe<Scalars['String']['input']>;
+  percentComplete?: InputMaybe<Scalars['Float']['input']>;
+  expectedCompletion?: InputMaybe<Scalars['String']['input']>;
+  gallery?: InputMaybe<Array<InputMaybe<OngoingProjectGalleryMutation>>>;
+  videoUrl?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type PageMutation = {
+export type CompletedProjectGalleryMutation = {
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CompletedProjectMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-  heroSubtitle?: InputMaybe<Scalars['String']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
-  highlights?: InputMaybe<Array<InputMaybe<PageHighlightsMutation>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  projectType?: InputMaybe<Scalars['String']['input']>;
+  completedYear?: InputMaybe<Scalars['Float']['input']>;
+  durationMonths?: InputMaybe<Scalars['Float']['input']>;
+  gallery?: InputMaybe<Array<InputMaybe<CompletedProjectGalleryMutation>>>;
+  videoUrl?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type SiteSettingsNavMutation = {
+export type StatsItemsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
-  href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SiteSettingsMutation = {
-  companyName?: InputMaybe<Scalars['String']['input']>;
-  tagline?: InputMaybe<Scalars['String']['input']>;
-  nav?: InputMaybe<Array<InputMaybe<SiteSettingsNavMutation>>>;
+export type StatsMutation = {
+  items?: InputMaybe<Array<InputMaybe<StatsItemsMutation>>>;
+};
+
+export type TestimonialMutation = {
+  quote?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  service?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type StringFilter = {
@@ -388,103 +709,288 @@ export type StringFilter = {
   in?: Array<string | null | undefined> | null | undefined;
 };
 
-export type PageHighlightsFilter = {
+export type NumberFilter = {
+  lt?: number | null | undefined;
+  lte?: number | null | undefined;
+  gte?: number | null | undefined;
+  gt?: number | null | undefined;
+  eq?: number | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<number | null | undefined> | null | undefined;
+};
+
+export type ImageFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type FeaturedPropertyGalleryFilter = {
+  image?: ImageFilter | null | undefined;
+  alt?: StringFilter | null | undefined;
+};
+
+export type BooleanFilter = {
+  eq?: boolean | null | undefined;
+  exists?: boolean | null | undefined;
+};
+
+export type FeaturedPropertyFilter = {
+  title?: StringFilter | null | undefined;
+  tag?: StringFilter | null | undefined;
+  description?: StringFilter | null | undefined;
+  price?: StringFilter | null | undefined;
+  areaSqft?: NumberFilter | null | undefined;
+  propertyType?: StringFilter | null | undefined;
+  bedrooms?: NumberFilter | null | undefined;
+  bathrooms?: NumberFilter | null | undefined;
+  locality?: StringFilter | null | undefined;
+  possession?: StringFilter | null | undefined;
+  facing?: StringFilter | null | undefined;
+  gallery?: FeaturedPropertyGalleryFilter | null | undefined;
+  featured?: BooleanFilter | null | undefined;
+  order?: NumberFilter | null | undefined;
+};
+
+export type OngoingProjectGalleryFilter = {
+  image?: ImageFilter | null | undefined;
+  alt?: StringFilter | null | undefined;
+};
+
+export type OngoingProjectFilter = {
   title?: StringFilter | null | undefined;
   description?: StringFilter | null | undefined;
+  location?: StringFilter | null | undefined;
+  projectType?: StringFilter | null | undefined;
+  percentComplete?: NumberFilter | null | undefined;
+  expectedCompletion?: StringFilter | null | undefined;
+  gallery?: OngoingProjectGalleryFilter | null | undefined;
+  videoUrl?: StringFilter | null | undefined;
+  order?: NumberFilter | null | undefined;
 };
 
-export type PageFilter = {
+export type CompletedProjectGalleryFilter = {
+  image?: ImageFilter | null | undefined;
+  alt?: StringFilter | null | undefined;
+};
+
+export type CompletedProjectFilter = {
   title?: StringFilter | null | undefined;
-  heroTitle?: StringFilter | null | undefined;
-  heroSubtitle?: StringFilter | null | undefined;
-  ctaLabel?: StringFilter | null | undefined;
-  ctaLink?: StringFilter | null | undefined;
-  highlights?: PageHighlightsFilter | null | undefined;
+  description?: StringFilter | null | undefined;
+  location?: StringFilter | null | undefined;
+  projectType?: StringFilter | null | undefined;
+  completedYear?: NumberFilter | null | undefined;
+  durationMonths?: NumberFilter | null | undefined;
+  gallery?: CompletedProjectGalleryFilter | null | undefined;
+  videoUrl?: StringFilter | null | undefined;
+  order?: NumberFilter | null | undefined;
 };
 
-export type SiteSettingsNavFilter = {
+export type StatsItemsFilter = {
+  value?: StringFilter | null | undefined;
   label?: StringFilter | null | undefined;
-  href?: StringFilter | null | undefined;
 };
 
-export type SiteSettingsFilter = {
-  companyName?: StringFilter | null | undefined;
-  tagline?: StringFilter | null | undefined;
-  nav?: SiteSettingsNavFilter | null | undefined;
+export type StatsFilter = {
+  items?: StatsItemsFilter | null | undefined;
 };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, heroTitle: string, heroSubtitle: string, ctaLabel: string | null, ctaLink: string | null, highlights: Array<{ __typename: 'PageHighlights', title: string, description: string } | null> | null };
+export type TestimonialFilter = {
+  quote?: StringFilter | null | undefined;
+  name?: StringFilter | null | undefined;
+  location?: StringFilter | null | undefined;
+  service?: StringFilter | null | undefined;
+  order?: NumberFilter | null | undefined;
+};
 
-export type SiteSettingsPartsFragment = { __typename: 'SiteSettings', companyName: string, tagline: string | null, nav: Array<{ __typename: 'SiteSettingsNav', label: string, href: string } | null> | null };
+export type FeaturedPropertyPartsFragment = { __typename: 'FeaturedProperty', title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> };
 
-export type PageQueryVariables = Exact<{
+export type OngoingProjectPartsFragment = { __typename: 'OngoingProject', title: string, description: string, location: string, projectType: string, percentComplete: number | null, expectedCompletion: string | null, videoUrl: string | null, order: number | null, gallery: Array<{ __typename: 'OngoingProjectGallery', image: string, alt: string }> };
+
+export type CompletedProjectPartsFragment = { __typename: 'CompletedProject', title: string, description: string, location: string, projectType: string, completedYear: number, durationMonths: number | null, videoUrl: string | null, order: number | null, gallery: Array<{ __typename: 'CompletedProjectGallery', image: string, alt: string }> };
+
+export type StatsPartsFragment = { __typename: 'Stats', items: Array<{ __typename: 'StatsItems', value: string, label: string } | null> | null };
+
+export type TestimonialPartsFragment = { __typename: 'Testimonial', quote: string, name: string, location: string, service: string, order: number | null };
+
+export type FeaturedPropertyQueryVariables = Exact<{
   relativePath: string;
 }>;
 
 
-export type PageQuery = { page: { __typename: 'Page', id: string, title: string, heroTitle: string, heroSubtitle: string, ctaLabel: string | null, ctaLink: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, highlights: Array<{ __typename: 'PageHighlights', title: string, description: string } | null> | null } };
+export type FeaturedPropertyQuery = { featuredProperty: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } };
 
-export type PageConnectionQueryVariables = Exact<{
+export type FeaturedPropertyConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
   after?: string | null | undefined;
   first?: number | null | undefined;
   last?: number | null | undefined;
   sort?: string | null | undefined;
-  filter?: PageFilter | null | undefined;
+  filter?: FeaturedPropertyFilter | null | undefined;
 }>;
 
 
-export type PageConnectionQuery = { pageConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Page', id: string, title: string, heroTitle: string, heroSubtitle: string, ctaLabel: string | null, ctaLink: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, highlights: Array<{ __typename: 'PageHighlights', title: string, description: string } | null> | null } | null } | null> | null } };
+export type FeaturedPropertyConnectionQuery = { featuredPropertyConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } | null } | null> | null } };
 
-export type SiteSettingsQueryVariables = Exact<{
+export type OngoingProjectQueryVariables = Exact<{
   relativePath: string;
 }>;
 
 
-export type SiteSettingsQuery = { siteSettings: { __typename: 'SiteSettings', id: string, companyName: string, tagline: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav: Array<{ __typename: 'SiteSettingsNav', label: string, href: string } | null> | null } };
+export type OngoingProjectQuery = { ongoingProject: { __typename: 'OngoingProject', id: string, title: string, description: string, location: string, projectType: string, percentComplete: number | null, expectedCompletion: string | null, videoUrl: string | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'OngoingProjectGallery', image: string, alt: string }> } };
 
-export type SiteSettingsConnectionQueryVariables = Exact<{
+export type OngoingProjectConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
   after?: string | null | undefined;
   first?: number | null | undefined;
   last?: number | null | undefined;
   sort?: string | null | undefined;
-  filter?: SiteSettingsFilter | null | undefined;
+  filter?: OngoingProjectFilter | null | undefined;
 }>;
 
 
-export type SiteSettingsConnectionQuery = { siteSettingsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'SiteSettings', id: string, companyName: string, tagline: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav: Array<{ __typename: 'SiteSettingsNav', label: string, href: string } | null> | null } | null } | null> | null } };
+export type OngoingProjectConnectionQuery = { ongoingProjectConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'OngoingProject', id: string, title: string, description: string, location: string, projectType: string, percentComplete: number | null, expectedCompletion: string | null, videoUrl: string | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'OngoingProjectGallery', image: string, alt: string }> } | null } | null> | null } };
 
-export const PagePartsFragmentDoc = gql`
-    fragment PageParts on Page {
+export type CompletedProjectQueryVariables = Exact<{
+  relativePath: string;
+}>;
+
+
+export type CompletedProjectQuery = { completedProject: { __typename: 'CompletedProject', id: string, title: string, description: string, location: string, projectType: string, completedYear: number, durationMonths: number | null, videoUrl: string | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'CompletedProjectGallery', image: string, alt: string }> } };
+
+export type CompletedProjectConnectionQueryVariables = Exact<{
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: CompletedProjectFilter | null | undefined;
+}>;
+
+
+export type CompletedProjectConnectionQuery = { completedProjectConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'CompletedProject', id: string, title: string, description: string, location: string, projectType: string, completedYear: number, durationMonths: number | null, videoUrl: string | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'CompletedProjectGallery', image: string, alt: string }> } | null } | null> | null } };
+
+export type StatsQueryVariables = Exact<{
+  relativePath: string;
+}>;
+
+
+export type StatsQuery = { stats: { __typename: 'Stats', id: string, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items: Array<{ __typename: 'StatsItems', value: string, label: string } | null> | null } };
+
+export type StatsConnectionQueryVariables = Exact<{
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: StatsFilter | null | undefined;
+}>;
+
+
+export type StatsConnectionQuery = { statsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Stats', id: string, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items: Array<{ __typename: 'StatsItems', value: string, label: string } | null> | null } | null } | null> | null } };
+
+export type TestimonialQueryVariables = Exact<{
+  relativePath: string;
+}>;
+
+
+export type TestimonialQuery = { testimonial: { __typename: 'Testimonial', id: string, quote: string, name: string, location: string, service: string, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type TestimonialConnectionQueryVariables = Exact<{
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: TestimonialFilter | null | undefined;
+}>;
+
+
+export type TestimonialConnectionQuery = { testimonialConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Testimonial', id: string, quote: string, name: string, location: string, service: string, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export const FeaturedPropertyPartsFragmentDoc = gql`
+    fragment FeaturedPropertyParts on FeaturedProperty {
   __typename
   title
-  heroTitle
-  heroSubtitle
-  ctaLabel
-  ctaLink
-  highlights {
+  tag
+  description
+  price
+  areaSqft
+  propertyType
+  bedrooms
+  bathrooms
+  locality
+  possession
+  facing
+  gallery {
     __typename
-    title
-    description
+    image
+    alt
   }
+  featured
+  order
 }
     `;
-export const SiteSettingsPartsFragmentDoc = gql`
-    fragment SiteSettingsParts on SiteSettings {
+export const OngoingProjectPartsFragmentDoc = gql`
+    fragment OngoingProjectParts on OngoingProject {
   __typename
-  companyName
-  tagline
-  nav {
+  title
+  description
+  location
+  projectType
+  percentComplete
+  expectedCompletion
+  gallery {
     __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+    `;
+export const CompletedProjectPartsFragmentDoc = gql`
+    fragment CompletedProjectParts on CompletedProject {
+  __typename
+  title
+  description
+  location
+  projectType
+  completedYear
+  durationMonths
+  gallery {
+    __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+    `;
+export const StatsPartsFragmentDoc = gql`
+    fragment StatsParts on Stats {
+  __typename
+  items {
+    __typename
+    value
     label
-    href
   }
 }
     `;
-export const PageDocument = gql`
-    query page($relativePath: String!) {
-  page(relativePath: $relativePath) {
+export const TestimonialPartsFragmentDoc = gql`
+    fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  name
+  location
+  service
+  order
+}
+    `;
+export const FeaturedPropertyDocument = gql`
+    query featuredProperty($relativePath: String!) {
+  featuredProperty(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -497,13 +1003,13 @@ export const PageDocument = gql`
       }
       id
     }
-    ...PageParts
+    ...FeaturedPropertyParts
   }
 }
-    ${PagePartsFragmentDoc}`;
-export const PageConnectionDocument = gql`
-    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
-  pageConnection(
+    ${FeaturedPropertyPartsFragmentDoc}`;
+export const FeaturedPropertyConnectionDocument = gql`
+    query featuredPropertyConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: FeaturedPropertyFilter) {
+  featuredPropertyConnection(
     before: $before
     after: $after
     first: $first
@@ -533,15 +1039,15 @@ export const PageConnectionDocument = gql`
           }
           id
         }
-        ...PageParts
+        ...FeaturedPropertyParts
       }
     }
   }
 }
-    ${PagePartsFragmentDoc}`;
-export const SiteSettingsDocument = gql`
-    query siteSettings($relativePath: String!) {
-  siteSettings(relativePath: $relativePath) {
+    ${FeaturedPropertyPartsFragmentDoc}`;
+export const OngoingProjectDocument = gql`
+    query ongoingProject($relativePath: String!) {
+  ongoingProject(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -554,13 +1060,13 @@ export const SiteSettingsDocument = gql`
       }
       id
     }
-    ...SiteSettingsParts
+    ...OngoingProjectParts
   }
 }
-    ${SiteSettingsPartsFragmentDoc}`;
-export const SiteSettingsConnectionDocument = gql`
-    query siteSettingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteSettingsFilter) {
-  siteSettingsConnection(
+    ${OngoingProjectPartsFragmentDoc}`;
+export const OngoingProjectConnectionDocument = gql`
+    query ongoingProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: OngoingProjectFilter) {
+  ongoingProjectConnection(
     before: $before
     after: $after
     first: $first
@@ -590,26 +1096,215 @@ export const SiteSettingsConnectionDocument = gql`
           }
           id
         }
-        ...SiteSettingsParts
+        ...OngoingProjectParts
       }
     }
   }
 }
-    ${SiteSettingsPartsFragmentDoc}`;
+    ${OngoingProjectPartsFragmentDoc}`;
+export const CompletedProjectDocument = gql`
+    query completedProject($relativePath: String!) {
+  completedProject(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...CompletedProjectParts
+  }
+}
+    ${CompletedProjectPartsFragmentDoc}`;
+export const CompletedProjectConnectionDocument = gql`
+    query completedProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: CompletedProjectFilter) {
+  completedProjectConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...CompletedProjectParts
+      }
+    }
+  }
+}
+    ${CompletedProjectPartsFragmentDoc}`;
+export const StatsDocument = gql`
+    query stats($relativePath: String!) {
+  stats(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StatsParts
+  }
+}
+    ${StatsPartsFragmentDoc}`;
+export const StatsConnectionDocument = gql`
+    query statsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StatsFilter) {
+  statsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StatsParts
+      }
+    }
+  }
+}
+    ${StatsPartsFragmentDoc}`;
+export const TestimonialDocument = gql`
+    query testimonial($relativePath: String!) {
+  testimonial(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...TestimonialParts
+  }
+}
+    ${TestimonialPartsFragmentDoc}`;
+export const TestimonialConnectionDocument = gql`
+    query testimonialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TestimonialFilter) {
+  testimonialConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...TestimonialParts
+      }
+    }
+  }
+}
+    ${TestimonialPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}> {
-        return requester<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);
+      featuredProperty(variables: FeaturedPropertyQueryVariables, options?: C): Promise<{data: FeaturedPropertyQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyQueryVariables, query: string}> {
+        return requester<{data: FeaturedPropertyQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyQueryVariables, query: string}, FeaturedPropertyQueryVariables>(FeaturedPropertyDocument, variables, options);
       },
-    pageConnection(variables?: PageConnectionQueryVariables, options?: C): Promise<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}> {
-        return requester<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}, PageConnectionQueryVariables>(PageConnectionDocument, variables, options);
+    featuredPropertyConnection(variables?: FeaturedPropertyConnectionQueryVariables, options?: C): Promise<{data: FeaturedPropertyConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyConnectionQueryVariables, query: string}> {
+        return requester<{data: FeaturedPropertyConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyConnectionQueryVariables, query: string}, FeaturedPropertyConnectionQueryVariables>(FeaturedPropertyConnectionDocument, variables, options);
       },
-    siteSettings(variables: SiteSettingsQueryVariables, options?: C): Promise<{data: SiteSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsQueryVariables, query: string}> {
-        return requester<{data: SiteSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsQueryVariables, query: string}, SiteSettingsQueryVariables>(SiteSettingsDocument, variables, options);
+    ongoingProject(variables: OngoingProjectQueryVariables, options?: C): Promise<{data: OngoingProjectQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: OngoingProjectQueryVariables, query: string}> {
+        return requester<{data: OngoingProjectQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: OngoingProjectQueryVariables, query: string}, OngoingProjectQueryVariables>(OngoingProjectDocument, variables, options);
       },
-    siteSettingsConnection(variables?: SiteSettingsConnectionQueryVariables, options?: C): Promise<{data: SiteSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsConnectionQueryVariables, query: string}> {
-        return requester<{data: SiteSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsConnectionQueryVariables, query: string}, SiteSettingsConnectionQueryVariables>(SiteSettingsConnectionDocument, variables, options);
+    ongoingProjectConnection(variables?: OngoingProjectConnectionQueryVariables, options?: C): Promise<{data: OngoingProjectConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: OngoingProjectConnectionQueryVariables, query: string}> {
+        return requester<{data: OngoingProjectConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: OngoingProjectConnectionQueryVariables, query: string}, OngoingProjectConnectionQueryVariables>(OngoingProjectConnectionDocument, variables, options);
+      },
+    completedProject(variables: CompletedProjectQueryVariables, options?: C): Promise<{data: CompletedProjectQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: CompletedProjectQueryVariables, query: string}> {
+        return requester<{data: CompletedProjectQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: CompletedProjectQueryVariables, query: string}, CompletedProjectQueryVariables>(CompletedProjectDocument, variables, options);
+      },
+    completedProjectConnection(variables?: CompletedProjectConnectionQueryVariables, options?: C): Promise<{data: CompletedProjectConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: CompletedProjectConnectionQueryVariables, query: string}> {
+        return requester<{data: CompletedProjectConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: CompletedProjectConnectionQueryVariables, query: string}, CompletedProjectConnectionQueryVariables>(CompletedProjectConnectionDocument, variables, options);
+      },
+    stats(variables: StatsQueryVariables, options?: C): Promise<{data: StatsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StatsQueryVariables, query: string}> {
+        return requester<{data: StatsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StatsQueryVariables, query: string}, StatsQueryVariables>(StatsDocument, variables, options);
+      },
+    statsConnection(variables?: StatsConnectionQueryVariables, options?: C): Promise<{data: StatsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StatsConnectionQueryVariables, query: string}> {
+        return requester<{data: StatsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: StatsConnectionQueryVariables, query: string}, StatsConnectionQueryVariables>(StatsConnectionDocument, variables, options);
+      },
+    testimonial(variables: TestimonialQueryVariables, options?: C): Promise<{data: TestimonialQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialQueryVariables, query: string}> {
+        return requester<{data: TestimonialQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialQueryVariables, query: string}, TestimonialQueryVariables>(TestimonialDocument, variables, options);
+      },
+    testimonialConnection(variables?: TestimonialConnectionQueryVariables, options?: C): Promise<{data: TestimonialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialConnectionQueryVariables, query: string}> {
+        return requester<{data: TestimonialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TestimonialConnectionQueryVariables, query: string}, TestimonialConnectionQueryVariables>(TestimonialConnectionDocument, variables, options);
       }
     };
   }

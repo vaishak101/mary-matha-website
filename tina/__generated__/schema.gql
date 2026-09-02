@@ -54,15 +54,24 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  page(relativePath: String): Page!
-  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
-  siteSettings(relativePath: String): SiteSettings!
-  siteSettingsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteSettingsFilter): SiteSettingsConnection!
+  featuredProperty(relativePath: String): FeaturedProperty!
+  featuredPropertyConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: FeaturedPropertyFilter): FeaturedPropertyConnection!
+  ongoingProject(relativePath: String): OngoingProject!
+  ongoingProjectConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: OngoingProjectFilter): OngoingProjectConnection!
+  completedProject(relativePath: String): CompletedProject!
+  completedProjectConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: CompletedProjectFilter): CompletedProjectConnection!
+  stats(relativePath: String): Stats!
+  statsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: StatsFilter): StatsConnection!
+  testimonial(relativePath: String): Testimonial!
+  testimonialConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TestimonialFilter): TestimonialConnection!
 }
 
 input DocumentFilter {
-  page: PageFilter
-  siteSettings: SiteSettingsFilter
+  featuredProperty: FeaturedPropertyFilter
+  ongoingProject: OngoingProjectFilter
+  completedProject: CompletedProjectFilter
+  stats: StatsFilter
+  testimonial: TestimonialFilter
 }
 
 type DocumentConnectionEdges {
@@ -88,20 +97,28 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | SiteSettings | Folder
+union DocumentNode = FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder
 
-type PageHighlights {
-  title: String!
-  description: String!
+type FeaturedPropertyGallery {
+  image: String!
+  alt: String!
 }
 
-type Page implements Node & Document {
+type FeaturedProperty implements Node & Document {
   title: String!
-  heroTitle: String!
-  heroSubtitle: String!
-  ctaLabel: String
-  ctaLink: String
-  highlights: [PageHighlights]
+  tag: String
+  description: String!
+  price: String!
+  areaSqft: Float!
+  propertyType: String!
+  bedrooms: Float
+  bathrooms: Float
+  locality: String!
+  possession: String
+  facing: String
+  gallery: [FeaturedPropertyGallery!]!
+  featured: Boolean
+  order: Float
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -114,65 +131,217 @@ input StringFilter {
   in: [String]
 }
 
-input PageHighlightsFilter {
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input FeaturedPropertyGalleryFilter {
+  image: ImageFilter
+  alt: StringFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input FeaturedPropertyFilter {
   title: StringFilter
+  tag: StringFilter
   description: StringFilter
+  price: StringFilter
+  areaSqft: NumberFilter
+  propertyType: StringFilter
+  bedrooms: NumberFilter
+  bathrooms: NumberFilter
+  locality: StringFilter
+  possession: StringFilter
+  facing: StringFilter
+  gallery: FeaturedPropertyGalleryFilter
+  featured: BooleanFilter
+  order: NumberFilter
 }
 
-input PageFilter {
-  title: StringFilter
-  heroTitle: StringFilter
-  heroSubtitle: StringFilter
-  ctaLabel: StringFilter
-  ctaLink: StringFilter
-  highlights: PageHighlightsFilter
-}
-
-type PageConnectionEdges {
+type FeaturedPropertyConnectionEdges {
   cursor: String!
-  node: Page
+  node: FeaturedProperty
 }
 
-type PageConnection implements Connection {
+type FeaturedPropertyConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [PageConnectionEdges]
+  edges: [FeaturedPropertyConnectionEdges]
 }
 
-type SiteSettingsNav {
-  label: String!
-  href: String!
+type OngoingProjectGallery {
+  image: String!
+  alt: String!
 }
 
-type SiteSettings implements Node & Document {
-  companyName: String!
-  tagline: String
-  nav: [SiteSettingsNav]
+type OngoingProject implements Node & Document {
+  title: String!
+  description: String!
+  location: String!
+  projectType: String!
+  percentComplete: Float
+  expectedCompletion: String
+  gallery: [OngoingProjectGallery!]!
+  videoUrl: String
+  order: Float
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input SiteSettingsNavFilter {
-  label: StringFilter
-  href: StringFilter
+input OngoingProjectGalleryFilter {
+  image: ImageFilter
+  alt: StringFilter
 }
 
-input SiteSettingsFilter {
-  companyName: StringFilter
-  tagline: StringFilter
-  nav: SiteSettingsNavFilter
+input OngoingProjectFilter {
+  title: StringFilter
+  description: StringFilter
+  location: StringFilter
+  projectType: StringFilter
+  percentComplete: NumberFilter
+  expectedCompletion: StringFilter
+  gallery: OngoingProjectGalleryFilter
+  videoUrl: StringFilter
+  order: NumberFilter
 }
 
-type SiteSettingsConnectionEdges {
+type OngoingProjectConnectionEdges {
   cursor: String!
-  node: SiteSettings
+  node: OngoingProject
 }
 
-type SiteSettingsConnection implements Connection {
+type OngoingProjectConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [SiteSettingsConnectionEdges]
+  edges: [OngoingProjectConnectionEdges]
+}
+
+type CompletedProjectGallery {
+  image: String!
+  alt: String!
+}
+
+type CompletedProject implements Node & Document {
+  title: String!
+  description: String!
+  location: String!
+  projectType: String!
+  completedYear: Float!
+  durationMonths: Float
+  gallery: [CompletedProjectGallery!]!
+  videoUrl: String
+  order: Float
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input CompletedProjectGalleryFilter {
+  image: ImageFilter
+  alt: StringFilter
+}
+
+input CompletedProjectFilter {
+  title: StringFilter
+  description: StringFilter
+  location: StringFilter
+  projectType: StringFilter
+  completedYear: NumberFilter
+  durationMonths: NumberFilter
+  gallery: CompletedProjectGalleryFilter
+  videoUrl: StringFilter
+  order: NumberFilter
+}
+
+type CompletedProjectConnectionEdges {
+  cursor: String!
+  node: CompletedProject
+}
+
+type CompletedProjectConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [CompletedProjectConnectionEdges]
+}
+
+type StatsItems {
+  value: String!
+  label: String!
+}
+
+type Stats implements Node & Document {
+  items: [StatsItems]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input StatsItemsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input StatsFilter {
+  items: StatsItemsFilter
+}
+
+type StatsConnectionEdges {
+  cursor: String!
+  node: Stats
+}
+
+type StatsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [StatsConnectionEdges]
+}
+
+type Testimonial implements Node & Document {
+  quote: String!
+  name: String!
+  location: String!
+  service: String!
+  order: Float
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input TestimonialFilter {
+  quote: StringFilter
+  name: StringFilter
+  location: StringFilter
+  service: StringFilter
+  order: NumberFilter
+}
+
+type TestimonialConnectionEdges {
+  cursor: String!
+  node: Testimonial
+}
+
+type TestimonialConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [TestimonialConnectionEdges]
 }
 
 type Mutation {
@@ -181,46 +350,106 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
-  updatePage(relativePath: String!, params: PageMutation!): Page!
-  createPage(relativePath: String!, params: PageMutation!): Page!
-  updateSiteSettings(relativePath: String!, params: SiteSettingsMutation!): SiteSettings!
-  createSiteSettings(relativePath: String!, params: SiteSettingsMutation!): SiteSettings!
+  updateFeaturedProperty(relativePath: String!, params: FeaturedPropertyMutation!): FeaturedProperty!
+  createFeaturedProperty(relativePath: String!, params: FeaturedPropertyMutation!): FeaturedProperty!
+  updateOngoingProject(relativePath: String!, params: OngoingProjectMutation!): OngoingProject!
+  createOngoingProject(relativePath: String!, params: OngoingProjectMutation!): OngoingProject!
+  updateCompletedProject(relativePath: String!, params: CompletedProjectMutation!): CompletedProject!
+  createCompletedProject(relativePath: String!, params: CompletedProjectMutation!): CompletedProject!
+  updateStats(relativePath: String!, params: StatsMutation!): Stats!
+  createStats(relativePath: String!, params: StatsMutation!): Stats!
+  updateTestimonial(relativePath: String!, params: TestimonialMutation!): Testimonial!
+  createTestimonial(relativePath: String!, params: TestimonialMutation!): Testimonial!
 }
 
 input DocumentUpdateMutation {
-  page: PageMutation
-  siteSettings: SiteSettingsMutation
+  featuredProperty: FeaturedPropertyMutation
+  ongoingProject: OngoingProjectMutation
+  completedProject: CompletedProjectMutation
+  stats: StatsMutation
+  testimonial: TestimonialMutation
   relativePath: String
 }
 
 input DocumentMutation {
-  page: PageMutation
-  siteSettings: SiteSettingsMutation
+  featuredProperty: FeaturedPropertyMutation
+  ongoingProject: OngoingProjectMutation
+  completedProject: CompletedProjectMutation
+  stats: StatsMutation
+  testimonial: TestimonialMutation
 }
 
-input PageHighlightsMutation {
+input FeaturedPropertyGalleryMutation {
+  image: String
+  alt: String
+}
+
+input FeaturedPropertyMutation {
+  title: String
+  tag: String
+  description: String
+  price: String
+  areaSqft: Float
+  propertyType: String
+  bedrooms: Float
+  bathrooms: Float
+  locality: String
+  possession: String
+  facing: String
+  gallery: [FeaturedPropertyGalleryMutation]
+  featured: Boolean
+  order: Float
+}
+
+input OngoingProjectGalleryMutation {
+  image: String
+  alt: String
+}
+
+input OngoingProjectMutation {
   title: String
   description: String
+  location: String
+  projectType: String
+  percentComplete: Float
+  expectedCompletion: String
+  gallery: [OngoingProjectGalleryMutation]
+  videoUrl: String
+  order: Float
 }
 
-input PageMutation {
+input CompletedProjectGalleryMutation {
+  image: String
+  alt: String
+}
+
+input CompletedProjectMutation {
   title: String
-  heroTitle: String
-  heroSubtitle: String
-  ctaLabel: String
-  ctaLink: String
-  highlights: [PageHighlightsMutation]
+  description: String
+  location: String
+  projectType: String
+  completedYear: Float
+  durationMonths: Float
+  gallery: [CompletedProjectGalleryMutation]
+  videoUrl: String
+  order: Float
 }
 
-input SiteSettingsNavMutation {
+input StatsItemsMutation {
+  value: String
   label: String
-  href: String
 }
 
-input SiteSettingsMutation {
-  companyName: String
-  tagline: String
-  nav: [SiteSettingsNavMutation]
+input StatsMutation {
+  items: [StatsItemsMutation]
+}
+
+input TestimonialMutation {
+  quote: String
+  name: String
+  location: String
+  service: String
+  order: Float
 }
 
 schema {

@@ -1,5 +1,5 @@
-query page($relativePath: String!) {
-  page(relativePath: $relativePath) {
+query featuredProperty($relativePath: String!) {
+  featuredProperty(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -12,12 +12,12 @@ query page($relativePath: String!) {
       }
       id
     }
-    ...PageParts
+    ...FeaturedPropertyParts
   }
 }
 
-query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
-  pageConnection(
+query featuredPropertyConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: FeaturedPropertyFilter) {
+  featuredPropertyConnection(
     before: $before
     after: $after
     first: $first
@@ -47,14 +47,14 @@ query pageConnection($before: String, $after: String, $first: Float, $last: Floa
           }
           id
         }
-        ...PageParts
+        ...FeaturedPropertyParts
       }
     }
   }
 }
 
-query siteSettings($relativePath: String!) {
-  siteSettings(relativePath: $relativePath) {
+query ongoingProject($relativePath: String!) {
+  ongoingProject(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -67,12 +67,12 @@ query siteSettings($relativePath: String!) {
       }
       id
     }
-    ...SiteSettingsParts
+    ...OngoingProjectParts
   }
 }
 
-query siteSettingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteSettingsFilter) {
-  siteSettingsConnection(
+query ongoingProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: OngoingProjectFilter) {
+  ongoingProjectConnection(
     before: $before
     after: $after
     first: $first
@@ -102,7 +102,172 @@ query siteSettingsConnection($before: String, $after: String, $first: Float, $la
           }
           id
         }
-        ...SiteSettingsParts
+        ...OngoingProjectParts
+      }
+    }
+  }
+}
+
+query completedProject($relativePath: String!) {
+  completedProject(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...CompletedProjectParts
+  }
+}
+
+query completedProjectConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: CompletedProjectFilter) {
+  completedProjectConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...CompletedProjectParts
+      }
+    }
+  }
+}
+
+query stats($relativePath: String!) {
+  stats(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...StatsParts
+  }
+}
+
+query statsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: StatsFilter) {
+  statsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...StatsParts
+      }
+    }
+  }
+}
+
+query testimonial($relativePath: String!) {
+  testimonial(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...TestimonialParts
+  }
+}
+
+query testimonialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TestimonialFilter) {
+  testimonialConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...TestimonialParts
       }
     }
   }
