@@ -48,11 +48,11 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { label: "Services", href: "#services" },
-  { label: "Properties", href: "#properties" },
-  { label: "How we build", href: "#build" },
-  { label: "Projects", href: "#projects" },
-  { label: "Enquire", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Properties", href: "/#properties" },
+  { label: "How we build", href: "/#build" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Enquire", href: "/#contact" },
 ] as const;
 
 /** Web3Forms access key — public by design. Set NEXT_PUBLIC_WEB3FORMS_KEY in the environment. */

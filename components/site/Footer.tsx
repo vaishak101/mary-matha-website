@@ -36,9 +36,9 @@ export function Footer() {
             <ul className="space-y-1 text-[0.875rem]">
               {NAV.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-cream/70 hover:text-cream">
+                  <Link href={item.href} className="text-cream/70 hover:text-cream">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

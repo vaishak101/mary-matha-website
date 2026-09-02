@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Carousel } from "./Carousel";
 import { Placeholder } from "./Placeholder";
 import { CloseIcon } from "./icons";
@@ -57,7 +58,7 @@ export function ProjectModal({
 
   const isOngoing = project.kind === "ongoing";
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-maroon-dark/85 p-[clamp(0.75rem,3vw,2rem)] backdrop-blur-sm"
       onClick={onClose}
@@ -128,6 +129,7 @@ export function ProjectModal({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

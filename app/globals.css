@@ -243,7 +243,6 @@
   transition:
     opacity 0.8s var(--ease-settle),
     transform 0.8s var(--ease-settle);
-  will-change: opacity, transform;
 }
 .reveal[data-shown] {
   opacity: 1;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 
@@ -30,10 +31,10 @@ export function Header() {
       className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-md data-[scrolled]:border-line-strong"
     >
       <div className="wrap container-x flex items-center justify-between gap-3 py-3">
-        <a
-          href="#top"
+        <Link
+          href="/#top"
           className="flex items-center gap-3"
-          aria-label={`${SITE.legalName} — back to top`}
+          aria-label={`${SITE.legalName} — home`}
         >
           <span
             aria-hidden
@@ -59,20 +60,20 @@ export function Header() {
               {SITE.tagline}
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-7 min-[960px]:flex"
+          className="hidden items-center gap-6 min-[1040px]:flex"
         >
           {NAV.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-maroon"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -100,7 +101,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="btn btn-call px-2.5 min-[960px]:hidden"
+            className="btn btn-call px-2.5 min-[1040px]:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
           >
             <span
@@ -127,18 +128,18 @@ export function Header() {
       {open && (
         <nav
           id="mobile-nav"
-          aria-label="Primary"
-          className="border-t border-line bg-cream px-[clamp(1rem,4vw,2rem)] py-2 min-[960px]:hidden"
+          aria-label="Site"
+          className="border-t border-line bg-cream px-[clamp(1rem,4vw,2rem)] py-2 min-[1040px]:hidden"
         >
           {NAV.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className="block border-b border-line/60 py-3 font-mono text-xs uppercase tracking-[0.18em] text-ink-soft last:border-0 hover:text-maroon"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       )}

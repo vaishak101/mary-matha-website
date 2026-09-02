@@ -14,7 +14,9 @@ type RevealProps = {
 /**
  * Wraps content in a scroll-triggered fade + rise. The `.reveal` class does the
  * work in CSS; this just toggles `data-shown` when the element enters view.
- * `prefers-reduced-motion` is handled in globals.css.
+ * Fails safe: if the observer never fires (or JS is slow), a timeout reveals
+ * the content anyway, so nothing can stay invisible. `prefers-reduced-motion`
+ * is handled in globals.css.
  */
 export function Reveal({
   children,
@@ -30,11 +32,19 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
+    const show = () => node.setAttribute("data-shown", "");
+
     if (
       typeof IntersectionObserver === "undefined" ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      node.setAttribute("data-shown", "");
+      show();
+      return;
+    }
+
+    // Already in (or near) view on mount — reveal right away.
+    if (node.getBoundingClientRect().top < window.innerHeight * 1.1) {
+      show();
       return;
     }
 
@@ -42,16 +52,23 @@ export function Reveal({
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.setAttribute("data-shown", "");
+            show();
             observer.unobserve(entry.target);
           }
         }
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
-
     observer.observe(node);
-    return () => observer.disconnect();
+
+    // Failsafe: if the observer never fires, reveal anyway rather than
+    // leaving content stuck invisible.
+    const failsafe = window.setTimeout(show, 4000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, []);
 
   return (
