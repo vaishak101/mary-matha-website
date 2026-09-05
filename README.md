@@ -47,12 +47,13 @@ launch action, not an instant toggle.
 
 Details:
 
-- **`/preview`** always renders the finished site regardless of the switch, so
-  the client can do a final review on the real domain before flipping it on.
-  It's unlinked, `noindex`, and not in the sitemap.
+- The switch behaves the same in `next dev`, production and preview builds — what
+  you test is what ships. Toggle it in `/admin` and refresh; no restart needed.
+- **`/preview`** ignores the switch and always renders the finished site, so the
+  client (and we, during development) can see the full site at any time. It's
+  unlinked, `noindex`, and not in the sitemap.
 - While the switch is OFF, `robots.txt` disallows everything and the sitemap is
   empty, so the coming-soon page never gets indexed.
-- `next dev` always shows the real site (so we can keep building).
 - `NEXT_PUBLIC_SITE_LIVE=true` force-overrides the switch — set it on Vercel's
   **Preview** environment so preview deployments show the real site.
 - The gate is [`isSitePublished()`](lib/content.ts).

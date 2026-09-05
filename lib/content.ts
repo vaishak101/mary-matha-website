@@ -164,16 +164,15 @@ export function getSiteSettings(): SiteSettings {
 
 /**
  * Whether the public site is live. The client controls this with the
- * "Website is LIVE" switch in the CMS.
+ * "Website is LIVE" switch in the CMS — and it behaves the same in dev,
+ * production and preview builds, so what you test is what ships.
  *
- * - `next dev` always shows the real site (so we can keep working on it).
- * - `NEXT_PUBLIC_SITE_LIVE=true|false` force-overrides (set `true` for Vercel
- *   Preview deployments so reviewers see the real site).
- * - Otherwise: production respects the CMS switch.
+ * - `/preview` ignores this entirely and always renders the full site.
+ * - `NEXT_PUBLIC_SITE_LIVE=true|false` force-overrides the switch (set `true`
+ *   on Vercel's Preview environment so preview deployments show the real site).
  */
 export function isSitePublished(): boolean {
   if (process.env.NEXT_PUBLIC_SITE_LIVE === "true") return true;
   if (process.env.NEXT_PUBLIC_SITE_LIVE === "false") return false;
-  if (process.env.NODE_ENV !== "production") return true;
   return getSiteSettings().published;
 }
