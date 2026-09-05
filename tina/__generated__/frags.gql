@@ -1,3 +1,14 @@
+fragment SiteSettingsParts on SiteSettings {
+  __typename
+  published
+  comingSoon {
+    __typename
+    headline
+    message
+    showContact
+  }
+}
+
 fragment FeaturedPropertyParts on FeaturedProperty {
   __typename
   title

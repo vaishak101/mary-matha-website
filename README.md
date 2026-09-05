@@ -33,6 +33,30 @@ Copy into `.env.local` (already gitignored):
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Enquiry form | public access key from web3forms.com — **not yet set** |
 | `NEXT_PUBLIC_SITE_URL` | canonical URLs, sitemap, JSON-LD | set to the real domain before launch |
 
+## Going live (the "publish" switch)
+
+**Website Settings** in TinaCMS has a **"Website is LIVE"** toggle.
+
+- **OFF** — every visitor sees an editable **Coming soon** page (headline,
+  message, and the call/WhatsApp buttons are all editable in the same screen).
+- **ON** — the full website is public.
+
+Flipping the switch and saving commits `content/settings/site.json` to git;
+Vercel redeploys and the change is live in **about a minute**. It is a one-time
+launch action, not an instant toggle.
+
+Details:
+
+- **`/preview`** always renders the finished site regardless of the switch, so
+  the client can do a final review on the real domain before flipping it on.
+  It's unlinked, `noindex`, and not in the sitemap.
+- While the switch is OFF, `robots.txt` disallows everything and the sitemap is
+  empty, so the coming-soon page never gets indexed.
+- `next dev` always shows the real site (so we can keep building).
+- `NEXT_PUBLIC_SITE_LIVE=true` force-overrides the switch — set it on Vercel's
+  **Preview** environment so preview deployments show the real site.
+- The gate is [`isSitePublished()`](lib/content.ts).
+
 ## Content model
 
 Five Tina collections, all stored as JSON under [`content/`](content/):
@@ -44,6 +68,7 @@ Five Tina collections, all stored as JSON under [`content/`](content/):
 | Completed Projects | `content/completed-projects/` | "Completed Projects" grid + modal |
 | Number Stats | `content/stats/stats.json` | the maroon count-up band |
 | Testimonials | `content/testimonials/` | the testimonial carousel |
+| Website Settings | `content/settings/site.json` | the LIVE switch + Coming soon page |
 
 Header, hero, services, workflow, the enquiry form and the footer are **static** —
 their copy lives in [`lib/site.ts`](lib/site.ts) and the section components.
@@ -91,3 +116,5 @@ The common fields are defined once (`sharedProjectFields` in
 - [ ] Add the two hero images and the office map embed
 - [ ] Have `Privacy Policy` and `Terms of Use` reviewed by a legal advisor
 - [ ] Add real `opengraph-image` / `favicon`
+- [ ] On Vercel: set `NEXT_PUBLIC_SITE_LIVE=true` for the **Preview** environment only
+- [ ] When ready: flip **Website is LIVE** ON in the CMS

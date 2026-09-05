@@ -72,6 +72,25 @@ export type Testimonial = {
   order?: number;
 };
 
+export type SiteSettings = {
+  published: boolean;
+  comingSoon: {
+    headline: string;
+    message: string;
+    showContact: boolean;
+  };
+};
+
+const SITE_SETTINGS_FALLBACK: SiteSettings = {
+  published: false,
+  comingSoon: {
+    headline: "Our new website is launching soon",
+    message:
+      "We're putting the finishing touches on it. In the meantime we're open for business — call or message us.",
+    showContact: true,
+  },
+};
+
 function readCollection<T>(dir: string): (T & { _slug: string })[] {
   const full = path.join(CONTENT_DIR, dir);
   let files: string[] = [];
@@ -130,4 +149,31 @@ export function getStats(): Stat[] {
 
 export function getTestimonials(): Testimonial[] {
   return readCollection<Testimonial>("testimonials");
+}
+
+export function getSiteSettings(): SiteSettings {
+  const raw = readSingleton<Partial<SiteSettings>>(
+    "settings/site.json",
+    SITE_SETTINGS_FALLBACK,
+  );
+  return {
+    published: raw.published === true,
+    comingSoon: { ...SITE_SETTINGS_FALLBACK.comingSoon, ...raw.comingSoon },
+  };
+}
+
+/**
+ * Whether the public site is live. The client controls this with the
+ * "Website is LIVE" switch in the CMS.
+ *
+ * - `next dev` always shows the real site (so we can keep working on it).
+ * - `NEXT_PUBLIC_SITE_LIVE=true|false` force-overrides (set `true` for Vercel
+ *   Preview deployments so reviewers see the real site).
+ * - Otherwise: production respects the CMS switch.
+ */
+export function isSitePublished(): boolean {
+  if (process.env.NEXT_PUBLIC_SITE_LIVE === "true") return true;
+  if (process.env.NEXT_PUBLIC_SITE_LIVE === "false") return false;
+  if (process.env.NODE_ENV !== "production") return true;
+  return getSiteSettings().published;
 }

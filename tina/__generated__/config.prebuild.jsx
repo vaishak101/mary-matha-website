@@ -83,6 +83,52 @@ var config_default = defineConfig({
     collections: [
       /* ---------------------------------------------------------- */
       {
+        name: "siteSettings",
+        label: "Website Settings",
+        path: "content/settings",
+        format: "json",
+        ui: {
+          global: true,
+          allowedActions: { create: false, delete: false },
+          filename: { readonly: true, slugify: () => "site" }
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "published",
+            label: "Website is LIVE",
+            description: "ON \u2014 the full website is public. OFF \u2014 visitors see the \u201CComing soon\u201D page. After you change this and save, it takes about a minute for the website to update."
+          },
+          {
+            type: "object",
+            name: "comingSoon",
+            label: "\u201CComing soon\u201D page",
+            description: "Shown to visitors while the website is not live.",
+            fields: [
+              {
+                type: "string",
+                name: "headline",
+                label: "Headline",
+                required: true
+              },
+              {
+                type: "string",
+                name: "message",
+                label: "Message",
+                required: true,
+                ui: { component: "textarea" }
+              },
+              {
+                type: "boolean",
+                name: "showContact",
+                label: "Show the call and WhatsApp buttons"
+              }
+            ]
+          }
+        ]
+      },
+      /* ---------------------------------------------------------- */
+      {
         name: "featuredProperty",
         label: "Featured Properties",
         path: "content/featured-properties",

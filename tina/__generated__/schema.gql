@@ -54,6 +54,8 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
+  siteSettings(relativePath: String): SiteSettings!
+  siteSettingsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteSettingsFilter): SiteSettingsConnection!
   featuredProperty(relativePath: String): FeaturedProperty!
   featuredPropertyConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: FeaturedPropertyFilter): FeaturedPropertyConnection!
   ongoingProject(relativePath: String): OngoingProject!
@@ -67,6 +69,7 @@ type Query {
 }
 
 input DocumentFilter {
+  siteSettings: SiteSettingsFilter
   featuredProperty: FeaturedPropertyFilter
   ongoingProject: OngoingProjectFilter
   completedProject: CompletedProjectFilter
@@ -97,7 +100,55 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder
+union DocumentNode = SiteSettings | FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder
+
+type SiteSettingsComingSoon {
+  headline: String!
+  message: String!
+  showContact: Boolean
+}
+
+type SiteSettings implements Node & Document {
+  published: Boolean
+  comingSoon: SiteSettingsComingSoon
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input SiteSettingsComingSoonFilter {
+  headline: StringFilter
+  message: StringFilter
+  showContact: BooleanFilter
+}
+
+input SiteSettingsFilter {
+  published: BooleanFilter
+  comingSoon: SiteSettingsComingSoonFilter
+}
+
+type SiteSettingsConnectionEdges {
+  cursor: String!
+  node: SiteSettings
+}
+
+type SiteSettingsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [SiteSettingsConnectionEdges]
+}
 
 type FeaturedPropertyGallery {
   image: String!
@@ -124,13 +175,6 @@ type FeaturedProperty implements Node & Document {
   _values: JSON!
 }
 
-input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
 input NumberFilter {
   lt: Float
   lte: Float
@@ -151,11 +195,6 @@ input ImageFilter {
 input FeaturedPropertyGalleryFilter {
   image: ImageFilter
   alt: StringFilter
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
 }
 
 input FeaturedPropertyFilter {
@@ -350,6 +389,8 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
+  updateSiteSettings(relativePath: String!, params: SiteSettingsMutation!): SiteSettings!
+  createSiteSettings(relativePath: String!, params: SiteSettingsMutation!): SiteSettings!
   updateFeaturedProperty(relativePath: String!, params: FeaturedPropertyMutation!): FeaturedProperty!
   createFeaturedProperty(relativePath: String!, params: FeaturedPropertyMutation!): FeaturedProperty!
   updateOngoingProject(relativePath: String!, params: OngoingProjectMutation!): OngoingProject!
@@ -363,6 +404,7 @@ type Mutation {
 }
 
 input DocumentUpdateMutation {
+  siteSettings: SiteSettingsMutation
   featuredProperty: FeaturedPropertyMutation
   ongoingProject: OngoingProjectMutation
   completedProject: CompletedProjectMutation
@@ -372,11 +414,23 @@ input DocumentUpdateMutation {
 }
 
 input DocumentMutation {
+  siteSettings: SiteSettingsMutation
   featuredProperty: FeaturedPropertyMutation
   ongoingProject: OngoingProjectMutation
   completedProject: CompletedProjectMutation
   stats: StatsMutation
   testimonial: TestimonialMutation
+}
+
+input SiteSettingsComingSoonMutation {
+  headline: String
+  message: String
+  showContact: Boolean
+}
+
+input SiteSettingsMutation {
+  published: Boolean
+  comingSoon: SiteSettingsComingSoonMutation
 }
 
 input FeaturedPropertyGalleryMutation {

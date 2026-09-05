@@ -81,6 +81,8 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
+  siteSettings: SiteSettings;
+  siteSettingsConnection: SiteSettingsConnection;
   featuredProperty: FeaturedProperty;
   featuredPropertyConnection: FeaturedPropertyConnection;
   ongoingProject: OngoingProject;
@@ -112,6 +114,21 @@ export type QueryNodeArgs = {
 export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']['input']>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QuerySiteSettingsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QuerySiteSettingsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<SiteSettingsFilter>;
 };
 
 
@@ -190,6 +207,7 @@ export type QueryTestimonialConnectionArgs = {
 };
 
 export type DocumentFilter = {
+  siteSettings?: InputMaybe<SiteSettingsFilter>;
   featuredProperty?: InputMaybe<FeaturedPropertyFilter>;
   ongoingProject?: InputMaybe<OngoingProjectFilter>;
   completedProject?: InputMaybe<CompletedProjectFilter>;
@@ -234,7 +252,59 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder;
+export type DocumentNode = SiteSettings | FeaturedProperty | OngoingProject | CompletedProject | Stats | Testimonial | Folder;
+
+export type SiteSettingsComingSoon = {
+  __typename?: 'SiteSettingsComingSoon';
+  headline: Scalars['String']['output'];
+  message: Scalars['String']['output'];
+  showContact?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type SiteSettings = Node & Document & {
+  __typename?: 'SiteSettings';
+  published?: Maybe<Scalars['Boolean']['output']>;
+  comingSoon?: Maybe<SiteSettingsComingSoon>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type StringFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type SiteSettingsComingSoonFilter = {
+  headline?: InputMaybe<StringFilter>;
+  message?: InputMaybe<StringFilter>;
+  showContact?: InputMaybe<BooleanFilter>;
+};
+
+export type SiteSettingsFilter = {
+  published?: InputMaybe<BooleanFilter>;
+  comingSoon?: InputMaybe<SiteSettingsComingSoonFilter>;
+};
+
+export type SiteSettingsConnectionEdges = {
+  __typename?: 'SiteSettingsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<SiteSettings>;
+};
+
+export type SiteSettingsConnection = Connection & {
+  __typename?: 'SiteSettingsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<SiteSettingsConnectionEdges>>>;
+};
 
 export type FeaturedPropertyGallery = {
   __typename?: 'FeaturedPropertyGallery';
@@ -263,13 +333,6 @@ export type FeaturedProperty = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
-export type StringFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type NumberFilter = {
   lt?: InputMaybe<Scalars['Float']['input']>;
   lte?: InputMaybe<Scalars['Float']['input']>;
@@ -290,11 +353,6 @@ export type ImageFilter = {
 export type FeaturedPropertyGalleryFilter = {
   image?: InputMaybe<ImageFilter>;
   alt?: InputMaybe<StringFilter>;
-};
-
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type FeaturedPropertyFilter = {
@@ -507,6 +565,8 @@ export type Mutation = {
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
   createFolder: DocumentNode;
+  updateSiteSettings: SiteSettings;
+  createSiteSettings: SiteSettings;
   updateFeaturedProperty: FeaturedProperty;
   createFeaturedProperty: FeaturedProperty;
   updateOngoingProject: OngoingProject;
@@ -550,6 +610,18 @@ export type MutationCreateDocumentArgs = {
 export type MutationCreateFolderArgs = {
   collection?: InputMaybe<Scalars['String']['input']>;
   relativePath: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateSiteSettingsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SiteSettingsMutation;
+};
+
+
+export type MutationCreateSiteSettingsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SiteSettingsMutation;
 };
 
 
@@ -613,6 +685,7 @@ export type MutationCreateTestimonialArgs = {
 };
 
 export type DocumentUpdateMutation = {
+  siteSettings?: InputMaybe<SiteSettingsMutation>;
   featuredProperty?: InputMaybe<FeaturedPropertyMutation>;
   ongoingProject?: InputMaybe<OngoingProjectMutation>;
   completedProject?: InputMaybe<CompletedProjectMutation>;
@@ -622,11 +695,23 @@ export type DocumentUpdateMutation = {
 };
 
 export type DocumentMutation = {
+  siteSettings?: InputMaybe<SiteSettingsMutation>;
   featuredProperty?: InputMaybe<FeaturedPropertyMutation>;
   ongoingProject?: InputMaybe<OngoingProjectMutation>;
   completedProject?: InputMaybe<CompletedProjectMutation>;
   stats?: InputMaybe<StatsMutation>;
   testimonial?: InputMaybe<TestimonialMutation>;
+};
+
+export type SiteSettingsComingSoonMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  message?: InputMaybe<Scalars['String']['input']>;
+  showContact?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SiteSettingsMutation = {
+  published?: InputMaybe<Scalars['Boolean']['input']>;
+  comingSoon?: InputMaybe<SiteSettingsComingSoonMutation>;
 };
 
 export type FeaturedPropertyGalleryMutation = {
@@ -702,11 +787,27 @@ export type TestimonialMutation = {
   order?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type BooleanFilter = {
+  eq?: boolean | null | undefined;
+  exists?: boolean | null | undefined;
+};
+
 export type StringFilter = {
   startsWith?: string | null | undefined;
   eq?: string | null | undefined;
   exists?: boolean | null | undefined;
   in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type SiteSettingsComingSoonFilter = {
+  headline?: StringFilter | null | undefined;
+  message?: StringFilter | null | undefined;
+  showContact?: BooleanFilter | null | undefined;
+};
+
+export type SiteSettingsFilter = {
+  published?: BooleanFilter | null | undefined;
+  comingSoon?: SiteSettingsComingSoonFilter | null | undefined;
 };
 
 export type NumberFilter = {
@@ -729,11 +830,6 @@ export type ImageFilter = {
 export type FeaturedPropertyGalleryFilter = {
   image?: ImageFilter | null | undefined;
   alt?: StringFilter | null | undefined;
-};
-
-export type BooleanFilter = {
-  eq?: boolean | null | undefined;
-  exists?: boolean | null | undefined;
 };
 
 export type FeaturedPropertyFilter = {
@@ -804,6 +900,8 @@ export type TestimonialFilter = {
   order?: NumberFilter | null | undefined;
 };
 
+export type SiteSettingsPartsFragment = { __typename: 'SiteSettings', published: boolean | null, comingSoon: { __typename: 'SiteSettingsComingSoon', headline: string, message: string, showContact: boolean | null } | null };
+
 export type FeaturedPropertyPartsFragment = { __typename: 'FeaturedProperty', title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> };
 
 export type OngoingProjectPartsFragment = { __typename: 'OngoingProject', title: string, description: string, location: string, projectType: string, percentComplete: number | null, expectedCompletion: string | null, videoUrl: string | null, order: number | null, gallery: Array<{ __typename: 'OngoingProjectGallery', image: string, alt: string }> };
@@ -813,6 +911,25 @@ export type CompletedProjectPartsFragment = { __typename: 'CompletedProject', ti
 export type StatsPartsFragment = { __typename: 'Stats', items: Array<{ __typename: 'StatsItems', value: string, label: string } | null> | null };
 
 export type TestimonialPartsFragment = { __typename: 'Testimonial', quote: string, name: string, location: string, service: string, order: number | null };
+
+export type SiteSettingsQueryVariables = Exact<{
+  relativePath: string;
+}>;
+
+
+export type SiteSettingsQuery = { siteSettings: { __typename: 'SiteSettings', id: string, published: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, comingSoon: { __typename: 'SiteSettingsComingSoon', headline: string, message: string, showContact: boolean | null } | null } };
+
+export type SiteSettingsConnectionQueryVariables = Exact<{
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: SiteSettingsFilter | null | undefined;
+}>;
+
+
+export type SiteSettingsConnectionQuery = { siteSettingsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'SiteSettings', id: string, published: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, comingSoon: { __typename: 'SiteSettingsComingSoon', headline: string, message: string, showContact: boolean | null } | null } | null } | null> | null } };
 
 export type FeaturedPropertyQueryVariables = Exact<{
   relativePath: string;
@@ -909,6 +1026,18 @@ export type TestimonialConnectionQueryVariables = Exact<{
 
 export type TestimonialConnectionQuery = { testimonialConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Testimonial', id: string, quote: string, name: string, location: string, service: string, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export const SiteSettingsPartsFragmentDoc = gql`
+    fragment SiteSettingsParts on SiteSettings {
+  __typename
+  published
+  comingSoon {
+    __typename
+    headline
+    message
+    showContact
+  }
+}
+    `;
 export const FeaturedPropertyPartsFragmentDoc = gql`
     fragment FeaturedPropertyParts on FeaturedProperty {
   __typename
@@ -988,6 +1117,63 @@ export const TestimonialPartsFragmentDoc = gql`
   order
 }
     `;
+export const SiteSettingsDocument = gql`
+    query siteSettings($relativePath: String!) {
+  siteSettings(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...SiteSettingsParts
+  }
+}
+    ${SiteSettingsPartsFragmentDoc}`;
+export const SiteSettingsConnectionDocument = gql`
+    query siteSettingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteSettingsFilter) {
+  siteSettingsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...SiteSettingsParts
+      }
+    }
+  }
+}
+    ${SiteSettingsPartsFragmentDoc}`;
 export const FeaturedPropertyDocument = gql`
     query featuredProperty($relativePath: String!) {
   featuredProperty(relativePath: $relativePath) {
@@ -1276,7 +1462,13 @@ export const TestimonialConnectionDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      featuredProperty(variables: FeaturedPropertyQueryVariables, options?: C): Promise<{data: FeaturedPropertyQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyQueryVariables, query: string}> {
+      siteSettings(variables: SiteSettingsQueryVariables, options?: C): Promise<{data: SiteSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsQueryVariables, query: string}> {
+        return requester<{data: SiteSettingsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsQueryVariables, query: string}, SiteSettingsQueryVariables>(SiteSettingsDocument, variables, options);
+      },
+    siteSettingsConnection(variables?: SiteSettingsConnectionQueryVariables, options?: C): Promise<{data: SiteSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsConnectionQueryVariables, query: string}> {
+        return requester<{data: SiteSettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteSettingsConnectionQueryVariables, query: string}, SiteSettingsConnectionQueryVariables>(SiteSettingsConnectionDocument, variables, options);
+      },
+    featuredProperty(variables: FeaturedPropertyQueryVariables, options?: C): Promise<{data: FeaturedPropertyQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyQueryVariables, query: string}> {
         return requester<{data: FeaturedPropertyQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyQueryVariables, query: string}, FeaturedPropertyQueryVariables>(FeaturedPropertyDocument, variables, options);
       },
     featuredPropertyConnection(variables?: FeaturedPropertyConnectionQueryVariables, options?: C): Promise<{data: FeaturedPropertyConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: FeaturedPropertyConnectionQueryVariables, query: string}> {
@@ -1353,7 +1545,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "http://localhost:4022/graphql",
         queries,
       })
     )
