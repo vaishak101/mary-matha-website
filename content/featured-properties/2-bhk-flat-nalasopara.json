@@ -1,0 +1,19 @@
+{
+  "title": "2 BHK Flat",
+  "tag": "Loan assistance",
+  "description": "Spacious 2 BHK with covered parking and a lift in a well-kept society. Loan and registration help included.",
+  "price": "₹65 L",
+  "areaSqft": 677,
+  "propertyType": "Flat",
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "locality": "Nalasopara",
+  "possession": "Ready to move",
+  "gallery": [
+    { "image": "", "alt": "Placeholder — master bedroom of the 2 BHK flat" },
+    { "image": "", "alt": "Placeholder — living hall" },
+    { "image": "", "alt": "Placeholder — building exterior" }
+  ],
+  "featured": true,
+  "order": 2
+}

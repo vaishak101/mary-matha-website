@@ -1,0 +1,14 @@
+{
+  "title": "Saldanha Residence",
+  "description": "A three-level family bungalow. The structure is up and internal plumbing is underway; finishing begins next month. The family approved the full elevation and interior layout at prototype stage before we broke ground.",
+  "location": "Vasai West",
+  "projectType": "G+2 family bungalow",
+  "percentComplete": 60,
+  "expectedCompletion": "May 2026",
+  "gallery": [
+    { "image": "", "alt": "Placeholder — foundation and columns cast on site" },
+    { "image": "", "alt": "Placeholder — structure with slab work underway" }
+  ],
+  "videoUrl": "",
+  "order": 1
+}

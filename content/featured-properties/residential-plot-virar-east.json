@@ -1,0 +1,16 @@
+{
+  "title": "Residential Plot",
+  "tag": "Clear title",
+  "description": "A clear-title NA plot with proper road access — an ideal foundation on which to build your own home.",
+  "price": "₹28 L",
+  "areaSqft": 1200,
+  "propertyType": "Plot",
+  "locality": "Virar East",
+  "gallery": [
+    { "image": "", "alt": "Placeholder — plot boundary" },
+    { "image": "", "alt": "Placeholder — access road" },
+    { "image": "", "alt": "Placeholder — surrounding locality" }
+  ],
+  "featured": true,
+  "order": 3
+}

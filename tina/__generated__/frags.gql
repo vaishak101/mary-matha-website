@@ -1,24 +1,84 @@
-fragment PageParts on Page {
+fragment SiteSettingsParts on SiteSettings {
   __typename
-  title
-  heroTitle
-  heroSubtitle
-  ctaLabel
-  ctaLink
-  highlights {
+  published
+  comingSoon {
     __typename
-    title
-    description
+    headline
+    message
+    showContact
   }
 }
 
-fragment SiteSettingsParts on SiteSettings {
+fragment FeaturedPropertyParts on FeaturedProperty {
   __typename
-  companyName
-  tagline
-  nav {
+  title
+  tag
+  description
+  price
+  areaSqft
+  propertyType
+  bedrooms
+  bathrooms
+  locality
+  possession
+  facing
+  gallery {
     __typename
-    label
-    href
+    image
+    alt
   }
+  featured
+  order
+}
+
+fragment OngoingProjectParts on OngoingProject {
+  __typename
+  title
+  description
+  location
+  projectType
+  percentComplete
+  expectedCompletion
+  gallery {
+    __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+
+fragment CompletedProjectParts on CompletedProject {
+  __typename
+  title
+  description
+  location
+  projectType
+  completedYear
+  durationMonths
+  gallery {
+    __typename
+    image
+    alt
+  }
+  videoUrl
+  order
+}
+
+fragment StatsParts on Stats {
+  __typename
+  items {
+    __typename
+    value
+    label
+  }
+}
+
+fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  name
+  location
+  service
+  order
 }

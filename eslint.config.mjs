@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated / vendored — never lint these:
+    "public/admin/**",
+    "tina/__generated__/**",
+    "designs/**",
+    "_shoot.mjs",
   ]),
 ]);
 

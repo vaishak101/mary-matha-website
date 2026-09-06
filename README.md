@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mary Matha — Real Estate & Construction
 
-## Getting Started
+Single-page marketing site for Mary Matha (Vasai–Virar), assembled from the four
+design options in [`designs/`](designs/) against one canonical token system
+(Option 1, "The Nameplate").
 
-First, run the development server:
+- **Next.js 16 (App Router) + React 19 + TypeScript**, pnpm
+- **Tailwind v4** — design tokens live as CSS variables in
+  [`app/globals.css`](app/globals.css) (`@theme`). Change the palette there and
+  it changes everywhere.
+- **TinaCMS**, git-backed, Tina Cloud for the editing session
+- Deploys to **Vercel**
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # tinacms dev + next dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Site: http://localhost:3000
+- CMS: http://localhost:3000/admin
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy into `.env.local` (already gitignored):
 
-## Learn More
+| Variable | Needed for | Notes |
+|---|---|---|
+| `NEXT_PUBLIC_TINA_CLIENT_ID` | Tina Cloud editing | from the Tina Cloud project |
+| `TINA_TOKEN` | Tina Cloud editing | read-only content token |
+| `NEXT_PUBLIC_TINA_BRANCH` | Tina Cloud editing | usually the deploy branch |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Enquiry form | public access key from web3forms.com — **not yet set** |
+| `NEXT_PUBLIC_SITE_URL` | canonical URLs, sitemap, JSON-LD | set to the real domain before launch |
 
-To learn more about Next.js, take a look at the following resources:
+## Going live (the "publish" switch)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Website Settings** in TinaCMS has a **"Website is LIVE"** toggle.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **OFF** — every visitor sees an editable **Coming soon** page (headline,
+  message, and the call/WhatsApp buttons are all editable in the same screen).
+- **ON** — the full website is public.
 
-## Deploy on Vercel
+Flipping the switch and saving commits `content/settings/site.json` to git;
+Vercel redeploys and the change is live in **about a minute**. It is a one-time
+launch action, not an instant toggle.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Details:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The switch behaves the same in `next dev`, production and preview builds — what
+  you test is what ships. Toggle it in `/admin` and refresh; no restart needed.
+- **`/preview`** ignores the switch and always renders the finished site, so the
+  client (and we, during development) can see the full site at any time. It's
+  unlinked, `noindex`, and not in the sitemap.
+- While the switch is OFF, `robots.txt` disallows everything and the sitemap is
+  empty, so the coming-soon page never gets indexed.
+- `NEXT_PUBLIC_SITE_LIVE=true` force-overrides the switch — set it on Vercel's
+  **Preview** environment so preview deployments show the real site.
+- The gate is [`isSitePublished()`](lib/content.ts).
+
+## Content model
+
+Five Tina collections, all stored as JSON under [`content/`](content/):
+
+| Collection | Path | Drives |
+|---|---|---|
+| Featured Properties | `content/featured-properties/` | the Featured Properties cards |
+| Ongoing Projects | `content/ongoing-projects/` | "Ongoing Projects" grid + modal |
+| Completed Projects | `content/completed-projects/` | "Completed Projects" grid + modal |
+| Number Stats | `content/stats/stats.json` | the maroon count-up band |
+| Testimonials | `content/testimonials/` | the testimonial carousel |
+| Website Settings | `content/settings/site.json` | the LIVE switch + Coming soon page |
+
+Header, hero, services, workflow, the enquiry form and the footer are **static** —
+their copy lives in [`lib/site.ts`](lib/site.ts) and the section components.
+
+### How content is read
+
+The public site reads the JSON files directly with `fs` at build time
+([`lib/content.ts`](lib/content.ts)) — no Tina GraphQL runtime, no client
+bundle, nothing to hydrate. Tina's `/admin` still edits those same files and
+commits them to git; a push triggers a rebuild. Visual (in-context) editing is
+not wired up — editing happens through the `/admin` forms.
+
+### Why Ongoing and Completed are two collections, not one
+
+They share a shape but diverge in ways that matter to the editor:
+
+- **Different required fields** — ongoing carries *% complete* / *expected
+  completion*; completed carries *year handed over* / *build duration*.
+- **Different editing rhythm** — ongoing needs regular status edits; completed is
+  written once and rarely touched.
+- **Different default sort** — ongoing by recency, completed by year, newest
+  first.
+- A single `status` toggle risks a half-set value hiding a project or breaking a
+  list filter.
+
+The common fields are defined once (`sharedProjectFields` in
+[`tina/config.ts`](tina/config.ts)) so the two schemas stay in step.
+
+### Images & video
+
+- Images go through Tina media into `public/uploads/` and render with
+  `next/image` inside aspect-ratio boxes (no layout shift). Keep files small —
+  this is a git repo and the audience is on Indian mobile data.
+- **Video is a URL field**, not a file. Paste a YouTube or Vimeo link; it embeds
+  in the project modal. Don't commit video.
+- Every image slot that has no art yet renders a marked `Placeholder`. Search the
+  codebase for `Placeholder` / `placeholder` before launch.
+
+## Before launch — checklist
+
+- [ ] Set `NEXT_PUBLIC_WEB3FORMS_KEY` and test an enquiry end to end
+- [ ] Set `NEXT_PUBLIC_SITE_URL` to the real domain
+- [ ] Replace the real MahaRERA number (`lib/site.ts`, `SITE.maharera`)
+- [ ] Replace placeholder stats, testimonials, properties and projects
+- [ ] Add the two hero images and the office map embed
+- [ ] Have `Privacy Policy` and `Terms of Use` reviewed by a legal advisor
+- [ ] Add real `opengraph-image` / `favicon`
+- [ ] On Vercel: set `NEXT_PUBLIC_SITE_LIVE=true` for the **Preview** environment only
+- [ ] When ready: flip **Website is LIVE** ON in the CMS

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Libre Franklin',sans-serif;color:#3b2a20;background:#fbf4e7;-webkit-font-smoothing:antialiased}
+  a{color:#7a1626;text-decoration:none}a:hover{color:#9c2130}
+  ::selection{background:#7a1626;color:#fbf4e7}
+  .ph{background-image:repeating-linear-gradient(45deg,#ece0c9,#ece0c9 11px,#e5d6ba 11px,#e5d6ba 22px)}
+  .u{position:relative;display:inline-block}
+  .u::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:3px;background:#cba24c;border-radius:2px}
+  @keyframes crossfade{0%,100%{opacity:0}12%,32%{opacity:1}44%{opacity:0}}
+  @keyframes stag{0%{opacity:0;transform:translateY(22px);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+  .s1{animation:stag .9s cubic-bezier(.2,.7,.2,1) .15s both}
+  .s2{animation:stag .9s cubic-bezier(.2,.7,.2,1) .4s both}
+  .s3{animation:stag .9s cubic-bezier(.2,.7,.2,1) .65s both}
+  .s4{animation:stag .9s cubic-bezier(.2,.7,.2,1) .9s both}
+  .s5{animation:stag .9s cubic-bezier(.2,.7,.2,1) 1.15s both}
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .rv.in,.rv[data-shown]{opacity:1;transform:none}
+  .hbg{position:absolute;inset:0;animation:crossfade 15s ease-in-out infinite}
+  @media(prefers-reduced-motion:reduce){.s1,.s2,.s3,.s4,.s5{animation:none!important}.rv{transition:none;opacity:1;transform:none}.hbg{animation:none;opacity:.34}}
+  .svc{grid-template-columns:1fr}
+  @media(min-width:820px){.svc{grid-template-columns:1.05fr .95fr}.svc.rev>.m{order:2}}
+  .wsvc{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,28px)}
+  .cstep{display:grid;grid-template-columns:60px 1fr;gap:clamp(14px,2vw,22px)}
+  @media(min-width:820px){.wsvc{grid-template-columns:1fr 1fr}}
+  .c2{display:none}
+</style>
+</helmet>
+<div style="max-width:100%;overflow-x:hidden;background:#fbf4e7">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(251,244,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid #ecdcbf">
+  <div style="max-width:1200px;margin:0 auto;padding:12px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#top" style="display:flex;align-items:center;gap:11px">
+      <span style="width:42px;height:42px;border-radius:50%;background:#7a1626;color:#e7cb84;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px">M</span>
+      <span style="line-height:1.02"><span style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;color:#7a1626">Mary Matha</span><span style="display:block;font-size:9px;letter-spacing:.2em;color:#b08d4c;text-transform:uppercase">Real Estate &amp; Construction</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:9px">
+      <a href="tel:+918087555144" style="display:flex;align-items:center;gap:7px;border:1px solid #7a1626;color:#7a1626;padding:10px 15px;border-radius:30px;font-size:13.5px;font-weight:600">&#9742;<span class="c2">Call</span></a>
+      <a href="https://wa.me/918087555144" style="display:flex;align-items:center;gap:7px;background:#1faf54;color:#fff;padding:10px 15px;border-radius:30px;font-size:13.5px;font-weight:600">&#9993;<span class="c2">WhatsApp</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO: ambient crossfade -->
+<section id="top" style="position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px clamp(18px,5vw,40px);overflow:hidden">
+  <div class="hbg ph" style="background-image:repeating-linear-gradient(45deg,#4a0d16,#4a0d16 16px,#5a0f1b 16px,#5a0f1b 32px);animation-delay:0s"></div>
+  <div class="hbg ph" style="background-image:repeating-linear-gradient(135deg,#5a0f1b,#5a0f1b 16px,#6a1220 16px,#6a1220 32px);animation-delay:-5s"></div>
+  <div class="hbg ph" style="background-image:repeating-linear-gradient(90deg,#450c15,#450c15 16px,#54101c 16px,#54101c 32px);animation-delay:-10s"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,13,22,.55),rgba(74,13,22,.72))"></div>
+  <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);font-family:monospace;font-size:11px;color:rgba(251,244,231,.5)">ambient sequence &mdash; warm home interiors, slow crossfade</div>
+  <div style="position:relative;max-width:820px">
+    <div class="s1" style="font-family:'Libre Franklin',sans-serif;font-size:12px;letter-spacing:.3em;color:#e7cb84;text-transform:uppercase;margin-bottom:24px">A family name in Vasai&ndash;Virar since 1996</div>
+    <h1 class="s2" style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#fbf4e7;font-size:clamp(46px,12vw,104px);line-height:.95">Mary Matha</h1>
+    <div class="s3" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#e7cb84;font-size:clamp(21px,5.4vw,38px);margin-top:6px">Real Estate &amp; Construction</div>
+    <p class="s4" style="color:#f2e5d3;font-size:clamp(15px,2.4vw,18px);line-height:1.65;max-width:500px;margin:26px auto 32px;font-weight:300">Trusted real estate solutions and construction services built on quality, trust and excellence.</p>
+    <div class="s5" style="display:flex;flex-wrap:wrap;gap:9px;justify-content:center">
+      <span style="background:rgba(251,244,231,.14);border:1px solid rgba(231,203,132,.5);color:#fbf4e7;padding:9px 18px;border-radius:30px;font-size:clamp(13px,3vw,15px);font-weight:500">Buy</span>
+      <span style="background:rgba(251,244,231,.14);border:1px solid rgba(231,203,132,.5);color:#fbf4e7;padding:9px 18px;border-radius:30px;font-size:clamp(13px,3vw,15px);font-weight:500">Sell</span>
+      <span style="background:rgba(251,244,231,.14);border:1px solid rgba(231,203,132,.5);color:#fbf4e7;padding:9px 18px;border-radius:30px;font-size:clamp(13px,3vw,15px);font-weight:500">Rent</span>
+      <span style="background:rgba(251,244,231,.14);border:1px solid rgba(231,203,132,.5);color:#fbf4e7;padding:9px 18px;border-radius:30px;font-size:clamp(13px,3vw,15px);font-weight:500">Build</span>
+      <span style="background:#cba24c;color:#4a0d16;padding:9px 18px;border-radius:30px;font-size:clamp(13px,3vw,15px);font-weight:600">Renovate</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="rv" style="text-align:center;margin-bottom:clamp(36px,6vw,60px)">
+      <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:12px">What we do</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(32px,7vw,54px);color:#7a1626;line-height:1.02">Helping families <span class="u">buy, build and belong</span></h2>
+    </div>
+    <div class="wsvc">
+      <div class="rv" style="background:#fbf4e7;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px rgba(122,22,38,.09);display:flex;flex-direction:column">
+        <div style="background:#7a1626;padding:15px 24px;display:flex;align-items:center;gap:10px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#e7cb84"></span>
+          <span style="font-size:12px;letter-spacing:.24em;color:#e7cb84;text-transform:uppercase">Property</span>
+        </div>
+        <div class="ph" style="min-height:210px;position:relative"><span style="position:absolute;bottom:14px;left:14px;font-family:monospace;font-size:10.5px;color:#7a1626;background:rgba(251,244,231,.9);padding:4px 9px;border-radius:20px">happy family at their new door</span></div>
+        <div style="padding:clamp(24px,3vw,34px);flex:1">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(26px,5vw,34px);color:#3b2a20;margin-bottom:14px">Buy, Sell &amp; Rent</h3>
+          <p style="font-size:16px;line-height:1.75;color:#5f4a3a;font-weight:300">Whether it&rsquo;s your first flat, a plot to build on, or a home to let go of &mdash; we walk with you. We shortlist by budget, arrange visits, check every document, and help with home loan, stamp duty and registration. No pressure, no hidden charges.</p>
+        </div>
+      </div>
+      <div class="rv" style="background:#fbf4e7;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px rgba(122,22,38,.09);display:flex;flex-direction:column">
+        <div style="background:#7a1626;padding:15px 24px;display:flex;align-items:center;gap:10px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#e7cb84"></span>
+          <span style="font-size:12px;letter-spacing:.24em;color:#e7cb84;text-transform:uppercase">Construction</span>
+        </div>
+        <div class="ph" style="min-height:210px;position:relative"><span style="position:absolute;bottom:14px;left:14px;font-family:monospace;font-size:10.5px;color:#7a1626;background:rgba(251,244,231,.9);padding:4px 9px;border-radius:20px">warm finished living room</span></div>
+        <div style="padding:clamp(24px,3vw,34px);flex:1">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(26px,5vw,34px);color:#3b2a20;margin-bottom:14px">Build &amp; Renovate</h3>
+          <p style="font-size:16px;line-height:1.75;color:#5f4a3a;font-weight:300">From an empty plot to a finished home, or a tired flat made new again. We show you exactly how it will look and change it until it feels right &mdash; then build it with good materials and someone from our family checking the site every day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTIES -->
+<section style="padding:clamp(48px,8vw,90px) clamp(16px,4vw,32px);background:#f5ead4">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="rv" style="text-align:center;margin-bottom:clamp(30px,5vw,50px)">
+      <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:12px">Available now</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(32px,7vw,52px);color:#7a1626">Featured homes &amp; plots</h2>
+    </div>
+    <sc-if value="{{ hasProps }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.5vw,28px)">
+        <sc-for list="{{ props }}" as="p" hint-placeholder-count="3">
+          <div style="background:#fbf4e7;border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(122,22,38,.09);display:flex;flex-direction:column">
+            <div class="ph" style="position:relative;height:220px;overflow:hidden">
+              <div style="position:absolute;top:12px;left:12px;background:#7a1626;color:#e7cb84;font-size:11px;font-weight:600;padding:6px 13px;border-radius:20px">{{ p.tag }}</div>
+              <div style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:10.5px;color:#7a1626;background:rgba(251,244,231,.9);padding:3px 8px;border-radius:14px">{{ p.shot }} &middot; {{ p.imgLabel }}</div>
+              <button onClick="{{ p.prev }}" aria-label="Previous image" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);width:36px;height:36px;border:none;border-radius:50%;background:rgba(74,13,22,.7);color:#fbf4e7;font-size:16px;cursor:pointer">&#8249;</button>
+              <button onClick="{{ p.next }}" aria-label="Next image" style="position:absolute;top:50%;right:8px;transform:translateY(-50%);width:36px;height:36px;border:none;border-radius:50%;background:rgba(74,13,22,.7);color:#fbf4e7;font-size:16px;cursor:pointer">&#8250;</button>
+              <div style="position:absolute;bottom:14px;right:12px;display:flex;gap:5px">{{ p.dots }}</div>
+            </div>
+            <div style="padding:24px;display:flex;flex-direction:column;flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#3b2a20">{{ p.title }}</h3><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7a1626;white-space:nowrap">{{ p.price }}</div></div>
+              <p style="font-size:14.5px;line-height:1.6;color:#5f4a3a;font-weight:300;margin:10px 0 18px">{{ p.desc }}</p>
+              <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px">{{ p.specs }}</div>
+              <a href="#contact" style="text-align:center;background:#7a1626;color:#fbf4e7;padding:13px;border-radius:30px;font-size:14px;font-weight:600">Enquire about this</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noProps }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fbf4e7;border-radius:24px;padding:60px 24px;text-align:center;box-shadow:0 16px 40px rgba(122,22,38,.08)">
+        <div style="font-size:40px;margin-bottom:14px">&#127968;</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:#7a1626;margin-bottom:8px">No homes listed at the moment</h3>
+        <p style="font-size:15px;color:#5f4a3a;font-weight:300;max-width:440px;margin:0 auto 22px">We add new homes and plots often. Tell us what you&rsquo;re dreaming of and we&rsquo;ll call you the moment the right one comes up.</p>
+        <a href="#contact" style="display:inline-block;background:#7a1626;color:#fbf4e7;padding:13px 28px;border-radius:30px;font-size:14px;font-weight:600">Tell us what you want</a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- CONSTRUCTION -->
+<section style="padding:clamp(56px,9vw,104px) clamp(16px,4vw,32px)">
+  <div style="max-width:1140px;margin:0 auto">
+    <div class="rv" style="text-align:center;margin-bottom:clamp(36px,6vw,58px)">
+      <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:12px">How we build</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,6.4vw,50px);color:#7a1626;line-height:1.04">You see it before we build it</h2>
+      <p style="font-size:16px;line-height:1.7;color:#5f4a3a;font-weight:300;max-width:560px;margin:16px auto 0">The middle step is the one families remember us for &mdash; we keep showing and changing the plan until you&rsquo;re truly happy.</p>
+    </div>
+    <div class="rv" style="max-width:760px;margin:0 auto clamp(44px,7vw,68px);position:relative">
+      <div style="position:absolute;left:29px;top:34px;bottom:34px;width:2px;background:repeating-linear-gradient(#cba24c,#cba24c 5px,transparent 5px,transparent 11px);z-index:0"></div>
+      <div class="cstep" style="position:relative;z-index:1;margin-bottom:18px">
+        <div style="width:60px;height:60px;border-radius:50%;background:#f3e4c8;color:#7a1626;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;flex-shrink:0">1</div>
+        <div style="background:#fbf4e7;border-radius:20px;padding:clamp(20px,3vw,30px);box-shadow:0 12px 30px rgba(122,22,38,.07)">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;color:#3b2a20;margin-bottom:8px">We listen first</h3>
+          <p style="font-size:14.5px;line-height:1.7;color:#5f4a3a;font-weight:300">We sit with you and understand the plot, the budget and how your family wants to live &mdash; then write it all down.</p>
+        </div>
+      </div>
+      <div class="cstep" style="position:relative;z-index:1;margin-bottom:18px">
+        <div style="width:60px;height:60px;border-radius:50%;background:#cba24c;color:#4a0d16;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;flex-shrink:0">2</div>
+        <div style="background:#7a1626;border-radius:20px;padding:clamp(20px,3vw,30px);box-shadow:0 18px 40px rgba(122,22,38,.22)">
+          <div style="font-size:11px;letter-spacing:.16em;color:#e7cb84;text-transform:uppercase;margin-bottom:8px">The part that matters most</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;color:#fbf4e7;margin-bottom:8px">We show &amp; refine</h3>
+          <p style="font-size:14.5px;line-height:1.7;color:#f2e0c9;font-weight:300">We show you the expected result &mdash; layout, finishes, elevation &mdash; and keep changing it until you approve. You never pay for a surprise.</p>
+        </div>
+      </div>
+      <div class="cstep" style="position:relative;z-index:1">
+        <div style="width:60px;height:60px;border-radius:50%;background:#f3e4c8;color:#7a1626;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;flex-shrink:0">3</div>
+        <div style="background:#fbf4e7;border-radius:20px;padding:clamp(20px,3vw,30px);box-shadow:0 12px 30px rgba(122,22,38,.07)">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;color:#3b2a20;margin-bottom:8px">Then we build</h3>
+          <p style="font-size:14.5px;line-height:1.7;color:#5f4a3a;font-weight:300">We build to the plan you approved &mdash; quality materials, staged photo updates, and personal supervision to handover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-bottom:34px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:10px;height:10px;border-radius:50%;background:#1faf54;box-shadow:0 0 0 5px rgba(31,175,84,.18)"></span><h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(22px,4vw,30px);color:#7a1626">Homes we&rsquo;re building now</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px">
+        <sc-for list="{{ ongoing }}" as="j" hint-placeholder-count="2">
+          <button onClick="{{ j.open }}" style="text-align:left;border:none;border-radius:20px;overflow:hidden;background:#fbf4e7;box-shadow:0 12px 30px rgba(122,22,38,.08);padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:190px;position:relative"><span style="position:absolute;top:12px;left:12px;background:#1faf54;color:#fff;font-size:10.5px;font-weight:600;padding:5px 11px;border-radius:20px">In progress &middot; {{ j.pct }}</span><span style="position:absolute;bottom:12px;right:12px;background:rgba(74,13,22,.8);color:#fbf4e7;font-size:11px;padding:5px 11px;border-radius:20px">&#9654; look inside</span></div>
+            <div style="padding:18px"><h4 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;color:#3b2a20">{{ j.title }}</h4><div style="font-size:13px;color:#8a745a;margin-top:4px">{{ j.meta }}</div></div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div class="rv">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><span style="width:10px;height:10px;border-radius:50%;background:#cba24c"></span><h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(22px,4vw,30px);color:#7a1626">Homes we&rsquo;ve handed over</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px">
+        <sc-for list="{{ completed }}" as="j" hint-placeholder-count="3">
+          <button onClick="{{ j.open }}" style="text-align:left;border:none;border-radius:18px;overflow:hidden;background:#f3e6cf;box-shadow:0 10px 26px rgba(122,22,38,.07);padding:0;cursor:pointer;display:flex;flex-direction:column">
+            <div class="ph" style="height:160px;position:relative"><span style="position:absolute;top:12px;left:12px;background:#cba24c;color:#4a0d16;font-size:10.5px;font-weight:600;padding:5px 11px;border-radius:20px">Delivered {{ j.year }}</span><span style="position:absolute;bottom:12px;right:12px;background:rgba(74,13,22,.8);color:#fbf4e7;font-size:11px;padding:5px 10px;border-radius:20px">&#9654;</span></div>
+            <div style="padding:16px"><h4 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:#3b2a20">{{ j.title }}</h4><div style="font-size:12.5px;color:#8a745a;margin-top:3px">{{ j.meta }}</div></div>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS with count-up -->
+<section style="padding:clamp(48px,8vw,90px) clamp(16px,4vw,32px);background:#7a1626;color:#fbf4e7">
+  <div style="max-width:1080px;margin:0 auto;text-align:center">
+    <div style="font-size:12px;letter-spacing:.26em;color:#e7cb84;text-transform:uppercase;margin-bottom:12px">A family firm, thirty years on</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,6vw,46px);margin-bottom:clamp(30px,5vw,50px)">Numbers we&rsquo;re proud of</h2>
+    <div id="statsC" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(20px,3vw,40px)">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+        <div>
+          <div class="statnum" data-target="{{ s.target }}" data-suffix="{{ s.suffix }}" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(40px,8vw,64px);color:#e7cb84;line-height:1">{{ s.display }}</div>
+          <div style="font-size:13px;color:#e9d3bd;margin-top:8px;font-weight:300">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:clamp(56px,9vw,100px) clamp(16px,4vw,32px)">
+  <div style="max-width:820px;margin:0 auto;text-align:center">
+    <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:24px">Families we&rsquo;ve helped</div>
+    <div style="background:#f5ead4;border-radius:24px;padding:clamp(30px,5vw,52px);box-shadow:0 16px 40px rgba(122,22,38,.08)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:56px;color:#cba24c;line-height:.5;margin-bottom:20px">&ldquo;</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.6vw,29px);line-height:1.5;color:#3b2a20">{{ tQuote }}</p>
+      <div style="margin-top:24px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:#7a1626">{{ tName }}</div>
+      <div style="font-size:12.5px;color:#a5875a;margin-top:4px;letter-spacing:.04em">{{ tMeta }}</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px">
+      <button onClick="{{ tPrev }}" aria-label="Previous" style="width:44px;height:44px;border-radius:50%;border:1px solid #d8c393;background:transparent;color:#7a1626;font-size:18px;cursor:pointer">&#8249;</button>
+      <div style="display:flex;gap:8px">{{ tDots }}</div>
+      <button onClick="{{ tNext }}" aria-label="Next" style="width:44px;height:44px;border-radius:50%;border:1px solid #d8c393;background:transparent;color:#7a1626;font-size:18px;cursor:pointer">&#8250;</button>
+    </div>
+    <div class="rv" style="margin-top:clamp(44px,7vw,64px)">
+      <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:16px">Areas we serve</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:9px">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="8"><span style="background:#f3e6cf;color:#5f4a3a;padding:9px 18px;border-radius:30px;font-size:13.5px;font-weight:500">{{ a }}</span></sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:clamp(56px,9vw,100px) clamp(16px,4vw,32px);background:#f5ead4">
+  <div style="max-width:1040px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:clamp(28px,5vw,44px)">
+      <div style="font-size:12px;letter-spacing:.26em;color:#b08d4c;text-transform:uppercase;margin-bottom:12px">Let&rsquo;s talk</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,6.4vw,50px);color:#7a1626">What can we help you with?</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-bottom:30px">{{ intentPills }}</div>
+    <div style="background:#fbf4e7;border-radius:24px;padding:clamp(24px,4vw,40px);box-shadow:0 18px 44px rgba(122,22,38,.1)">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(22px,3.6vw,28px);color:#7a1626;margin-bottom:6px">{{ formHead }}</div>
+      <p style="font-size:14.5px;color:#5f4a3a;font-weight:300;margin-bottom:24px">{{ formSub }}</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <input placeholder="Your name" style="padding:14px;border:1px solid #e2d0aa;border-radius:12px;background:#fff;font-family:inherit;font-size:14px">
+        <input placeholder="Phone / WhatsApp" style="padding:14px;border:1px solid #e2d0aa;border-radius:12px;background:#fff;font-family:inherit;font-size:14px">
+      </div>
+      <div style="margin-bottom:14px">{{ dynField }}</div>
+      <textarea rows="3" placeholder="Anything else you&rsquo;d like to tell us?" style="width:100%;padding:14px;border:1px solid #e2d0aa;border-radius:12px;background:#fff;font-family:inherit;font-size:14px;resize:none;margin-bottom:18px"></textarea>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px" class="ctaRow">
+        <button style="background:#7a1626;color:#fbf4e7;border:none;padding:16px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer">Send &mdash; we&rsquo;ll call you back</button>
+        <a href="https://wa.me/918087555144" style="display:flex;align-items:center;justify-content:center;gap:9px;background:#1faf54;color:#fff;padding:16px;border-radius:12px;font-size:15px;font-weight:600">&#9993; Or message on WhatsApp</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:22px;padding-top:20px;border-top:1px solid #ecdcbf;font-size:14px;color:#5f4a3a">
+        <a href="tel:+918087555144" style="font-weight:600">&#9742; +91 80875 55144</a>
+        <span style="color:#c9b48f">|</span>
+        <span>Shop 5, Galaxy 2 CHS, Om Nagar, Vasai West</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#4a0d16;color:#d3b58f;padding:clamp(40px,6vw,58px) clamp(16px,4vw,32px) 24px">
+  <div style="max-width:1140px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px">
+      <div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#fbf4e7">Mary Matha</div><div style="font-size:10px;letter-spacing:.2em;color:#b08d4c;text-transform:uppercase;margin-top:4px">Real Estate &amp; Construction</div><p style="font-size:13px;line-height:1.6;font-weight:300;margin-top:12px;color:#bfa079">A family name in Vasai&ndash;Virar since 1996.</p></div>
+      <div style="font-size:13.5px;line-height:2"><div style="color:#e7cb84;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">Explore</div><a href="#top" style="color:#d3b58f;display:block">Home</a><a href="#contact" style="color:#d3b58f;display:block">Properties</a><a href="#contact" style="color:#d3b58f;display:block">Construction</a></div>
+      <div style="font-size:13.5px;line-height:1.9"><div style="color:#e7cb84;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">Contact</div><div>+91 80875 55144</div><div>+91 98650 64257</div><div>marymatha1970@gmail.com</div></div>
+      <div style="font-size:13.5px;line-height:1.9"><div style="color:#e7cb84;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">Legal</div><a href="#" style="color:#d3b58f;display:block">Privacy</a><a href="#" style="color:#d3b58f;display:block">Terms</a><div style="margin-top:8px;font-size:12px;color:#93764f">MahaRERA: A00000000000000</div></div>
+    </div>
+    <div style="border-top:1px solid rgba(203,162,76,.2);margin-top:30px;padding-top:18px;text-align:center;font-size:12px;color:#93764f">&copy; 1996&ndash;2026 Mary Matha Real Estate &amp; Construction. Made with care.</div>
+  </div>
+</footer>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:100;background:rgba(45,8,14,.82);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,32px)">
+    <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="background:#fbf4e7;border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto">
+      <div style="position:relative"><div class="ph" style="height:clamp(200px,40vw,320px);border-radius:24px 24px 0 0;position:relative"><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#7a1626;background:rgba(251,244,231,.9);padding:4px 9px;border-radius:14px">{{ mShot }}</span></div>
+        <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:12px;right:12px;width:42px;height:42px;border:none;border-radius:50%;background:rgba(74,13,22,.85);color:#fbf4e7;font-size:20px;cursor:pointer">&times;</button></div>
+      <div style="padding:clamp(22px,4vw,36px)">
+        <div style="font-size:11px;letter-spacing:.16em;color:#cba24c;text-transform:uppercase;margin-bottom:8px">{{ mStatus }}</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,4.4vw,32px);color:#7a1626;margin-bottom:6px">{{ mTitle }}</h3>
+        <div style="font-size:13px;color:#8a745a;margin-bottom:16px">{{ mMeta }}</div>
+        <p style="font-size:15px;line-height:1.7;color:#5f4a3a;font-weight:300;margin-bottom:20px">{{ mDesc }}</p>
+        <div class="ph" style="height:clamp(160px,32vw,220px);border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center"><span style="width:64px;height:64px;border-radius:50%;background:rgba(74,13,22,.85);color:#fbf4e7;display:flex;align-items:center;justify-content:center;font-size:24px">&#9654;</span><span style="position:absolute;bottom:12px;left:12px;font-family:monospace;font-size:11px;color:#7a1626;background:rgba(251,244,231,.9);padding:4px 9px;border-radius:14px">walkthrough video</span></div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<a href="https://wa.me/918087555144" aria-label="WhatsApp us" style="position:fixed;bottom:20px;right:20px;z-index:90;width:60px;height:60px;border-radius:50%;background:#1faf54;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 24px rgba(31,175,84,.5)">&#9993;</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state={propImg:[0,0,0],t:0,modal:null,intent:'Buy'};
+  componentDidMount(){
+    const rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.setAttribute('data-shown','');}),{threshold:.12});
+    if('IntersectionObserver' in window){document.querySelectorAll('.rv').forEach(n=>io.observe(n));}else{document.querySelectorAll('.rv').forEach(n=>n.setAttribute('data-shown',''));}
+    const sio=new IntersectionObserver((es,ob)=>es.forEach(e=>{if(e.isIntersecting){this._count(e.target,rm);ob.unobserve(e.target);}}),{threshold:.4});
+    const sc=document.getElementById('statsC'); if(sc)sio.observe(sc); this._sio=sio;
+    if(!rm)this._iv=setInterval(()=>this.setState(s=>({t:(s.t+1)%this.T.length})),6500);
+    this._key=e=>{if(e.key==='Escape')this.setState({modal:null});};window.addEventListener('keydown',this._key);
+    const mq=window.matchMedia('(min-width:600px)');
+    this._apply=()=>{document.querySelectorAll('.c2').forEach(n=>n.style.display=mq.matches?'inline':'none');document.querySelectorAll('.ctaRow').forEach(n=>n.style.gridTemplateColumns=mq.matches?'1fr 1fr':'1fr');};
+    this._apply();mq.addEventListener('change',this._apply);this._mq=mq;
+  }
+  componentWillUnmount(){clearInterval(this._iv);window.removeEventListener('keydown',this._key);this._mq&&this._mq.removeEventListener('change',this._apply);this._sio&&this._sio.disconnect();}
+  _count(root,rm){
+    root.querySelectorAll('.statnum').forEach(n=>{
+      const tgt=parseFloat(n.dataset.target),suf=n.dataset.suffix||'';
+      if(rm||isNaN(tgt)){return;}
+      const dec=tgt%1!==0?1:0,dur=1400,t0=performance.now();
+      const step=now=>{const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3),v=tgt*e;
+        n.textContent=(dec?v.toFixed(1):Math.round(v))+suf;
+        if(p<1)requestAnimationFrame(step);};
+      requestAnimationFrame(step);
+    });
+  }
+  P=[
+    {tag:'No brokerage',title:'1 BHK Flat',price:'\u20b943 L',desc:'Bright east-facing flat in a friendly family building, a short walk to the station and market. Ready to move in.',specs:['444 sq.ft','1 Bed','1 Bath','Vasai West'],shots:['living room','kitchen','balcony']},
+    {tag:'Loan help',title:'2 BHK Flat',price:'\u20b965 L',desc:'Spacious 2 BHK with covered parking and a lift, in a well-kept society. Loan and registration help included.',specs:['677 sq.ft','2 Bed','2 Bath','Nalasopara'],shots:['master bedroom','hall','building']},
+    {tag:'Clear title',title:'Residential Plot',price:'\u20b928 L',desc:'A clear-title NA plot with good road access \u2014 the perfect blank canvas to build your own home.',specs:['1200 sq.ft','Plot','Corner','Virar East'],shots:['plot boundary','access road','locality']}
+  ];
+  ONG=[
+    {title:'Saldanha Residence',meta:'Family bungalow \u00b7 Vasai West',pct:'60%',shot:'foundation & columns cast',status:'Building now \u00b7 60% complete',desc:'A three-level family bungalow. The structure is up and plumbing is underway; finishing starts next month. The family approved the whole elevation and interior layout before we broke ground.'},
+    {title:'Green Court Interiors',meta:'3 BHK renovation \u00b7 Nalasopara',pct:'40%',shot:'stripped interior, new wiring',status:'Building now \u00b7 40% complete',desc:'A full 3 BHK makeover \u2014 new wiring, false ceiling, modular kitchen and bathrooms. The family signed off on the 3D interiors before we touched a wall.'}
+  ];
+  COMP=[
+    {title:'D\u2019Souza Villa',meta:'New home \u00b7 Vasai',year:'2024',shot:'completed white villa facade',status:'Handed over 2024',desc:'A four-bedroom villa built from foundation to finish in fourteen months, handed over on schedule with a happy, snag-free walkthrough.'},
+    {title:'Rodrigues Home',meta:'2 BHK renovation \u00b7 Virar',year:'2023',shot:'finished warm living room',status:'Handed over 2023',desc:'A full interior renovation \u2014 flooring, kitchen, wardrobes and paint \u2014 finished in six weeks while the family stayed close by.'},
+    {title:'Holy Family Shop',meta:'Shop fit-out \u00b7 Vasai West',year:'2023',shot:'finished retail shopfront',status:'Handed over 2023',desc:'A ground-floor shop fit-out with new shopfront, flooring and lighting \u2014 ready for the owners to open their doors.'}
+  ];
+  S=[{target:30,suffix:'',display:'30',l:'Years of service'},{target:500,suffix:'+',display:'500+',l:'Projects delivered'},{target:1.2,suffix:'M',display:'1.2M',l:'Sq.ft built'},{target:800,suffix:'+',display:'800+',l:'Families served'},{target:12,suffix:'',display:'12',l:'Locations covered'}];
+  A=['Vasai West','Vasai East','Nalasopara','Virar','Naigaon','Bhayandar','Mira Road','Palghar'];
+  T=[
+    {q:'They showed us the whole flat and answered every doubt before we paid a rupee. No broker games, no hidden charges \u2014 we felt safe putting our savings here.',n:'Priya & Joseph S.',m:'Bought a 2 BHK \u00b7 Vasai West'},
+    {q:'We were so nervous about building. They kept changing the plan until it matched the home in our heads, then built it exactly \u2014 and checked the site every day.',n:'Anthony D.',m:'Built a home \u00b7 Virar East'},
+    {q:'Our old flat looked new again in six weeks, and we never had to move out. Clean work, good materials, and they answered every single call.',n:'Sunita R.',m:'Full renovation \u00b7 Nalasopara'}
+  ];
+  dots(a,n){return Array.from({length:n},(_,i)=>React.createElement('span',{key:i,style:{width:i===a?'18px':'7px',height:'7px',borderRadius:'4px',background:i===a?'#e7cb84':'rgba(251,244,231,.55)',transition:'width .3s'}}));}
+  renderVals(){
+    const st=this.state;
+    const props=this.P.map((p,i)=>({...p,imgLabel:(st.propImg[i]%p.shots.length)+1+'/'+p.shots.length,shot:p.shots[st.propImg[i]%p.shots.length],
+      prev:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]-1+p.shots.length)%p.shots.length;return{propImg:a};}),
+      next:()=>this.setState(s=>{const a=[...s.propImg];a[i]=(a[i]+1)%p.shots.length;return{propImg:a};}),
+      dots:this.dots(st.propImg[i]%p.shots.length,p.shots.length),
+      specs:p.specs.map((x,k)=>React.createElement('span',{key:k,style:{fontSize:'12.5px',color:'#7a1626',background:'#f3e6cf',padding:'6px 13px',borderRadius:'20px',fontWeight:500}},x))}));
+    const openJ=j=>()=>this.setState({modal:j});
+    const intents=['Buy','Sell','Rent','Build','Renovate'];
+    const intentPills=intents.map(it=>React.createElement('button',{key:it,onClick:()=>this.setState({intent:it}),
+      style:{fontFamily:"'Libre Franklin',sans-serif",fontWeight:600,fontSize:'14.5px',padding:'11px 24px',borderRadius:'30px',cursor:'pointer',
+        background:st.intent===it?'#7a1626':'#fbf4e7',color:st.intent===it?'#fbf4e7':'#7a1626',border:'1px solid '+(st.intent===it?'#7a1626':'#e2d0aa')}},it));
+    const cfg={Buy:{h:'Looking for a home to buy?',s:'Tell us your budget and the area you love \u2014 we\u2019ll shortlist and call.',ph:'e.g. up to \u20b960L, 2 BHK in Vasai West'},
+      Sell:{h:'Ready to sell?',s:'Share a few details and we\u2019ll value it fairly, no pressure.',ph:'e.g. 1 BHK, 444 sq.ft, Nalasopara'},
+      Rent:{h:'Looking to rent?',s:'Tell us what and where \u2014 we\u2019ll match reliable options.',ph:'e.g. 2 BHK on rent, Virar, for family'},
+      Build:{h:'Dreaming of building?',s:'Tell us about your plot \u2014 we start by showing you how it\u2019ll look.',ph:'e.g. 1200 sq.ft plot in Virar East'},
+      Renovate:{h:'Want to renovate?',s:'Describe the space \u2014 we\u2019ll show the expected result first.',ph:'e.g. full 2 BHK, kitchen and bathrooms'}}[st.intent];
+    const dynField=React.createElement('input',{placeholder:cfg.ph,'aria-label':cfg.h,style:{width:'100%',padding:'14px',border:'1px solid #e2d0aa',borderRadius:'12px',background:'#fff',fontFamily:'inherit',fontSize:'14px'}});
+    const m=st.modal;
+    return {hasProps:props.length>0,noProps:props.length===0,props,
+      ongoing:this.ONG.map(j=>({...j,open:openJ(j)})),completed:this.COMP.map(j=>({...j,open:openJ(j)})),
+      stats:this.S,areas:this.A,
+      tQuote:this.T[st.t].q,tName:this.T[st.t].n,tMeta:this.T[st.t].m,
+      tPrev:()=>this.setState(s=>({t:(s.t-1+this.T.length)%this.T.length})),tNext:()=>this.setState(s=>({t:(s.t+1)%this.T.length})),
+      tDots:this.T.map((_,i)=>React.createElement('span',{key:i,onClick:()=>this.setState({t:i}),style:{width:i===st.t?'24px':'9px',height:'9px',borderRadius:'5px',background:i===st.t?'#7a1626':'#d8c393',cursor:'pointer',transition:'width .3s'}})),
+      intentPills,formHead:cfg.h,formSub:cfg.s,dynField,
+      modalOpen:!!m,closeModal:()=>this.setState({modal:null}),stop:e=>e.stopPropagation(),
+      mShot:m?m.shot:'',mStatus:m?m.status:'',mTitle:m?m.title:'',mMeta:m?m.meta:'',mDesc:m?m.desc:''};
+  }
+}
+</script>
+</body>
+</html>
