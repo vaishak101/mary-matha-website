@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
-import { Placeholder } from "./Placeholder";
 import { SITE, WEB3FORMS_KEY } from "@/lib/site";
 
 type Intent = "Buy" | "Sell" | "Rent" | "Build" | "Renovate";
@@ -261,7 +260,25 @@ export function EnquiryForm() {
           <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-soft">
             {SITE.address.line}
           </p>
-          <Placeholder label="Map embed" ratio="3 / 1" className="mt-3" />
+          <div className="mt-3 aspect-[4/3] overflow-hidden border border-line">
+            <iframe
+              src={SITE.mapEmbedUrl}
+              title={`Map to the ${SITE.legalName} office`}
+              className="h-full w-full"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <a
+            href={SITE.mapLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-block border-b border-gold pb-0.5 text-[0.8125rem] text-maroon"
+          >
+            Open in Google Maps
+          </a>
         </div>
       </div>
     </div>
