@@ -1,5 +1,4 @@
 import { PhoneIcon, WhatsAppIcon } from "./icons";
-import { Logo } from "./Logo";
 import { SITE } from "@/lib/site";
 
 type ComingSoonProps = {
@@ -15,16 +14,36 @@ export function ComingSoon({ headline, message, showContact }: ComingSoonProps) 
         {`${SITE.region} · Est. ${SITE.established}`}
       </p>
 
-      <h1 className="mt-7 flex w-full justify-center">
-        <Logo
-          variant="full"
-          tone="dark"
-          priority
-          sizes="(min-width: 640px) 440px, 82vw"
-          className="h-auto w-[min(82vw,440px)]"
-          alt="Mary Matha — Real Estate & Construction"
-        />
+      <h1
+        className="mt-6 whitespace-nowrap tracking-[0.08em] text-cream sm:tracking-[0.16em]"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(2rem, 8vw, 5rem)",
+          lineHeight: 1.05,
+        }}
+      >
+        MARY MATHA
       </h1>
+
+      <div
+        className="my-4 h-px w-[min(320px,70%)]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #c29a43 20%, #c29a43 80%, transparent)",
+        }}
+      />
+
+      <p
+        className="max-w-full text-gold-light"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(0.85rem, 3.4vw, 1.375rem)",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+        }}
+      >
+        Real Estate &amp; Construction
+      </p>
 
       <h2
         className="mt-12 max-w-[32rem] text-balance text-cream"

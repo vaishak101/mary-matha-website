@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Logo } from "./Logo";
 import { ArrowDown } from "./icons";
 import { SITE } from "@/lib/site";
 
@@ -63,16 +62,29 @@ export function Hero() {
           {SITE.region} · Est. {SITE.established}
         </p>
 
-        <h1 className="hero-wipe mx-auto mb-8 flex justify-center">
-          <Logo
-            variant="full"
-            tone="dark"
-            priority
-            sizes="(min-width: 640px) 460px, 86vw"
-            className="h-auto w-[min(86vw,460px)]"
-            alt="Mary Matha — Real Estate & Construction"
-          />
+        <h1 className="hero-wipe h-hero mx-auto whitespace-nowrap tracking-[0.09em] text-cream sm:tracking-[0.18em]">
+          MARY MATHA
         </h1>
+
+        <div
+          className="hero-rule mx-auto my-4 h-px w-[min(360px,72%)]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, #c29a43 20%, #c29a43 80%, transparent)",
+          }}
+        />
+
+        <p
+          className="hero-sub mx-auto mb-7 text-gold-light"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(1.0625rem, 4.4vw, 1.75rem)",
+            letterSpacing: "0.26em",
+            textTransform: "uppercase",
+          }}
+        >
+          Real Estate &amp; Construction
+        </p>
 
         <p className="hero-lead mx-auto mb-9 max-w-[34rem] text-[clamp(0.95rem,2.4vw,1.125rem)] leading-relaxed text-cream/90">
           Trusted real estate solutions and construction services built on
