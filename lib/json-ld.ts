@@ -10,6 +10,8 @@ export function businessJsonLd() {
     alternateName: SITE.name,
     description: SITE.description,
     url: SITE.url,
+    logo: `${SITE.url}/brand/logo-on-light.png`,
+    image: `${SITE.url}/brand/logo-on-light.png`,
     telephone: SITE.phonePrimary.tel,
     email: SITE.email,
     foundingDate: String(SITE.established),

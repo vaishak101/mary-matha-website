@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
+import { Logo } from "./Logo";
 
 const year = new Date().getFullYear();
 
@@ -9,17 +10,13 @@ export function Footer() {
       <div className="wrap container-x py-[clamp(2.5rem,6vw,3.75rem)]">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p
-              className="text-cream"
-              style={{
-                fontFamily: "var(--font-wordmark)",
-                fontSize: "1.125rem",
-                letterSpacing: "0.14em",
-              }}
-            >
-              MARY MATHA
-            </p>
-            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.22em] text-kicker">
+            <Logo
+              variant="wordmark"
+              tone="dark"
+              sizes="200px"
+              className="h-11 w-auto"
+            />
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-kicker">
               {SITE.tagline}
             </p>
             <p className="mt-3.5 max-w-[22rem] text-[0.8125rem] leading-relaxed">
