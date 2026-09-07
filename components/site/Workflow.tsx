@@ -6,7 +6,6 @@ type Step = {
   eyebrow: string;
   heading: string;
   body: string;
-  trust?: boolean;
 };
 
 const STEPS: Step[] = [
@@ -21,7 +20,6 @@ const STEPS: Step[] = [
     eyebrow: "Step two — the trust step",
     heading: "Prototype & iterate",
     body: "We show you the expected output — layouts, finishes, elevation — and change it as many times as it takes until you approve. No guesswork.",
-    trust: true,
   },
   {
     numeral: "III",
@@ -50,45 +48,28 @@ export function Workflow() {
             aria-hidden
             className="absolute left-[17%] right-[17%] top-[39px] hidden border-t-2 border-dotted border-gold min-[760px]:block"
           />
-          <ol className="relative grid gap-8 min-[760px]:grid-cols-3 min-[760px]:gap-0">
+          <ol className="relative grid gap-8 min-[760px]:grid-cols-3 min-[760px]:items-start min-[760px]:gap-0">
             {STEPS.map((step) => (
               <li
                 key={step.numeral}
-                className={`px-[clamp(0.625rem,2vw,1.375rem)] text-center ${
-                  step.trust
-                    ? "on-dark bg-maroon py-[clamp(1.25rem,2vw,1.625rem)]"
-                    : ""
-                }`}
+                tabIndex={0}
+                className="group border border-transparent px-[clamp(0.625rem,2vw,1.375rem)] py-4 text-center outline-none transition-colors duration-300 focus-visible:border-line-strong focus-visible:bg-cream-panel motion-reduce:transition-none min-[760px]:hover:border-line-strong min-[760px]:hover:bg-cream-panel min-[760px]:focus-within:border-line-strong min-[760px]:focus-within:bg-cream-panel"
               >
                 <span
-                  className={`mx-auto mb-4 flex size-[78px] items-center justify-center rounded-full text-[1.875rem] ${
-                    step.trust
-                      ? "bg-gold text-maroon-dark"
-                      : "border border-gold bg-cream text-maroon"
-                  }`}
+                  className="mx-auto mb-4 flex size-[78px] items-center justify-center rounded-full border border-gold bg-cream text-[1.875rem] text-maroon transition-colors duration-300 motion-reduce:transition-none group-hover:bg-maroon group-hover:text-cream group-focus-visible:bg-maroon group-focus-visible:text-cream group-focus-within:bg-maroon group-focus-within:text-cream"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {step.numeral}
                 </span>
-                <p
-                  className={`mb-2 font-mono text-[11px] uppercase tracking-[0.2em] ${
-                    step.trust ? "text-gold-light" : "text-kicker"
-                  }`}
-                >
+                <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-kicker">
                   {step.eyebrow}
                 </p>
-                <h3
-                  className={`text-[1.3125rem] ${step.trust ? "text-cream" : "text-ink"}`}
-                >
-                  {step.heading}
-                </h3>
-                <p
-                  className={`mx-auto mt-2.5 max-w-[24rem] text-[0.90625rem] leading-relaxed ${
-                    step.trust ? "text-cream/90" : "text-ink-soft"
-                  }`}
-                >
-                  {step.body}
-                </p>
+                <h3 className="text-[1.3125rem] text-ink">{step.heading}</h3>
+                <div className="grid grid-rows-[1fr] opacity-100 transition-all duration-300 motion-reduce:transition-none min-[760px]:grid-rows-[0fr] min-[760px]:opacity-0 min-[760px]:group-hover:grid-rows-[1fr] min-[760px]:group-hover:opacity-100 min-[760px]:group-focus-visible:grid-rows-[1fr] min-[760px]:group-focus-visible:opacity-100 min-[760px]:group-focus-within:grid-rows-[1fr] min-[760px]:group-focus-within:opacity-100">
+                  <p className="mx-auto min-h-0 max-w-[24rem] overflow-hidden pt-2.5 text-[0.90625rem] leading-relaxed text-ink-soft">
+                    {step.body}
+                  </p>
+                </div>
               </li>
             ))}
           </ol>

@@ -83,9 +83,6 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <p className="mt-2 text-[12px] text-cream/45">
-              MahaRERA: {SITE.maharera}
-            </p>
           </div>
         </div>
 
