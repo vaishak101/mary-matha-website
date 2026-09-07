@@ -31,7 +31,15 @@ export function Header() {
       data-scrolled={scrolled ? "" : undefined}
       className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-md data-[scrolled]:border-line-strong"
     >
-      <div className="wrap container-x flex items-center justify-between gap-3 py-3">
+      <div
+        aria-hidden
+        className="h-1 w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%)",
+        }}
+      />
+      <div className="wrap container-x flex items-center justify-between gap-3 py-3.5">
         <Link
           href="/#top"
           className="flex items-center"
@@ -41,8 +49,8 @@ export function Header() {
             variant="name"
             tone="light"
             priority
-            sizes="240px"
-            className="h-[26px] w-auto sm:h-[30px]"
+            sizes="300px"
+            className="h-[30px] w-auto sm:h-9"
           />
         </Link>
 

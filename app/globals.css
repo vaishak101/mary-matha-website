@@ -39,13 +39,13 @@
   /* keep anchored sections clear of the sticky header */
   section[id],
   [data-anchor] {
-    scroll-margin-top: 4.75rem;
+    scroll-margin-top: 5.5rem;
   }
   body {
     background: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-body);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -328,28 +328,68 @@
     transform: scaleX(1);
   }
 }
+/* clip-path (not transform) so the images' mix-blend-mode keeps blending
+   with the section behind them. Fade + reveal together reads smoother than a
+   hard wipe, and the compositor hint keeps the blended repaint off the main
+   thread. */
+@keyframes hero-slide-l {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+@keyframes hero-slide-r {
+  from {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
 
+/* 1 — the two images glide in from each side … */
+.hero-img-l,
+.hero-img-r {
+  opacity: 1;
+  will-change: clip-path, opacity;
+}
+.hero-img-l {
+  animation: hero-slide-l 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+.hero-img-r {
+  animation: hero-slide-r 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+/* 2 — … then the text sequence begins (offset past the image glide) */
 .hero-wipe {
-  animation: hero-wipe 1.6s var(--ease-settle) 0.3s both;
+  animation: hero-wipe 1.5s var(--ease-settle) 1.45s both;
 }
 .hero-rule {
   transform-origin: center;
-  animation: hero-draw 1.5s var(--ease-settle) 0.95s both;
+  animation: hero-draw 1.4s var(--ease-settle) 2.05s both;
 }
 .hero-sub {
-  animation: hero-rise 1.3s var(--ease-settle) 1.05s both;
+  animation: hero-rise 1.3s var(--ease-settle) 2.15s both;
 }
 .hero-lead {
-  animation: hero-rise 1.2s var(--ease-settle) 1.45s both;
+  animation: hero-rise 1.2s var(--ease-settle) 2.5s both;
 }
 .hero-pills {
-  animation: hero-rise 1.2s var(--ease-settle) 1.75s both;
+  animation: hero-rise 1.2s var(--ease-settle) 2.8s both;
 }
 .hero-cue {
-  animation: hero-rise 1s ease 2.2s both;
+  animation: hero-rise 1s ease 3.2s both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-img-l,
+  .hero-img-r,
   .hero-wipe,
   .hero-rule,
   .hero-sub,
@@ -358,6 +398,8 @@
   .hero-cue {
     animation: none !important;
     clip-path: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
   }
 }
 

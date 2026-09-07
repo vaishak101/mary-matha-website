@@ -82,7 +82,7 @@ export function ProjectGrid({
             ))}
           </div>
         ) : (
-          <p className="border border-dashed border-line-strong bg-cream-panel px-5 py-8 text-[0.9375rem] text-ink-soft">
+          <p className="border border-dashed border-line-strong bg-cream-panel px-5 py-8 text-[1rem] text-ink-soft">
             No projects under construction right now — see the completed work
             below.
           </p>
@@ -104,7 +104,7 @@ export function ProjectGrid({
             ))}
           </div>
         ) : (
-          <p className="border border-dashed border-line-strong bg-cream-alt px-5 py-8 text-[0.9375rem] text-ink-soft">
+          <p className="border border-dashed border-line-strong bg-cream-alt px-5 py-8 text-[1rem] text-ink-soft">
             Handed-over projects will appear here.
           </p>
         )}

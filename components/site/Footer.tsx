@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 
 const year = new Date().getFullYear();
 
@@ -19,17 +20,21 @@ export function Footer() {
             <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-kicker">
               {SITE.tagline}
             </p>
-            <p className="mt-3.5 max-w-[22rem] text-[0.8125rem] leading-relaxed">
+            <p className="mt-3.5 max-w-[22rem] text-[0.875rem] leading-relaxed">
               Buy · Sell · Rent · Build · Renovate. Serving {SITE.region} families
               since {SITE.established}.
             </p>
+            <SocialLinks
+              className="mt-5"
+              itemClassName="border-cream/25 text-cream/70 hover:border-gold hover:text-gold-light"
+            />
           </div>
 
           <nav aria-label="Footer">
             <p className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-light">
               Explore
             </p>
-            <ul className="space-y-1 text-[0.875rem]">
+            <ul className="space-y-1.5 text-[0.9375rem]">
               {NAV.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-cream/70 hover:text-cream">
@@ -44,7 +49,7 @@ export function Footer() {
             <p className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-light">
               Contact
             </p>
-            <ul className="space-y-1 text-[0.875rem]">
+            <ul className="space-y-1.5 text-[0.9375rem]">
               <li>
                 <a href={`tel:${SITE.phonePrimary.tel}`} className="text-cream/70 hover:text-cream">
                   {SITE.phonePrimary.display}
@@ -67,7 +72,7 @@ export function Footer() {
             <p className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-gold-light">
               Legal
             </p>
-            <ul className="space-y-1 text-[0.875rem]">
+            <ul className="space-y-1.5 text-[0.9375rem]">
               <li>
                 <Link href="/privacy-policy" className="text-cream/70 hover:text-cream">
                   Privacy Policy
@@ -82,7 +87,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-gold/20 pt-5 text-center text-[12px] text-cream/45">
+        <div className="mt-8 border-t border-gold/20 pt-5 text-center text-[12.5px] text-cream/50">
           © {SITE.established}–{year} {SITE.legalName}. All rights reserved.
         </div>
       </div>

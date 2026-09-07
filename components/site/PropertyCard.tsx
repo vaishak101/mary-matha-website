@@ -23,7 +23,10 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
         sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
         overlay={
           property.tag ? (
-            <span className="absolute left-3 top-3 bg-maroon px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.1em] text-gold-light">
+            <span
+              key="tag"
+              className="absolute left-3 top-3 bg-maroon px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.1em] text-gold-light"
+            >
               {property.tag}
             </span>
           ) : null
@@ -46,7 +49,7 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
           </p>
         </div>
 
-        <p className="mt-2.5 mb-4 text-[0.875rem] leading-relaxed text-ink-soft">
+        <p className="mt-2.5 mb-4 text-[0.9375rem] leading-relaxed text-ink-soft">
           {property.description}
         </p>
 
@@ -58,7 +61,7 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
           {chips.map((chip) => (
             <span
               key={chip}
-              className="border-b border-r border-line px-2 py-2 text-center font-mono text-[11.5px] uppercase tracking-[0.06em] text-maroon [&:last-child:nth-child(odd)]:col-span-2"
+              className="border-b border-r border-line px-2 py-2.5 text-center font-mono text-[12px] uppercase tracking-[0.05em] text-maroon [&:last-child:nth-child(odd)]:col-span-2"
             >
               {chip}
             </span>

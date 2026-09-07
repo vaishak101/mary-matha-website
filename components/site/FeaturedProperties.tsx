@@ -40,7 +40,7 @@ export function FeaturedProperties() {
               >
                 No properties listed right now
               </p>
-              <p className="mx-auto mb-5 max-w-[26rem] text-[0.9375rem] text-ink-soft">
+              <p className="mx-auto mb-5 max-w-[26rem] text-[1rem] text-ink-soft">
                 New listings are added regularly. Tell us what you&rsquo;re
                 looking for and we&rsquo;ll call the moment something matches.
               </p>

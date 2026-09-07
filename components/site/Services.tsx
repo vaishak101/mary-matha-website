@@ -15,13 +15,13 @@ const CRAFTS: Craft[] = [
     label: "Property",
     heading: "Buy, Sell & Rent",
     lead: "One trusted desk for every property need across Vasai–Virar — and no broker games.",
-    body: "Flats, plots, shops and bungalows matched to your budget and your life. We arrange the site visits, scrutinise every document, and steer the home loan, stamp duty and registration from first enquiry to the day the keys are in your hand — with nothing hidden in between.",
+    body: "Flats, plots, shops and bungalows matched to your budget and your life. We arrange the site visits, scrutinise every document, and guide you through the home loan, stamp duty and registration from first enquiry to the day the keys are in your hands — with nothing hidden in between.",
   },
   {
     numeral: "II",
     label: "Construction",
     heading: "Build & Renovate",
-    lead: "A deliberate method: you approve the vision before a single line is built.",
+    lead: "A deliberate method: you approve the vision before a single line is drawn.",
     body: "New construction, whole-home renovation, repair and fine finishing. We render the expected result and revise it with you until it is exactly right, then build to that approved vision with quality materials and daily supervision on the site — straight through to handover.",
   },
 ];
@@ -62,7 +62,7 @@ export function Services() {
               >
                 {craft.lead}
               </p>
-              <p className="max-w-[65ch] text-[0.9375rem] leading-[1.8] text-ink-soft">
+              <p className="max-w-[65ch] text-[1.0625rem] leading-[1.75] text-ink-soft">
                 {craft.body}
               </p>
             </Reveal>

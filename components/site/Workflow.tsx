@@ -36,7 +36,7 @@ export function Workflow() {
         <Reveal className="mx-auto mb-[clamp(2.25rem,6vw,3.75rem)] max-w-[38rem] text-center">
           <Kicker>How we build</Kicker>
           <h2 className="h-sec mt-3.5">You approve it before we pour concrete</h2>
-          <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-soft">
+          <p className="mt-4 text-[1rem] leading-relaxed text-ink-soft">
             The step most builders skip is the one we lead with — we show you the
             expected output and refine it until you&rsquo;re happy. Nothing is a
             surprise.
@@ -66,7 +66,7 @@ export function Workflow() {
                 </p>
                 <h3 className="text-[1.3125rem] text-ink">{step.heading}</h3>
                 <div className="grid grid-rows-[1fr] opacity-100 transition-all duration-300 motion-reduce:transition-none min-[760px]:grid-rows-[0fr] min-[760px]:opacity-0 min-[760px]:group-hover:grid-rows-[1fr] min-[760px]:group-hover:opacity-100 min-[760px]:group-focus-visible:grid-rows-[1fr] min-[760px]:group-focus-visible:opacity-100 min-[760px]:group-focus-within:grid-rows-[1fr] min-[760px]:group-focus-within:opacity-100">
-                  <p className="mx-auto min-h-0 max-w-[24rem] overflow-hidden pt-2.5 text-[0.90625rem] leading-relaxed text-ink-soft">
+                  <p className="mx-auto min-h-0 max-w-[24rem] overflow-hidden pt-2.5 text-[1rem] leading-relaxed text-ink-soft">
                     {step.body}
                   </p>
                 </div>
