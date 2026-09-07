@@ -187,9 +187,11 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "number",
-            name: "areaSqft",
+            type: "string",
+            name: "area",
             label: "Area (sq ft)",
+            description:
+              'A single figure or a range — written as you want it shown, e.g. "735" or "422 – 735".',
             required: true,
           },
           {
@@ -200,16 +202,11 @@ export default defineConfig({
             options: ["Flat", "Plot", "Shop", "Bungalow", "Office"],
           },
           {
-            type: "number",
-            name: "bedrooms",
-            label: "Bedrooms",
-            description: "Leave blank for plots and shops.",
-          },
-          {
-            type: "number",
-            name: "bathrooms",
-            label: "Bathrooms",
-            description: "Leave blank for plots and shops.",
+            type: "string",
+            name: "configuration",
+            label: "Configuration",
+            description:
+              'e.g. "2 BHK", "2 & 3 BHK", "1, 2 & 3 BHK". Leave blank for plots and shops.',
           },
           {
             type: "string",

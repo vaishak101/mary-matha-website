@@ -1,19 +1,31 @@
 {
-  "title": "1 BHK Flat",
-  "tag": "No brokerage",
-  "description": "Bright east-facing flat in a friendly family building, a short walk to the station and market. Ready to move in.",
-  "price": "₹43 L",
-  "areaSqft": 444,
+  "title": "Jasmine by Happy Homes",
+  "tag": "2 & 3 BHK",
+  "description": "Crafted with the utmost care and attention to detail, our project reflects a legacy of creating exceptional living spaces. Here, you'll find a harmonious blend of timeless design and modern comfort, creating an environment that is both inviting and exclusive.",
+  "price": "On Request",
+  "area": "735",
   "propertyType": "Flat",
-  "bedrooms": 1,
-  "bathrooms": 1,
+  "configuration": "2 & 3 BHK",
   "locality": "Vasai West",
   "possession": "Ready to move",
-  "facing": "East",
+  "facing": "",
   "gallery": [
-    { "image": "", "alt": "Placeholder — living room of the 1 BHK flat" },
-    { "image": "", "alt": "Placeholder — kitchen" },
-    { "image": "", "alt": "Placeholder — balcony view" }
+    {
+      "image": "/uploads/jasmine-1.jpg",
+      "alt": "Building photo"
+    },
+    {
+      "image": "/uploads/jasmine-2.webp",
+      "alt": "Building plan"
+    },
+    {
+      "image": "/uploads/jasmine-3.jpg",
+      "alt": "2bhk plan"
+    },
+    {
+      "image": "/uploads/jasmine-4.jpg",
+      "alt": "3bhk plan"
+    }
   ],
   "featured": true,
   "order": 1

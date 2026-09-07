@@ -15,10 +15,9 @@ fragment FeaturedPropertyParts on FeaturedProperty {
   tag
   description
   price
-  areaSqft
+  area
   propertyType
-  bedrooms
-  bathrooms
+  configuration
   locality
   possession
   facing

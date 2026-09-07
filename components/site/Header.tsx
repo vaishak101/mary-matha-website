@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
+import { Logo } from "./Logo";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 
 export function Header() {
@@ -33,33 +34,16 @@ export function Header() {
       <div className="wrap container-x flex items-center justify-between gap-3 py-3">
         <Link
           href="/#top"
-          className="flex items-center gap-3"
+          className="flex items-center"
           aria-label={`${SITE.legalName} — home`}
         >
-          <span
-            aria-hidden
-            className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold text-[20px] leading-none text-maroon"
-            style={{ fontFamily: "var(--font-wordmark)", fontWeight: 500 }}
-          >
-            M
-          </span>
-          <span className="leading-none">
-            <span
-              className="block whitespace-nowrap text-maroon"
-              style={{
-                fontFamily: "var(--font-wordmark)",
-                fontWeight: 500,
-                fontSize: "1.0625rem",
-                letterSpacing: "0.14em",
-                lineHeight: 1.15,
-              }}
-            >
-              MARY MATHA
-            </span>
-            <span className="mt-[3px] hidden whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.24em] text-muted min-[380px]:block">
-              {SITE.tagline}
-            </span>
-          </span>
+          <Logo
+            variant="name"
+            tone="light"
+            priority
+            sizes="240px"
+            className="h-[26px] w-auto sm:h-[30px]"
+          />
         </Link>
 
         <nav

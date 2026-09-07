@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Marcellus, Spectral, Playfair_Display } from "next/font/google";
+import { DM_Serif_Display, Spectral } from "next/font/google";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const marcellus = Marcellus({
+const dmSerifDisplay = DM_Serif_Display({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-marcellus",
+  variable: "--font-dm-serif-display",
 });
 
 const spectral = Spectral({
@@ -17,12 +17,6 @@ const spectral = Spectral({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-spectral",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-playfair",
 });
 
 export const metadata: Metadata = {
@@ -73,7 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${marcellus.variable} ${spectral.variable} ${playfair.variable}`}
+      className={`${dmSerifDisplay.variable} ${spectral.variable}`}
     >
       <body>{children}</body>
     </html>
