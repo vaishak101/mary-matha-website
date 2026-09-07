@@ -1,4 +1,4 @@
-import { Placeholder } from "./Placeholder";
+import Image from "next/image";
 import { ArrowDown } from "./icons";
 import { SITE } from "@/lib/site";
 
@@ -8,29 +8,37 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
+      className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* two background image slots — real art comes later */}
+      {/* two background images — pencil sketches, blended into the brand tone */}
       <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
-        <Placeholder
-          label="Hero image — left / carved threshold"
-          dark
-          align="top"
-          className="h-full"
-        />
-        <Placeholder
-          label="Hero image — right / stone facade"
-          dark
-          align="top"
-          className="h-full"
-        />
+        <div className="relative overflow-hidden">
+          <Image
+            src="/uploads/left-image.jpg"
+            alt=""
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+          />
+        </div>
+        <div className="relative overflow-hidden border-l border-gold/10">
+          <Image
+            src="/uploads/right-image.jpg"
+            alt=""
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+          />
+        </div>
       </div>
       <div
         className="absolute inset-0"
         aria-hidden
         style={{
           background:
-            "linear-gradient(90deg, rgba(58,10,18,0.88), rgba(58,10,18,0.58) 55%, rgba(58,10,18,0.82))",
+            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.95) 0%, rgba(58,10,18,0.82) 42%, rgba(58,10,18,0.45) 100%)",
         }}
       />
       {/* survey line */}
