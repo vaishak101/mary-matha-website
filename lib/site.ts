@@ -50,6 +50,13 @@ export const SITE = {
     "Mira Road",
     "Palghar",
   ],
+
+  // TODO: replace href values with the real profile URLs (leave "" to hide one).
+  social: [
+    { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/" },
+    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/" },
+    { label: "YouTube", icon: "youtube", href: "https://www.youtube.com/" },
+  ],
 } as const;
 
 export const NAV = [

@@ -77,3 +77,46 @@ export function ArrowDown(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+const brand = {
+  width: 18,
+  height: 18,
+  viewBox: "0 0 24 24",
+  fill: "currentColor",
+  "aria-hidden": true,
+  focusable: false,
+};
+
+export function FacebookIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...brand} {...props}>
+      <path d="M14 8.5h2.5V5.3C16 5.1 14.9 5 13.9 5 11.4 5 10 6.5 10 9v2H7.5v3.3H10V22h3.3v-7.7H16l.5-3.3h-3.2V9.3c0-.5.4-.8 1.2-.8Z" />
+    </svg>
+  );
+}
+
+export function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...brand} fill="none" {...props}>
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function YouTubeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...brand} {...props}>
+      <path d="M22 12s0-3.2-.4-4.7a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.5A2.6 2.6 0 0 0 2.4 7.3C2 8.8 2 12 2 12s0 3.2.4 4.7c.3 1 1 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.5a2.6 2.6 0 0 0 1.8-1.8C22 15.2 22 12 22 12ZM10 15V9l5.2 3L10 15Z" />
+    </svg>
+  );
+}
