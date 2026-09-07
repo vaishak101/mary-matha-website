@@ -42,7 +42,7 @@ export function Hero() {
         }}
       />
       {/* survey line */}
-      <div
+      {/* <div
         aria-hidden
         className="pointer-events-none absolute bottom-10 left-[clamp(1rem,4vw,2.75rem)] top-24 w-px opacity-50"
         style={{
@@ -55,7 +55,7 @@ export function Hero() {
         className="absolute left-[clamp(0.75rem,3.4vw,2.25rem)] top-[7.5rem] font-mono text-[10px] tracking-[0.14em] text-gold-light/80"
       >
         0.00 m
-      </span>
+      </span> */}
 
       <div className="relative w-full max-w-[54rem]">
         <p className="hero-sub kicker mb-6 text-gold-light">
@@ -93,15 +93,17 @@ export function Hero() {
 
         <div className="hero-pills mx-auto flex max-w-[32rem] border border-gold/45">
           {PILLS.map((pill, i) => (
-            <span
+            <a
               key={pill}
-              className={`flex-1 py-[0.7rem] text-center text-[clamp(0.7rem,2.5vw,0.9rem)] uppercase tracking-[0.14em] text-cream ${
+              href="#contact"
+              aria-label={`${pill} — go to the enquiry form`}
+              className={`flex-1 py-[0.7rem] text-center text-[clamp(0.7rem,2.5vw,0.9rem)] uppercase tracking-[0.1em] text-cream transition-colors duration-200 hover:bg-gold/15 hover:text-gold-light focus-visible:bg-gold/15 focus-visible:text-gold-light motion-reduce:transition-none ${
                 i > 0 ? "border-l border-gold/35" : ""
-              } ${pill === "Renovate" ? "text-gold-light" : ""}`}
+              }`}
               style={{ fontFamily: "var(--font-display)" }}
             >
               {pill}
-            </span>
+            </a>
           ))}
         </div>
       </div>

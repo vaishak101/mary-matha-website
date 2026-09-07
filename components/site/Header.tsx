@@ -39,7 +39,7 @@ export function Header() {
           <span
             aria-hidden
             className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold text-[20px] leading-none text-maroon"
-            style={{ fontFamily: "var(--font-wordmark)", fontWeight: 500 }}
+            style={{ fontFamily: "var(--font-wordmark)" }}
           >
             M
           </span>
@@ -48,7 +48,6 @@ export function Header() {
               className="block whitespace-nowrap text-maroon"
               style={{
                 fontFamily: "var(--font-wordmark)",
-                fontWeight: 500,
                 fontSize: "1.0625rem",
                 letterSpacing: "0.14em",
                 lineHeight: 1.15,

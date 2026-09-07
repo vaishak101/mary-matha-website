@@ -13,7 +13,6 @@ export function Footer() {
               className="text-cream"
               style={{
                 fontFamily: "var(--font-wordmark)",
-                fontWeight: 500,
                 fontSize: "1.125rem",
                 letterSpacing: "0.14em",
               }}

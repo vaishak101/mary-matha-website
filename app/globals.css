@@ -23,9 +23,9 @@
   --color-green: #1faf54; /* WhatsApp only */
   --color-green-dark: #158a41;
 
-  --font-display: var(--font-marcellus), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-dm-serif-display), Georgia, "Times New Roman", serif;
   --font-body: var(--font-spectral), Georgia, serif;
-  --font-wordmark: var(--font-playfair), Georgia, serif;
+  --font-wordmark: var(--font-dm-serif-display), Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
 
   --ease-settle: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -194,6 +194,7 @@
     background: var(--color-gold);
     color: var(--color-maroon-dark);
     font-family: var(--font-display);
+    font-weight: 400;
     letter-spacing: 0.04em;
   }
   .btn-gold:hover {
