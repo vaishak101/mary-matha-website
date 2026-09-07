@@ -1,15 +1,30 @@
 {
-  "title": "Residential Plot",
-  "tag": "Clear title",
-  "description": "A clear-title NA plot with proper road access — an ideal foundation on which to build your own home.",
-  "price": "₹28 L",
-  "areaSqft": 1200,
-  "propertyType": "Plot",
-  "locality": "Virar East",
+  "title": "Flamingo Residency",
+  "tag": "Shantee Homes",
+  "description": "Welcome to Flamingo Residency, where we strive to provide exceptional living and working environments in the heart of Vasai with direct access to major transportation hubs, shopping centres, dining establishments, and cultural attractions, our building serves as a gateway to everything the vibrant city has to offer. Additionally, our central location provides effortless connectivity to major business districts, making it ideal for professionals seeking a strategic base for their ventures.",
+  "price": "On request",
+  "area": "422",
+  "propertyType": "Flat",
+  "configuration": "2 BHK",
+  "locality": "Vasai West",
+  "possession": "Ready to move",
   "gallery": [
-    { "image": "", "alt": "Placeholder — plot boundary" },
-    { "image": "", "alt": "Placeholder — access road" },
-    { "image": "", "alt": "Placeholder — surrounding locality" }
+    {
+      "image": "/uploads/flamingo-1.jpg",
+      "alt": "Flamingo - 1"
+    },
+    {
+      "image": "/uploads/flamingo-2.jpg",
+      "alt": "Flamingo - 2"
+    },
+    {
+      "image": "/uploads/flamingo-3.jpg",
+      "alt": "Flamingo - 3"
+    },
+    {
+      "image": "/uploads/flamingo-4.jpg",
+      "alt": "Flamingo - 4"
+    }
   ],
   "featured": true,
   "order": 3

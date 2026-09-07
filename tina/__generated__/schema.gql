@@ -160,10 +160,9 @@ type FeaturedProperty implements Node & Document {
   tag: String
   description: String!
   price: String!
-  areaSqft: Float!
+  area: String!
   propertyType: String!
-  bedrooms: Float
-  bathrooms: Float
+  configuration: String
   locality: String!
   possession: String
   facing: String
@@ -173,16 +172,6 @@ type FeaturedProperty implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
-  exists: Boolean
-  in: [Float]
 }
 
 input ImageFilter {
@@ -197,15 +186,24 @@ input FeaturedPropertyGalleryFilter {
   alt: StringFilter
 }
 
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
 input FeaturedPropertyFilter {
   title: StringFilter
   tag: StringFilter
   description: StringFilter
   price: StringFilter
-  areaSqft: NumberFilter
+  area: StringFilter
   propertyType: StringFilter
-  bedrooms: NumberFilter
-  bathrooms: NumberFilter
+  configuration: StringFilter
   locality: StringFilter
   possession: StringFilter
   facing: StringFilter
@@ -443,10 +441,9 @@ input FeaturedPropertyMutation {
   tag: String
   description: String
   price: String
-  areaSqft: Float
+  area: String
   propertyType: String
-  bedrooms: Float
-  bathrooms: Float
+  configuration: String
   locality: String
   possession: String
   facing: String

@@ -318,10 +318,9 @@ export type FeaturedProperty = Node & Document & {
   tag?: Maybe<Scalars['String']['output']>;
   description: Scalars['String']['output'];
   price: Scalars['String']['output'];
-  areaSqft: Scalars['Float']['output'];
+  area: Scalars['String']['output'];
   propertyType: Scalars['String']['output'];
-  bedrooms?: Maybe<Scalars['Float']['output']>;
-  bathrooms?: Maybe<Scalars['Float']['output']>;
+  configuration?: Maybe<Scalars['String']['output']>;
   locality: Scalars['String']['output'];
   possession?: Maybe<Scalars['String']['output']>;
   facing?: Maybe<Scalars['String']['output']>;
@@ -331,16 +330,6 @@ export type FeaturedProperty = Node & Document & {
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
-};
-
-export type NumberFilter = {
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  eq?: InputMaybe<Scalars['Float']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
 };
 
 export type ImageFilter = {
@@ -355,15 +344,24 @@ export type FeaturedPropertyGalleryFilter = {
   alt?: InputMaybe<StringFilter>;
 };
 
+export type NumberFilter = {
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  eq?: InputMaybe<Scalars['Float']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
+};
+
 export type FeaturedPropertyFilter = {
   title?: InputMaybe<StringFilter>;
   tag?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   price?: InputMaybe<StringFilter>;
-  areaSqft?: InputMaybe<NumberFilter>;
+  area?: InputMaybe<StringFilter>;
   propertyType?: InputMaybe<StringFilter>;
-  bedrooms?: InputMaybe<NumberFilter>;
-  bathrooms?: InputMaybe<NumberFilter>;
+  configuration?: InputMaybe<StringFilter>;
   locality?: InputMaybe<StringFilter>;
   possession?: InputMaybe<StringFilter>;
   facing?: InputMaybe<StringFilter>;
@@ -724,10 +722,9 @@ export type FeaturedPropertyMutation = {
   tag?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['String']['input']>;
-  areaSqft?: InputMaybe<Scalars['Float']['input']>;
+  area?: InputMaybe<Scalars['String']['input']>;
   propertyType?: InputMaybe<Scalars['String']['input']>;
-  bedrooms?: InputMaybe<Scalars['Float']['input']>;
-  bathrooms?: InputMaybe<Scalars['Float']['input']>;
+  configuration?: InputMaybe<Scalars['String']['input']>;
   locality?: InputMaybe<Scalars['String']['input']>;
   possession?: InputMaybe<Scalars['String']['input']>;
   facing?: InputMaybe<Scalars['String']['input']>;
@@ -810,16 +807,6 @@ export type SiteSettingsFilter = {
   comingSoon?: SiteSettingsComingSoonFilter | null | undefined;
 };
 
-export type NumberFilter = {
-  lt?: number | null | undefined;
-  lte?: number | null | undefined;
-  gte?: number | null | undefined;
-  gt?: number | null | undefined;
-  eq?: number | null | undefined;
-  exists?: boolean | null | undefined;
-  in?: Array<number | null | undefined> | null | undefined;
-};
-
 export type ImageFilter = {
   startsWith?: string | null | undefined;
   eq?: string | null | undefined;
@@ -832,15 +819,24 @@ export type FeaturedPropertyGalleryFilter = {
   alt?: StringFilter | null | undefined;
 };
 
+export type NumberFilter = {
+  lt?: number | null | undefined;
+  lte?: number | null | undefined;
+  gte?: number | null | undefined;
+  gt?: number | null | undefined;
+  eq?: number | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<number | null | undefined> | null | undefined;
+};
+
 export type FeaturedPropertyFilter = {
   title?: StringFilter | null | undefined;
   tag?: StringFilter | null | undefined;
   description?: StringFilter | null | undefined;
   price?: StringFilter | null | undefined;
-  areaSqft?: NumberFilter | null | undefined;
+  area?: StringFilter | null | undefined;
   propertyType?: StringFilter | null | undefined;
-  bedrooms?: NumberFilter | null | undefined;
-  bathrooms?: NumberFilter | null | undefined;
+  configuration?: StringFilter | null | undefined;
   locality?: StringFilter | null | undefined;
   possession?: StringFilter | null | undefined;
   facing?: StringFilter | null | undefined;
@@ -902,7 +898,7 @@ export type TestimonialFilter = {
 
 export type SiteSettingsPartsFragment = { __typename: 'SiteSettings', published: boolean | null, comingSoon: { __typename: 'SiteSettingsComingSoon', headline: string, message: string, showContact: boolean | null } | null };
 
-export type FeaturedPropertyPartsFragment = { __typename: 'FeaturedProperty', title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> };
+export type FeaturedPropertyPartsFragment = { __typename: 'FeaturedProperty', title: string, tag: string | null, description: string, price: string, area: string, propertyType: string, configuration: string | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> };
 
 export type OngoingProjectPartsFragment = { __typename: 'OngoingProject', title: string, description: string, location: string, projectType: string, percentComplete: number | null, expectedCompletion: string | null, videoUrl: string | null, order: number | null, gallery: Array<{ __typename: 'OngoingProjectGallery', image: string, alt: string }> };
 
@@ -936,7 +932,7 @@ export type FeaturedPropertyQueryVariables = Exact<{
 }>;
 
 
-export type FeaturedPropertyQuery = { featuredProperty: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } };
+export type FeaturedPropertyQuery = { featuredProperty: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, area: string, propertyType: string, configuration: string | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } };
 
 export type FeaturedPropertyConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
@@ -948,7 +944,7 @@ export type FeaturedPropertyConnectionQueryVariables = Exact<{
 }>;
 
 
-export type FeaturedPropertyConnectionQuery = { featuredPropertyConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, areaSqft: number, propertyType: string, bedrooms: number | null, bathrooms: number | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } | null } | null> | null } };
+export type FeaturedPropertyConnectionQuery = { featuredPropertyConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'FeaturedProperty', id: string, title: string, tag: string | null, description: string, price: string, area: string, propertyType: string, configuration: string | null, locality: string, possession: string | null, facing: string | null, featured: boolean | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery: Array<{ __typename: 'FeaturedPropertyGallery', image: string, alt: string }> } | null } | null> | null } };
 
 export type OngoingProjectQueryVariables = Exact<{
   relativePath: string;
@@ -1045,10 +1041,9 @@ export const FeaturedPropertyPartsFragmentDoc = gql`
   tag
   description
   price
-  areaSqft
+  area
   propertyType
-  bedrooms
-  bathrooms
+  configuration
   locality
   possession
   facing

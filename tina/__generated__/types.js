@@ -24,10 +24,9 @@ export const FeaturedPropertyPartsFragmentDoc = gql`
   tag
   description
   price
-  areaSqft
+  area
   propertyType
-  bedrooms
-  bathrooms
+  configuration
   locality
   possession
   facing

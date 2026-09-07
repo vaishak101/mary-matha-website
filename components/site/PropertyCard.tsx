@@ -4,11 +4,10 @@ import type { FeaturedProperty } from "@/lib/content";
 
 function specChips(p: FeaturedProperty): string[] {
   const candidates = [
-    `${p.areaSqft.toLocaleString("en-IN")} sq ft`,
-    p.bedrooms ? `${p.bedrooms} Bed` : null,
-    p.bathrooms ? `${p.bathrooms} Bath` : null,
+    p.area ? `${p.area} sq ft` : null,
+    p.configuration || null,
     p.locality,
-    !p.bedrooms ? p.propertyType : null,
+    !p.configuration ? p.propertyType : null,
     p.possession,
   ].filter(Boolean) as string[];
   return [...new Set(candidates)].slice(0, 4);

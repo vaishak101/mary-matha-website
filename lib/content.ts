@@ -20,10 +20,9 @@ export type FeaturedProperty = {
   tag?: string;
   description: string;
   price: string;
-  areaSqft: number;
+  area: string;
   propertyType: string;
-  bedrooms?: number;
-  bathrooms?: number;
+  configuration?: string;
   locality: string;
   possession?: string;
   facing?: string;
