@@ -38,9 +38,9 @@ const INTENTS: Record<
 };
 
 const inputClass =
-  "w-full border border-line-strong bg-cream px-3.5 py-3 text-[0.9375rem] text-ink placeholder:text-muted/80 focus-visible:border-maroon";
+  "w-full border border-line-strong bg-cream px-3.5 py-3 text-[1rem] text-ink placeholder:text-muted/80 focus-visible:border-maroon";
 const labelClass =
-  "mb-1.5 block font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted";
+  "mb-1.5 block font-mono text-[11px] uppercase tracking-[0.16em] text-muted";
 
 export function EnquiryForm() {
   const [intent, setIntent] = useState<Intent>("Buy");
@@ -96,7 +96,7 @@ export function EnquiryForm() {
         >
           Thank you — your enquiry is in.
         </p>
-        <p className="mx-auto mt-2 max-w-[28rem] text-[0.9375rem] text-ink-soft">
+        <p className="mx-auto mt-2 max-w-[28rem] text-[1rem] text-ink-soft">
           We call back within a working day. If it&rsquo;s urgent, reach us
           directly on {SITE.phonePrimary.display} or WhatsApp.
         </p>
@@ -123,7 +123,7 @@ export function EnquiryForm() {
                 type="button"
                 onClick={() => setIntent(key)}
                 aria-pressed={intent === key}
-                className={`flex-1 basis-[30%] py-3 text-[0.875rem] tracking-[0.04em] transition-colors sm:basis-0 ${
+                className={`flex-1 basis-[30%] py-3 text-[0.9375rem] tracking-[0.04em] transition-colors sm:basis-0 ${
                   intent === key
                     ? "bg-maroon text-cream"
                     : "bg-cream text-maroon hover:bg-cream-alt"
@@ -197,12 +197,12 @@ export function EnquiryForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="btn btn-gold mt-4 w-full rounded-none py-4 text-[0.9375rem] disabled:opacity-70"
+          className="btn btn-gold mt-4 w-full rounded-none py-4 text-[1rem] disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : cfg.submit}
         </button>
 
-        <p aria-live="polite" className="mt-3 min-h-[1.25rem] text-[0.8125rem]">
+        <p aria-live="polite" className="mt-3 min-h-[1.25rem] text-[0.875rem]">
           {status === "error" && (
             <span className="text-maroon">
               That didn&rsquo;t go through. Please call {SITE.phonePrimary.display}{" "}
@@ -257,7 +257,7 @@ export function EnquiryForm() {
           <span className="block font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted">
             Visit the office
           </span>
-          <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-soft">
+          <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-soft">
             {SITE.address.line}
           </p>
           <div className="mt-3 aspect-[4/3] overflow-hidden border border-line">
@@ -275,7 +275,7 @@ export function EnquiryForm() {
             href={SITE.mapLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-block border-b border-gold pb-0.5 text-[0.8125rem] text-maroon"
+            className="mt-2 inline-block border-b border-gold pb-0.5 text-[0.875rem] text-maroon"
           >
             Open in Google Maps
           </a>

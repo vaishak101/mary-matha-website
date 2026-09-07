@@ -23,7 +23,7 @@ export function Testimonials() {
           </Reveal>
         ) : (
           <Reveal className="mx-auto max-w-[46rem] border border-dashed border-line-strong bg-cream-alt px-6 py-12 text-center">
-            <p className="text-[0.9375rem] text-ink-soft">
+            <p className="text-[1rem] text-ink-soft">
               Reviews from the families we&rsquo;ve worked with will appear here.
             </p>
           </Reveal>
