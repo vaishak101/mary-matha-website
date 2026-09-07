@@ -1,9 +1,24 @@
 {
   "items": [
-    { "value": "30", "label": "Years of service" },
-    { "value": "500+", "label": "Projects delivered" },
-    { "value": "1,200+", "label": "Loans assisted" },
-    { "value": "800+", "label": "Families served" },
-    { "value": "12", "label": "Locations covered" }
+    {
+      "value": "30",
+      "label": "Years of service"
+    },
+    {
+      "value": "500+",
+      "label": "Projects delivered"
+    },
+    {
+      "value": "800+",
+      "label": "Loans assisted"
+    },
+    {
+      "value": "800+",
+      "label": "Families served"
+    },
+    {
+      "value": "12",
+      "label": "Locations covered"
+    }
   ]
 }

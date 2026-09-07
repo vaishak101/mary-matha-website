@@ -16,11 +16,11 @@ export const SITE = {
   description:
     "Trusted real estate solutions and construction services across Vasai–Virar since 1996 — buy, sell, rent, build and renovate, built on quality, trust and excellence.",
 
-  phonePrimary: { display: "+91 80873 53144", tel: "+918087555144" },
+  phonePrimary: { display: "+91 80873 53144", tel: "+918087353144" },
   phoneSecondary: { display: "+91 98650 64257", tel: "+919865064257" },
   whatsapp: {
-    number: "918087555144",
-    url: "https://wa.me/918087555144",
+    number: "918087353144",
+    url: "https://wa.me/918087353144",
   },
   email: "marymatha1970@gmail.com",
 

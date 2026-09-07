@@ -72,12 +72,12 @@ function StatItem({ stat, run }: { stat: Stat; run: boolean }) {
   }, [run, parsed]);
 
   return (
-    <div className="grow basis-1/2 border-b border-r border-gold/20 bg-maroon-deep px-[18px] py-[clamp(1.5rem,4vw,2.5rem)] text-center sm:basis-1/3 sm:grow-0 lg:basis-1/5">
+    <div className="min-w-0 border-b border-r border-gold/20 bg-maroon-deep px-3.5 py-[clamp(1.5rem,4vw,2.5rem)] text-center [&:last-child:nth-child(odd)]:col-span-2 sm:[&:last-child:nth-child(odd)]:col-span-1">
       <div
         className="tnum leading-none text-gold-light"
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(2.125rem, 7vw, 3.5rem)",
+          fontSize: "clamp(1.875rem, 5vw, 3rem)",
         }}
       >
         {parsed ? (
@@ -128,7 +128,7 @@ export function StatsBand({ items }: { items: Stat[] }) {
   return (
     <div
       ref={ref}
-      className="flex flex-wrap justify-center border-l border-t border-gold/20 bg-maroon-deep"
+      className="grid grid-cols-2 border-l border-t border-gold/20 bg-maroon-deep sm:grid-cols-3 lg:grid-cols-5"
     >
       {items.map((stat) => (
         <StatItem key={stat.label} stat={stat} run={run} />
