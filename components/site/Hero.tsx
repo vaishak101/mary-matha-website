@@ -10,7 +10,8 @@ export function Hero() {
       id="top"
       className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* two background images — slide in from each side, then the text animates */}
+      {/* two background images — glide in from each side, then the text animates.
+         Inner edges fade out (mask) so the two halves never meet in a hard seam. */}
       <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
         <div className="hero-img-l relative overflow-hidden">
           <Image
@@ -20,9 +21,15 @@ export function Hero() {
             priority
             sizes="50vw"
             className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+            style={{
+              maskImage:
+                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
+            }}
           />
         </div>
-        <div className="hero-img-r relative overflow-hidden border-l border-gold/10">
+        <div className="hero-img-r relative overflow-hidden">
           <Image
             src="/uploads/right-image.jpg"
             alt=""
@@ -30,6 +37,12 @@ export function Hero() {
             priority
             sizes="50vw"
             className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+            style={{
+              maskImage:
+                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
+            }}
           />
         </div>
       </div>
@@ -38,7 +51,7 @@ export function Hero() {
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.95) 0%, rgba(58,10,18,0.82) 42%, rgba(58,10,18,0.45) 100%)",
+            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.98) 0%, rgba(58,10,18,0.85) 44%, rgba(58,10,18,0.45) 100%)",
         }}
       />
       {/* survey line */}
