@@ -3,7 +3,6 @@
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Carousel } from "./Carousel";
-import { Placeholder } from "./Placeholder";
 import { CloseIcon } from "./icons";
 import { resolveVideo } from "@/lib/video";
 import type { ProjectView } from "./project-types";
@@ -108,35 +107,32 @@ export function ProjectModal({
             {project.description}
           </p>
 
-          <div className="mt-5">
-            {video?.kind === "embed" ? (
-              <div className="relative aspect-video w-full border border-line">
-                <iframe
+          {video && (
+            <div className="mt-5">
+              {video.kind === "embed" ? (
+                <div className="relative aspect-video w-full border border-line">
+                  <iframe
+                    src={video.src}
+                    title={`${project.title} — walkthrough video`}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
+              ) : (
+                <video
                   src={video.src}
-                  title={`${project.title} — walkthrough video`}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
-            ) : video?.kind === "file" ? (
-              <video
-                src={video.src}
-                controls
-                playsInline
-                preload="metadata"
-                className="aspect-video w-full border border-line bg-maroon-dark"
-              >
-                <track kind="captions" />
-              </video>
-            ) : (
-              <Placeholder
-                label="Walkthrough video — coming soon"
-                ratio="16 / 9"
-              />
-            )}
-          </div>
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="aspect-video w-full border border-line bg-maroon-dark"
+                >
+                  <track kind="captions" />
+                </video>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>,
