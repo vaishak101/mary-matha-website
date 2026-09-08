@@ -55,8 +55,8 @@ var sharedProjectFields = [
   {
     type: "string",
     name: "videoUrl",
-    label: "Walkthrough video link",
-    description: "Optional. Paste a YouTube or Vimeo link \u2014 do not upload video files. Shown in the pop-up."
+    label: "Walkthrough video",
+    description: "Optional, shown in the pop-up. Best option: a YouTube or Vimeo link (set it to \u201CUnlisted\u201D on YouTube so it stays private). You can also paste a direct video-file link (\u2026/clip.mp4). Only upload a file here as a last resort \u2014 keep it short and well under 20 MB, as it goes into the code repository permanently."
   },
   {
     type: "number",

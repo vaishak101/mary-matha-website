@@ -1,0 +1,19 @@
+{
+  "title": "St.john the baptist malankara church",
+  "description": "This project involved the complete renovation of the church, covering both the exterior architecture and the interior sanctuary. The façade was refreshed with detailed Gothic-inspired elements, pointed arches, ornamental features and restored architectural finishes.\n\nInside, the sanctuary was transformed with rich wooden paneling, intricate decorative work, a custom altar backdrop and carefully integrated lighting, creating a warm and dignified space for worship.\n\nThe project focused on bringing together craftsmanship, architectural detailing and modern renovation techniques, while maintaining the traditional character and spiritual essence of the church.",
+  "location": "Vasai West",
+  "projectType": "Renovation",
+  "completedYear": 2023,
+  "gallery": [
+    {
+      "image": "/uploads/church.jpeg",
+      "alt": "Church front"
+    },
+    {
+      "image": "/uploads/church-2.jpeg",
+      "alt": "Interior"
+    }
+  ],
+  "videoUrl": "",
+  "order": 2
+}

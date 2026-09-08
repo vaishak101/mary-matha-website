@@ -3,9 +3,8 @@
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Carousel } from "./Carousel";
-import { Placeholder } from "./Placeholder";
 import { CloseIcon } from "./icons";
-import { toEmbedUrl } from "@/lib/video";
+import { resolveVideo } from "@/lib/video";
 import type { ProjectView } from "./project-types";
 
 export function ProjectModal({
@@ -17,7 +16,7 @@ export function ProjectModal({
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
-  const embed = toEmbedUrl(project.videoUrl);
+  const video = resolveVideo(project.videoUrl);
 
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null;
@@ -108,25 +107,32 @@ export function ProjectModal({
             {project.description}
           </p>
 
-          <div className="mt-5">
-            {embed ? (
-              <div className="relative aspect-video w-full border border-line">
-                <iframe
-                  src={embed}
-                  title={`${project.title} — walkthrough video`}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
-            ) : (
-              <Placeholder
-                label="Walkthrough video — coming soon"
-                ratio="16 / 9"
-              />
-            )}
-          </div>
+          {video && (
+            <div className="mt-5">
+              {video.kind === "embed" ? (
+                <div className="relative aspect-video w-full border border-line">
+                  <iframe
+                    src={video.src}
+                    title={`${project.title} — walkthrough video`}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
+              ) : (
+                <video
+                  src={video.src}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="aspect-video w-full border border-line bg-maroon-dark"
+                >
+                  <track kind="captions" />
+                </video>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>,

@@ -51,7 +51,7 @@ export function Hero() {
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.98) 0%, rgba(58,10,18,0.85) 44%, rgba(58,10,18,0.45) 100%)",
+            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.98) 0%, rgba(58,10,18,0.75) 44%, rgba(58,10,18,0.45) 100%)",
         }}
       />
       {/* survey line */}
