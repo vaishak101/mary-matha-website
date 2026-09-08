@@ -49,7 +49,7 @@ export function Services() {
               <p className="kicker mb-3 text-gold">
                 {craft.numeral}. {craft.label}
               </p>
-              <h3 className="h-3 text-ink">{craft.heading}</h3>
+              <h3 className="h-3 text-ink leading-1.5">{craft.heading}</h3>
               <p
                 className="mt-4 mb-4 text-maroon"
                 style={{

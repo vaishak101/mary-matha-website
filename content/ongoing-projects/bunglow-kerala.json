@@ -1,0 +1,24 @@
+{
+  "title": "Bunglow @ Kerala",
+  "description": "A new residential bungalow currently under construction in Kerala, developed with a focus on contemporary architecture, functionality and a comfortable family-oriented living experience.\n\nThe project is being executed from the ground up, covering the structural work, architectural elements, exterior finishes and planned interior development.\n\nProject focus:\n\n📍 Location: Kerala\n🏗️ New bungalow construction\n🏠 Contemporary residential design\n🧱 End-to-end construction execution\n🪟 Emphasis on natural light and ventilation\n🌿 Designed to complement the Kerala environment\n🎨 Exterior and interior finishing in progress\n\nCurrently under execution, with the project progressing from construction to finishing and interiors.",
+  "location": "Kerala",
+  "projectType": "Full Bunglow Built",
+  "percentComplete": 40,
+  "expectedCompletion": "December 2026",
+  "gallery": [
+    {
+      "image": "/uploads/bung-1.jpeg",
+      "alt": "Front Left "
+    },
+    {
+      "image": "/uploads/bung-2.jpeg",
+      "alt": "Right "
+    },
+    {
+      "image": "/uploads/bung-3.jpeg",
+      "alt": "Front"
+    }
+  ],
+  "videoUrl": "",
+  "order": 1
+}
