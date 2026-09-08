@@ -1,5 +1,5 @@
 /**
- * Static site content — the parts that live in code, not the CMS.
+ * Static site content - the parts that live in code, not the CMS.
  * Header, hero, services, workflow, enquiry form and footer read from here.
  */
 
@@ -14,7 +14,7 @@ export const SITE = {
   established: 2000,
   region: "Vasai–Virar",
   description:
-    "Trusted real estate solutions and construction services across Vasai–Virar since 2000 — buy, sell, rent, build and renovate, built on quality, trust and excellence.",
+    "Trusted real estate solutions and construction services across Vasai–Virar since 2000 - buy, sell, rent, build and renovate, built on quality, trust and excellence.",
 
   phonePrimary: { display: "+91 80873 53144", tel: "+918087353144" },
   phoneSecondary: { display: "+91 96650 64257", tel: "+919665064257" },
@@ -80,7 +80,7 @@ export const NAV = [
 ] as const;
 
 /**
- * Web3Forms access key. Public by design — it's meant to live in client code
+ * Web3Forms access key. Public by design - it's meant to live in client code
  * (see web3forms.com docs). Baked in so the enquiry form works on every
  * environment without extra config; set NEXT_PUBLIC_WEB3FORMS_KEY to override
  * (e.g. a separate key for staging). Regenerate at web3forms.com if it's abused.

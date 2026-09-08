@@ -25,7 +25,7 @@ function formatNum(value: number, decimals: number) {
   });
 }
 
-/** Cubic-bezier(0.16, 1, 0.3, 1) — the requested "smooth, decelerating" curve. */
+/** Cubic-bezier(0.16, 1, 0.3, 1) - the requested "smooth, decelerating" curve. */
 function makeBezier(x1: number, y1: number, x2: number, y2: number) {
   const A = (a: number, b: number) => 1 - 3 * b + 3 * a;
   const B = (a: number, b: number) => 3 * b - 6 * a;

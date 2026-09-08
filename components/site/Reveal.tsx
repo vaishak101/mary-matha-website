@@ -42,7 +42,7 @@ export function Reveal({
       return;
     }
 
-    // Already in (or near) view on mount — reveal right away.
+    // Already in (or near) view on mount - reveal right away.
     if (node.getBoundingClientRect().top < window.innerHeight * 1.1) {
       show();
       return;

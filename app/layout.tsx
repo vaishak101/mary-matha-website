@@ -22,8 +22,8 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — Real Estate & Construction in Vasai–Virar`,
-    template: `%s — ${SITE.name}`,
+    default: `${SITE.name} - Real Estate & Construction in Vasai–Virar`,
+    template: `%s - ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} — Real Estate & Construction`,
+    title: `${SITE.name} - Real Estate & Construction`,
     description: SITE.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — Real Estate & Construction`,
+    title: `${SITE.name} - Real Estate & Construction`,
     description: SITE.description,
   },
   alternates: {

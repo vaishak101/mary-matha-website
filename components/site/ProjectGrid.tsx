@@ -29,7 +29,7 @@ function Card({
       <div className={`relative ${ongoing ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
         <MediaImage
           src={cover?.image}
-          alt={cover?.alt ?? `${project.title} — photo`}
+          alt={cover?.alt ?? `${project.title} - photo`}
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
         />
         <span
@@ -83,7 +83,7 @@ export function ProjectGrid({
           </div>
         ) : (
           <p className="border border-dashed border-line-strong bg-cream-panel px-5 py-8 text-[1rem] text-ink-soft">
-            No projects under construction right now — see the completed work
+            No projects under construction right now - see the completed work
             below.
           </p>
         )}

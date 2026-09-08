@@ -10,7 +10,7 @@ export function Hero() {
       id="top"
       className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* two background images — glide in from each side, then the text animates.
+      {/* two background images - glide in from each side, then the text animates.
          Inner edges fade out (mask) so the two halves never meet in a hard seam. */}
       <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
         <div className="hero-img-l relative overflow-hidden">
@@ -109,7 +109,7 @@ export function Hero() {
             <a
               key={pill}
               href="#contact"
-              aria-label={`${pill} — go to the enquiry form`}
+              aria-label={`${pill} - go to the enquiry form`}
               className={`flex-1 py-[0.7rem] text-center text-[clamp(0.7rem,2.5vw,0.9rem)] uppercase tracking-[0.1em] text-cream transition-colors duration-200 hover:bg-gold/15 hover:text-gold-light focus-visible:bg-gold/15 focus-visible:text-gold-light motion-reduce:transition-none ${
                 i > 0 ? "border-l border-gold/35" : ""
               }`}

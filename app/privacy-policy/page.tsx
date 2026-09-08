@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
       <h2>Information collected automatically</h2>
       <p>
         Like any website, ours is served by a hosting provider that keeps
-        standard server logs &mdash; your IP address, browser type, the pages you
+        standard server logs - your IP address, browser type, the pages you
         request and the time of the request. These logs are used only to run the
         site securely and diagnose problems. We do <strong>not</strong> use
         advertising trackers, analytics cookies, or any script that builds a
@@ -154,7 +154,7 @@ export default function PrivacyPolicyPage() {
       </p>
 
       <p style={{ marginTop: "2.5rem", fontStyle: "italic" }}>
-        Placeholder text &mdash; please have this reviewed against your actual
+        Placeholder text - please have this reviewed against your actual
         data practices and applicable law (including the DPDP Act, 2023) before
         launch.
       </p>

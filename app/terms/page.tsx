@@ -53,7 +53,7 @@ export default function TermsPage() {
 
       <h2>Acceptable use</h2>
       <p>
-        You agree not to misuse the site &mdash; for example, by submitting false
+        You agree not to misuse the site - for example, by submitting false
         details or spam through the form, sending automated or bulk requests,
         attempting to gain unauthorised access, scraping content at scale, or
         doing anything that disrupts the site for others.
@@ -76,7 +76,7 @@ export default function TermsPage() {
 
       <h2>External links and embedded services</h2>
       <p>
-        This site links to and embeds third-party services &mdash; including
+        This site links to and embeds third-party services - including
         Web3Forms (enquiry form), Google Maps (office location), YouTube (project
         videos) and WhatsApp. Those services operate under their own terms and
         privacy policies, and we are not responsible for their content or
@@ -112,7 +112,7 @@ export default function TermsPage() {
       </p>
 
       <p style={{ marginTop: "2.5rem", fontStyle: "italic" }}>
-        Placeholder text &mdash; please have this reviewed by a legal advisor and
+        Placeholder text - please have this reviewed by a legal advisor and
         confirm the RERA disclosures required for your listings before launch.
       </p>
     </LegalLayout>

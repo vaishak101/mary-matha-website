@@ -43,7 +43,7 @@ export function Header() {
         <Link
           href="/#top"
           className="flex items-center"
-          aria-label={`${SITE.legalName} — home`}
+          aria-label={`${SITE.legalName} - home`}
         >
           <Logo
             variant="wordmark"

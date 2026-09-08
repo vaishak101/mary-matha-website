@@ -4,7 +4,7 @@ import { isSitePublished } from "@/lib/content";
 
 export default function robots(): MetadataRoute.Robots {
   if (!isSitePublished()) {
-    // Site not live yet — keep the "coming soon" page out of search.
+    // Site not live yet - keep the "coming soon" page out of search.
     return { rules: { userAgent: "*", disallow: "/" } };
   }
   return {

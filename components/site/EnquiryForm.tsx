@@ -13,27 +13,27 @@ const INTENTS: Record<
   Buy: {
     label: "Budget & preferred area",
     placeholder: "e.g. up to ₹60L, 2 BHK in Vasai West",
-    submit: "Send enquiry — buying",
+    submit: "Send enquiry - buying",
   },
   Sell: {
     label: "What are you selling?",
     placeholder: "e.g. 1 BHK, 444 sq ft, Nalasopara",
-    submit: "Send enquiry — selling",
+    submit: "Send enquiry - selling",
   },
   Rent: {
     label: "Rental need & area",
     placeholder: "e.g. 2 BHK on rent, Virar, for family",
-    submit: "Send enquiry — renting",
+    submit: "Send enquiry - renting",
   },
   Build: {
     label: "Plot size & location",
     placeholder: "e.g. 1200 sq ft plot, Virar East",
-    submit: "Send enquiry — building",
+    submit: "Send enquiry - building",
   },
   Renovate: {
     label: "What needs renovating?",
     placeholder: "e.g. full 2 BHK, kitchen and bathrooms",
-    submit: "Send enquiry — renovation",
+    submit: "Send enquiry - renovation",
   },
 };
 
@@ -106,18 +106,18 @@ export function EnquiryForm() {
     setStatus("sending");
 
     // Send as FormData (no custom headers) so the request stays a "simple"
-    // CORS request — Web3Forms rejects the preflight that a JSON body triggers.
+    // CORS request - Web3Forms rejects the preflight that a JSON body triggers.
     const payload = new FormData();
     payload.append("access_key", WEB3FORMS_KEY);
-    payload.append("subject", `Website enquiry — ${intent} — ${name}`);
+    payload.append("subject", `Website enquiry - ${intent} - ${name}`);
     payload.append("from_name", SITE.legalName);
     if (email) payload.append("replyto", email);
     payload.append("Intent", intent);
     payload.append("Name", name);
-    payload.append("Phone / WhatsApp", phone || "—");
-    payload.append("Email", email || "—");
+    payload.append("Phone / WhatsApp", phone || "-");
+    payload.append("Email", email || "-");
     payload.append(cfg.label, String(data.get("detail") || ""));
-    payload.append("Notes", String(data.get("notes") || "—"));
+    payload.append("Notes", String(data.get("notes") || "-"));
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -142,7 +142,7 @@ export function EnquiryForm() {
           className="text-maroon"
           style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem" }}
         >
-          Thank you — your enquiry is in.
+          Thank you - your enquiry is in.
         </p>
         <p className="mx-auto mt-2 max-w-[28rem] text-[1rem] text-ink-soft">
           We call back within a working day. If it&rsquo;s urgent, reach us
@@ -163,7 +163,7 @@ export function EnquiryForm() {
     <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
       <form onSubmit={onSubmit} noValidate>
         <fieldset>
-          <legend className={labelClass}>I&rsquo;m here to —</legend>
+          <legend className={labelClass}>I&rsquo;m here to -</legend>
           <div className="mb-6 flex flex-wrap gap-px bg-line-strong">
             {(Object.keys(INTENTS) as Intent[]).map((key) => (
               <button
@@ -226,7 +226,7 @@ export function EnquiryForm() {
           </div>
         </div>
         <p className="mt-1.5 text-[0.8125rem] text-muted">
-          Give us a phone number or an email &mdash; at least one so we can reach
+          Give us a phone number or an email - at least one so we can reach
           you.
         </p>
 

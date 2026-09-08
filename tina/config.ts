@@ -7,7 +7,7 @@ const branch =
   "main";
 
 /* Fields shared by Ongoing and Completed projects. Kept in one place so the
-   two collections stay in step — see the note in the README on why they're
+   two collections stay in step - see the note in the README on why they're
    separate collections rather than one with a status toggle. */
 const sharedProjectFields: TinaField[] = [
   {
@@ -67,7 +67,7 @@ const sharedProjectFields: TinaField[] = [
     name: "videoUrl",
     label: "Walkthrough video",
     description:
-      "Optional, shown in the pop-up. Best option: a YouTube or Vimeo link (set it to “Unlisted” on YouTube so it stays private). You can also paste a direct video-file link (…/clip.mp4). Only upload a file here as a last resort — keep it short and well under 20 MB, as it goes into the code repository permanently.",
+      "Optional, shown in the pop-up. Best option: a YouTube or Vimeo link (set it to “Unlisted” on YouTube so it stays private). You can also paste a direct video-file link (…/clip.mp4). Only upload a file here as a last resort - keep it short and well under 20 MB, as it goes into the code repository permanently.",
   },
   {
     type: "number",
@@ -110,7 +110,7 @@ export default defineConfig({
             name: "published",
             label: "Website is LIVE",
             description:
-              "ON — the full website is public. OFF — visitors see the “Coming soon” page. After you change this and save, it takes about a minute for the website to update.",
+              "ON - the full website is public. OFF - visitors see the “Coming soon” page. After you change this and save, it takes about a minute for the website to update.",
           },
           {
             type: "object",
@@ -191,7 +191,7 @@ export default defineConfig({
             name: "area",
             label: "Area (sq ft)",
             description:
-              'A single figure or a range — written as you want it shown, e.g. "735" or "422 – 735".',
+              'A single figure or a range - written as you want it shown, e.g. "735" or "422 – 735".',
             required: true,
           },
           {
@@ -285,7 +285,7 @@ export default defineConfig({
             type: "number",
             name: "percentComplete",
             label: "Percent complete",
-            description: "Optional. A number from 0 to 100 — shown as “60% done”.",
+            description: "Optional. A number from 0 to 100 - shown as “60% done”.",
           },
           {
             type: "string",
@@ -347,13 +347,13 @@ export default defineConfig({
             name: "items",
             label: "Stats",
             description:
-              "The counting numbers in the maroon band. Keep to 4–6. Type the value exactly as it should read — the number animates, the rest stays put.",
+              "The counting numbers in the maroon band. Keep to 4–6. Type the value exactly as it should read - the number animates, the rest stays put.",
             list: true,
             ui: {
               itemProps: (item) => ({
                 label:
                   item?.value && item?.label
-                    ? `${item.value} — ${item.label}`
+                    ? `${item.value} - ${item.label}`
                     : "Stat",
               }),
               defaultItem: { value: "100+", label: "Projects delivered" },
