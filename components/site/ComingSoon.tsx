@@ -82,7 +82,7 @@ export function ComingSoon({ headline, message, showContact }: ComingSoonProps) 
       )}
 
       <p className="mt-14 max-w-full text-balance font-mono text-[10.5px] uppercase leading-relaxed tracking-[0.14em] text-cream/45">
-        {`${SITE.legalName} · © ${SITE.established}–${new Date().getFullYear()} `}
+        {`${SITE.legalName} · © ${new Date().getFullYear()}`}
       </p>
     </main>
   );

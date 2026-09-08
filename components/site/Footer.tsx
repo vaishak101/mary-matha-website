@@ -88,7 +88,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-gold/20 pt-5 text-center text-[12.5px] text-cream/50">
-          © {SITE.established}–{year} {SITE.legalName}. All rights reserved.
+          © {year} {SITE.legalName}. All rights reserved.
         </div>
       </div>
     </footer>
