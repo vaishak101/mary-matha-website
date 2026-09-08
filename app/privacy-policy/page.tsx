@@ -130,33 +130,10 @@ export default function PrivacyPolicyPage() {
         You can ask us to delete your details at any time.
       </p>
 
-      <h2>Your rights</h2>
-      <p>
-        You can ask to see, correct, or delete the information we hold about you,
-        or withdraw your consent to us contacting you. Write to us at{" "}
-        <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call{" "}
-        <a href={`tel:${SITE.phonePrimary.tel}`}>{SITE.phonePrimary.display}</a>.
-        If you are not satisfied with our response, you may raise the matter with
-        the Data Protection Board of India under the Digital Personal Data
-        Protection Act, 2023.
-      </p>
-
-      <h2>Children</h2>
-      <p>
-        This website and its enquiry form are intended for adults. We do not
-        knowingly collect information from children.
-      </p>
-
       <h2>Changes to this policy</h2>
       <p>
         If this policy changes, we will update the date above. Significant
         changes will be noted on this page.
-      </p>
-
-      <p style={{ marginTop: "2.5rem", fontStyle: "italic" }}>
-        Placeholder text - please have this reviewed against your actual
-        data practices and applicable law (including the DPDP Act, 2023) before
-        launch.
       </p>
     </LegalLayout>
   );
