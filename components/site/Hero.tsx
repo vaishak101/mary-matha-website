@@ -10,48 +10,46 @@ export function Hero() {
       id="top"
       className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* two background images - glide in from each side, then the text animates.
-         Inner edges fade out (mask) so the two halves never meet in a hard seam. */}
-      <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
-        <div className="hero-img-l relative overflow-hidden">
+      {/* Load sequence: the two photos glide in at full strength, then the
+         maroon wash fades over them, then the text. The halves overlap in the
+         middle and each fades its inner edge, so they cross-dissolve rather
+         than meet at a seam. */}
+      <div className="absolute inset-0" aria-hidden>
+        <div className="hero-img-l absolute inset-y-0 left-0 w-[64%] overflow-hidden">
           <Image
             src="/uploads/left-image.jpg"
             alt=""
             fill
             priority
-            sizes="50vw"
-            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-            }}
+            sizes="64vw"
+            className="object-cover"
+            style={{ objectPosition: "38% center" }}
           />
         </div>
-        <div className="hero-img-r relative overflow-hidden">
+        <div className="hero-img-r absolute inset-y-0 right-0 w-[66%] overflow-hidden">
           <Image
             src="/uploads/right-image.jpg"
             alt=""
             fill
             priority
-            sizes="50vw"
-            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+            sizes="66vw"
+            className="object-cover"
             style={{
+              objectPosition: "62% center",
               maskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
+                "linear-gradient(to right, transparent 0%, #000 45%)",
               WebkitMaskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
+                "linear-gradient(to right, transparent 0%, #000 45%)",
             }}
           />
         </div>
       </div>
       <div
-        className="absolute inset-0"
+        className="hero-veil absolute inset-0"
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 82% 78% at 50% 45%, rgba(58,10,18,0.98) 0%, rgba(58,10,18,0.75) 44%, rgba(58,10,18,0.45) 100%)",
+            "radial-gradient(ellipse 80% 80% at 50% 48%, rgba(58,10,18,0.95) 0%, rgba(58,10,18,0.66) 44%, rgba(58,10,18,0.32) 100%)",
         }}
       />
       {/* survey line */}
