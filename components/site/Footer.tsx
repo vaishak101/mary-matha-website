@@ -12,10 +12,10 @@ export function Footer() {
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Logo
-              variant="name"
+              variant="wordmark"
               tone="dark"
-              sizes="240px"
-              className="h-[30px] w-auto sm:h-9"
+              sizes="200px"
+              className="h-11 w-auto"
             />
             <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-kicker">
               {SITE.tagline}

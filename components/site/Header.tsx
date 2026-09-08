@@ -46,11 +46,11 @@ export function Header() {
           aria-label={`${SITE.legalName} — home`}
         >
           <Logo
-            variant="name"
+            variant="wordmark"
             tone="light"
             priority
-            sizes="300px"
-            className="h-[30px] w-auto sm:h-9"
+            sizes="320px"
+            className="h-11 w-auto sm:h-[52px]"
           />
         </Link>
 
