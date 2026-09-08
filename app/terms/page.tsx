@@ -77,7 +77,11 @@ export default function TermsPage() {
       <h2>Intellectual property</h2>
       <p>
         The text, layout, and images on this site belong to {SITE.legalName}{" "}
-        unless stated otherwise, and may not be reused without permission.
+        unless stated otherwise, and may not be reused without permission. Some
+        listing images are taken from the property&rsquo;s or developer&rsquo;s
+        official pages so the listing reflects the actual project; those images
+        remain the property of their respective owners and are used here only to
+        represent the property accurately.
       </p>
 
       <h2>External links and embedded services</h2>
