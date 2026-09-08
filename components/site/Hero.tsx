@@ -4,14 +4,29 @@ import { SITE } from "@/lib/site";
 
 const PILLS = ["Buy", "Sell", "Rent", "Build", "Renovate"];
 
+// Resting layer: the original masks — feather only the outer edge into the
+// frame; the hard inner edge is hidden by the wash.
+const REST_MASK_L =
+  "linear-gradient(to right, transparent, #000 14%, #000 100%)";
+const REST_MASK_R = "linear-gradient(to left, transparent, #000 14%, #000 100%)";
+
+// Intro layer (no wash yet): feather the inner edge too, into the paper-toned
+// ground, so the two photos never meet at a hard seam.
+const INTRO_MASK_L =
+  "linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)";
+const INTRO_MASK_R =
+  "linear-gradient(to left, transparent, #000 12%, #000 88%, transparent)";
+
 export function Hero() {
   return (
     <section
       id="top"
       className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* Load sequence: the photos glide in at full strength, then the resting
-         treatment + maroon wash fade in over them, then the text. */}
+      {/* Load sequence: the photos glide in at full strength over a paper-toned
+         ground (no maroon), then that layer fades out while the resting
+         treatment + maroon wash fade in behind it, then the text. Both layers
+         frame the photos identically, so nothing shifts when they swap. */}
 
       {/* Resting treatment — the original look, revealed as the intro fades. */}
       <div className="hero-rest absolute inset-0 grid grid-cols-2" aria-hidden>
@@ -22,12 +37,7 @@ export function Hero() {
             fill
             sizes="50vw"
             className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-            }}
+            style={{ maskImage: REST_MASK_L, WebkitMaskImage: REST_MASK_L }}
           />
         </div>
         <div className="relative overflow-hidden">
@@ -37,44 +47,38 @@ export function Hero() {
             fill
             sizes="50vw"
             className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
-            style={{
-              maskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
-            }}
+            style={{ maskImage: REST_MASK_R, WebkitMaskImage: REST_MASK_R }}
           />
         </div>
       </div>
 
-      {/* Full-strength intro — glides in from each side, then fades out. The
-         halves overlap so they cross-dissolve rather than meet at a seam. */}
-      <div className="hero-intro absolute inset-0" aria-hidden>
-        <div className="hero-intro-l absolute inset-y-0 left-0 w-[64%] overflow-hidden">
+      {/* Full-strength intro — same framing as the resting layer, glides in
+         from each side over a paper-toned ground, then fades out. */}
+      <div
+        className="hero-intro absolute inset-0 grid grid-cols-2"
+        aria-hidden
+        style={{ background: "#f1ede1" }}
+      >
+        <div className="hero-intro-l relative overflow-hidden">
           <Image
             src="/uploads/left-image.jpg"
             alt=""
             fill
             priority
-            sizes="64vw"
-            className="object-cover"
-            style={{ objectPosition: "38% center" }}
+            sizes="50vw"
+            className="object-cover object-center"
+            style={{ maskImage: INTRO_MASK_L, WebkitMaskImage: INTRO_MASK_L }}
           />
         </div>
-        <div className="hero-intro-r absolute inset-y-0 right-0 w-[66%] overflow-hidden">
+        <div className="hero-intro-r relative overflow-hidden">
           <Image
             src="/uploads/right-image.jpg"
             alt=""
             fill
             priority
-            sizes="66vw"
-            className="object-cover"
-            style={{
-              objectPosition: "62% center",
-              maskImage: "linear-gradient(to right, transparent 0%, #000 45%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, #000 45%)",
-            }}
+            sizes="50vw"
+            className="object-cover object-center"
+            style={{ maskImage: INTRO_MASK_R, WebkitMaskImage: INTRO_MASK_R }}
           />
         </div>
       </div>
