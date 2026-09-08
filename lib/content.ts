@@ -3,7 +3,7 @@ import path from "node:path";
 
 /* ------------------------------------------------------------------ *
  * Content layer. TinaCMS edits these JSON files (git-backed); the
- * public site reads them directly with `fs` at build time — no Tina
+ * public site reads them directly with `fs` at build time - no Tina
  * runtime, no client bundle, nothing to hydrate.
  * ------------------------------------------------------------------ */
 
@@ -85,7 +85,7 @@ const SITE_SETTINGS_FALLBACK: SiteSettings = {
   comingSoon: {
     headline: "Our new website is launching soon",
     message:
-      "We're putting the finishing touches on it. In the meantime we're open for business — call or message us.",
+      "We're putting the finishing touches on it. In the meantime we're open for business - call or message us.",
     showContact: true,
   },
 };
@@ -163,7 +163,7 @@ export function getSiteSettings(): SiteSettings {
 
 /**
  * Whether the public site is live. The client controls this with the
- * "Website is LIVE" switch in the CMS — and it behaves the same in dev,
+ * "Website is LIVE" switch in the CMS - and it behaves the same in dev,
  * production and preview builds, so what you test is what ships.
  *
  * - `/preview` ignores this entirely and always renders the full site.

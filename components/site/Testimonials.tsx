@@ -13,7 +13,7 @@ export function Testimonials() {
         <Reveal className="mb-[clamp(2rem,5vw,2.5rem)] text-center">
           <h2>
             <Kicker>In their words</Kicker>
-            <span className="sr-only">— testimonials</span>
+            <span className="sr-only">- testimonials</span>
           </h2>
         </Reveal>
 

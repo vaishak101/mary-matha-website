@@ -14,7 +14,7 @@ type PlaceholderProps = {
 
 /**
  * A clearly-marked stand-in for real photography. Every one of these is a
- * "replace me" flag — grep for `Placeholder` before launch.
+ * "replace me" flag - grep for `Placeholder` before launch.
  */
 export function Placeholder({
   label,

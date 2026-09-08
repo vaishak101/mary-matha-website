@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 import { SITE, WEB3FORMS_KEY } from "@/lib/site";
 
@@ -13,27 +13,27 @@ const INTENTS: Record<
   Buy: {
     label: "Budget & preferred area",
     placeholder: "e.g. up to ₹60L, 2 BHK in Vasai West",
-    submit: "Send enquiry — buying",
+    submit: "Send enquiry - buying",
   },
   Sell: {
     label: "What are you selling?",
     placeholder: "e.g. 1 BHK, 444 sq ft, Nalasopara",
-    submit: "Send enquiry — selling",
+    submit: "Send enquiry - selling",
   },
   Rent: {
     label: "Rental need & area",
     placeholder: "e.g. 2 BHK on rent, Virar, for family",
-    submit: "Send enquiry — renting",
+    submit: "Send enquiry - renting",
   },
   Build: {
     label: "Plot size & location",
     placeholder: "e.g. 1200 sq ft plot, Virar East",
-    submit: "Send enquiry — building",
+    submit: "Send enquiry - building",
   },
   Renovate: {
     label: "What needs renovating?",
     placeholder: "e.g. full 2 BHK, kitchen and bathrooms",
-    submit: "Send enquiry — renovation",
+    submit: "Send enquiry - renovation",
   },
 };
 
@@ -44,10 +44,38 @@ const labelClass =
 
 export function EnquiryForm() {
   const [intent, setIntent] = useState<Intent>("Buy");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
+  const [detail, setDetail] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "invalid"
+  >("idle");
+  const [hint, setHint] = useState("");
   const cfg = INTENTS[intent];
+
+  // A "#contact?intent=Sell&about=…" link (hero pill or property card)
+  // pre-selects the intent and pre-fills the detail field.
+  useEffect(() => {
+    const apply = () => {
+      const hash = window.location.hash;
+      const q = hash.indexOf("?");
+      if (q === -1) return;
+      const params = new URLSearchParams(hash.slice(q + 1));
+      const wanted = params.get("intent");
+      const about = params.get("about");
+      if (!wanted && !about) return;
+      if (wanted && wanted in INTENTS) setIntent(wanted as Intent);
+      if (about) {
+        setIntent("Buy");
+        setDetail(about);
+      }
+      setStatus((s) => (s === "sent" ? "idle" : s));
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    apply();
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,22 +89,41 @@ export function EnquiryForm() {
       return;
     }
 
+    const name = String(data.get("name") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const email = String(data.get("email") || "").trim();
+
+    if (!name) {
+      setHint("Please add your full name.");
+      setStatus("invalid");
+      return;
+    }
+    if (!phone && !email) {
+      setHint("Add a phone number or an email so we can reach you.");
+      setStatus("invalid");
+      return;
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setHint("That email address doesn’t look right.");
+      setStatus("invalid");
+      return;
+    }
+
     setStatus("sending");
 
     // Send as FormData (no custom headers) so the request stays a "simple"
-    // CORS request — Web3Forms rejects the preflight that a JSON body triggers.
+    // CORS request - Web3Forms rejects the preflight that a JSON body triggers.
     const payload = new FormData();
     payload.append("access_key", WEB3FORMS_KEY);
-    payload.append(
-      "subject",
-      `Website enquiry — ${intent} — ${data.get("name") || ""}`,
-    );
+    payload.append("subject", `Website enquiry - ${intent} - ${name}`);
     payload.append("from_name", SITE.legalName);
+    if (email) payload.append("replyto", email);
     payload.append("Intent", intent);
-    payload.append("Name", String(data.get("name") || ""));
-    payload.append("Phone / WhatsApp", String(data.get("phone") || ""));
+    payload.append("Name", name);
+    payload.append("Phone / WhatsApp", phone || "-");
+    payload.append("Email", email || "-");
     payload.append(cfg.label, String(data.get("detail") || ""));
-    payload.append("Notes", String(data.get("notes") || "—"));
+    payload.append("Notes", String(data.get("notes") || "-"));
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -85,7 +132,10 @@ export function EnquiryForm() {
       });
       const json = await res.json();
       setStatus(json.success ? "sent" : "error");
-      if (json.success) form.reset();
+      if (json.success) {
+        form.reset();
+        setDetail("");
+      }
     } catch {
       setStatus("error");
     }
@@ -98,7 +148,7 @@ export function EnquiryForm() {
           className="text-maroon"
           style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem" }}
         >
-          Thank you — your enquiry is in.
+          Thank you - your enquiry is in.
         </p>
         <p className="mx-auto mt-2 max-w-[28rem] text-[1rem] text-ink-soft">
           We call back within a working day. If it&rsquo;s urgent, reach us
@@ -119,7 +169,7 @@ export function EnquiryForm() {
     <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
       <form onSubmit={onSubmit} noValidate>
         <fieldset>
-          <legend className={labelClass}>I&rsquo;m here to —</legend>
+          <legend className={labelClass}>I&rsquo;m here to -</legend>
           <div className="mb-6 flex flex-wrap gap-px bg-line-strong">
             {(Object.keys(INTENTS) as Intent[]).map((key) => (
               <button
@@ -140,13 +190,20 @@ export function EnquiryForm() {
           </div>
         </fieldset>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div>
-            <label htmlFor="ef-name" className={labelClass}>
-              Full name
-            </label>
-            <input id="ef-name" name="name" required autoComplete="name" className={inputClass} />
-          </div>
+        <div>
+          <label htmlFor="ef-name" className={labelClass}>
+            Full name
+          </label>
+          <input
+            id="ef-name"
+            name="name"
+            required
+            autoComplete="name"
+            className={inputClass}
+          />
+        </div>
+
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <div>
             <label htmlFor="ef-phone" className={labelClass}>
               Phone / WhatsApp
@@ -155,13 +212,29 @@ export function EnquiryForm() {
               id="ef-phone"
               name="phone"
               type="tel"
-              required
               autoComplete="tel"
               inputMode="tel"
               className={inputClass}
             />
           </div>
+          <div>
+            <label htmlFor="ef-email" className={labelClass}>
+              Email
+            </label>
+            <input
+              id="ef-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              className={inputClass}
+            />
+          </div>
         </div>
+        <p className="mt-1.5 text-[0.8125rem] text-muted">
+          Give us a phone number or an email - at least one so we can reach
+          you.
+        </p>
 
         <div className="mt-3">
           <label htmlFor="ef-detail" className={labelClass}>
@@ -171,6 +244,8 @@ export function EnquiryForm() {
             id="ef-detail"
             name="detail"
             required
+            value={detail}
+            onChange={(e) => setDetail(e.target.value)}
             placeholder={cfg.placeholder}
             className={inputClass}
           />
@@ -207,6 +282,7 @@ export function EnquiryForm() {
         </button>
 
         <p aria-live="polite" className="mt-3 min-h-[1.25rem] text-[0.875rem]">
+          {status === "invalid" && <span className="text-maroon">{hint}</span>}
           {status === "error" && (
             <span className="text-maroon">
               That didn&rsquo;t go through. Please call {SITE.phonePrimary.display}{" "}

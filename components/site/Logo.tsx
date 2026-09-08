@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 /**
- * Mary Matha logo. Two crops — `full` (roof + wordmark + "Real Estate &
- * Construction" + key) and `wordmark` (roof + "MARY MATHA" only) — each in a
+ * Mary Matha logo. Two crops - `full` (roof + wordmark + "Real Estate &
+ * Construction" + key) and `wordmark` (roof + "MARY MATHA" only) - each in a
  * `light` treatment for cream backgrounds and a `dark` (solid gold) treatment
  * for the maroon sections.
  *
@@ -39,7 +39,7 @@ export function Logo({
   className = "",
   priority = false,
   sizes,
-  alt = "Mary Matha — Real Estate & Construction",
+  alt = "Mary Matha - Real Estate & Construction",
 }: LogoProps) {
   const a = ASSETS[variant][tone];
   return (

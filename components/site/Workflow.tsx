@@ -13,13 +13,13 @@ const STEPS: Step[] = [
     numeral: "I",
     eyebrow: "Step one",
     heading: "Requirement gathering",
-    body: "We sit with you, understand the plot, the budget and how you want to live in the space — then put it in writing.",
+    body: "We sit with you, understand the plot, the budget and how you want to live in the space - then put it in writing.",
   },
   {
     numeral: "II",
-    eyebrow: "Step two — the trust step",
+    eyebrow: "Step two - the trust step",
     heading: "Prototype & iterate",
-    body: "We show you the expected output — layouts, finishes, elevation — and change it as many times as it takes until you approve. No guesswork.",
+    body: "We show you the expected output - layouts, finishes, elevation - and change it as many times as it takes until you approve. No guesswork.",
   },
   {
     numeral: "III",
@@ -37,7 +37,7 @@ export function Workflow() {
           <Kicker>How we build</Kicker>
           <h2 className="h-sec mt-3.5">You approve it before we pour concrete</h2>
           <p className="mt-4 text-[1rem] leading-relaxed text-ink-soft">
-            The step most builders skip is the one we lead with — we show you the
+            The step most builders skip is the one we lead with - we show you the
             expected output and refine it until you&rsquo;re happy. Nothing is a
             surprise.
           </p>

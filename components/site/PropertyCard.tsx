@@ -16,6 +16,18 @@ function specChips(p: FeaturedProperty): string[] {
 export function PropertyCard({ property }: { property: FeaturedProperty }) {
   const chips = specChips(property);
 
+  // Pre-fills the enquiry form's "preferred area" field with this listing.
+  const enquiryHref = `#contact?about=${encodeURIComponent(
+    [
+      property.title,
+      property.configuration,
+      property.area ? `${property.area} sq ft` : null,
+      property.locality,
+    ]
+      .filter(Boolean)
+      .join(", "),
+  )}`;
+
   return (
     <article className="flex h-full flex-col border border-line bg-cream-panel">
       <Carousel
@@ -69,7 +81,7 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
         </div>
 
         <a
-          href="#contact"
+          href={enquiryHref}
           className="btn btn-primary w-full rounded-none"
           aria-label={`Enquire about ${property.title} in ${property.locality}`}
         >

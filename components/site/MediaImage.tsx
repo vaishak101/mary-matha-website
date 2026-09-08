@@ -11,7 +11,7 @@ type MediaImageProps = {
 };
 
 /**
- * `next/image` with `fill` — always render it inside a `position: relative`
+ * `next/image` with `fill` - always render it inside a `position: relative`
  * box that sets the aspect ratio, so there's no layout shift. Falls back to a
  * marked placeholder when there's no image yet.
  */

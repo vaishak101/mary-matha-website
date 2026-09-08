@@ -113,7 +113,7 @@ export function ProjectModal({
                 <div className="relative aspect-video w-full border border-line">
                   <iframe
                     src={video.src}
-                    title={`${project.title} — walkthrough video`}
+                    title={`${project.title} - walkthrough video`}
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

@@ -56,7 +56,7 @@ var sharedProjectFields = [
     type: "string",
     name: "videoUrl",
     label: "Walkthrough video",
-    description: "Optional, shown in the pop-up. Best option: a YouTube or Vimeo link (set it to \u201CUnlisted\u201D on YouTube so it stays private). You can also paste a direct video-file link (\u2026/clip.mp4). Only upload a file here as a last resort \u2014 keep it short and well under 20 MB, as it goes into the code repository permanently."
+    description: "Optional, shown in the pop-up. Best option: a YouTube or Vimeo link (set it to \u201CUnlisted\u201D on YouTube so it stays private). You can also paste a direct video-file link (\u2026/clip.mp4). Only upload a file here as a last resort - keep it short and well under 20 MB, as it goes into the code repository permanently."
   },
   {
     type: "number",
@@ -97,7 +97,7 @@ var config_default = defineConfig({
             type: "boolean",
             name: "published",
             label: "Website is LIVE",
-            description: "ON \u2014 the full website is public. OFF \u2014 visitors see the \u201CComing soon\u201D page. After you change this and save, it takes about a minute for the website to update."
+            description: "ON - the full website is public. OFF - visitors see the \u201CComing soon\u201D page. After you change this and save, it takes about a minute for the website to update."
           },
           {
             type: "object",
@@ -171,7 +171,7 @@ var config_default = defineConfig({
             type: "string",
             name: "area",
             label: "Area (sq ft)",
-            description: 'A single figure or a range \u2014 written as you want it shown, e.g. "735" or "422 \u2013 735".',
+            description: 'A single figure or a range - written as you want it shown, e.g. "735" or "422 \u2013 735".',
             required: true
           },
           {
@@ -257,7 +257,7 @@ var config_default = defineConfig({
             type: "number",
             name: "percentComplete",
             label: "Percent complete",
-            description: "Optional. A number from 0 to 100 \u2014 shown as \u201C60% done\u201D."
+            description: "Optional. A number from 0 to 100 - shown as \u201C60% done\u201D."
           },
           {
             type: "string",
@@ -312,11 +312,11 @@ var config_default = defineConfig({
             type: "object",
             name: "items",
             label: "Stats",
-            description: "The counting numbers in the maroon band. Keep to 4\u20136. Type the value exactly as it should read \u2014 the number animates, the rest stays put.",
+            description: "The counting numbers in the maroon band. Keep to 4\u20136. Type the value exactly as it should read - the number animates, the rest stays put.",
             list: true,
             ui: {
               itemProps: (item) => ({
-                label: item?.value && item?.label ? `${item.value} \u2014 ${item.label}` : "Stat"
+                label: item?.value && item?.label ? `${item.value} - ${item.label}` : "Stat"
               }),
               defaultItem: { value: "100+", label: "Projects delivered" }
             },
