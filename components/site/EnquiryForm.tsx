@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 import { SITE, WEB3FORMS_KEY } from "@/lib/site";
 
@@ -44,10 +44,31 @@ const labelClass =
 
 export function EnquiryForm() {
   const [intent, setIntent] = useState<Intent>("Buy");
+  const [detail, setDetail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
   const cfg = INTENTS[intent];
+
+  // A "#contact?about=…" link (from a property card) pre-fills the form.
+  useEffect(() => {
+    const apply = () => {
+      const hash = window.location.hash;
+      const q = hash.indexOf("?");
+      if (q === -1) return;
+      const about = new URLSearchParams(hash.slice(q + 1)).get("about");
+      if (!about) return;
+      setIntent("Buy");
+      setDetail(about);
+      setStatus((s) => (s === "sent" ? "idle" : s));
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    apply();
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -85,7 +106,10 @@ export function EnquiryForm() {
       });
       const json = await res.json();
       setStatus(json.success ? "sent" : "error");
-      if (json.success) form.reset();
+      if (json.success) {
+        form.reset();
+        setDetail("");
+      }
     } catch {
       setStatus("error");
     }
@@ -171,6 +195,8 @@ export function EnquiryForm() {
             id="ef-detail"
             name="detail"
             required
+            value={detail}
+            onChange={(e) => setDetail(e.target.value)}
             placeholder={cfg.placeholder}
             className={inputClass}
           />
