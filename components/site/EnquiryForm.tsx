@@ -45,9 +45,10 @@ const labelClass =
 export function EnquiryForm() {
   const [intent, setIntent] = useState<Intent>("Buy");
   const [detail, setDetail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "invalid"
+  >("idle");
+  const [hint, setHint] = useState("");
   const cfg = INTENTS[intent];
 
   // A "#contact?about=…" link (from a property card) pre-fills the form.
@@ -82,20 +83,39 @@ export function EnquiryForm() {
       return;
     }
 
+    const name = String(data.get("name") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const email = String(data.get("email") || "").trim();
+
+    if (!name) {
+      setHint("Please add your full name.");
+      setStatus("invalid");
+      return;
+    }
+    if (!phone && !email) {
+      setHint("Add a phone number or an email so we can reach you.");
+      setStatus("invalid");
+      return;
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setHint("That email address doesn’t look right.");
+      setStatus("invalid");
+      return;
+    }
+
     setStatus("sending");
 
     // Send as FormData (no custom headers) so the request stays a "simple"
     // CORS request — Web3Forms rejects the preflight that a JSON body triggers.
     const payload = new FormData();
     payload.append("access_key", WEB3FORMS_KEY);
-    payload.append(
-      "subject",
-      `Website enquiry — ${intent} — ${data.get("name") || ""}`,
-    );
+    payload.append("subject", `Website enquiry — ${intent} — ${name}`);
     payload.append("from_name", SITE.legalName);
+    if (email) payload.append("replyto", email);
     payload.append("Intent", intent);
-    payload.append("Name", String(data.get("name") || ""));
-    payload.append("Phone / WhatsApp", String(data.get("phone") || ""));
+    payload.append("Name", name);
+    payload.append("Phone / WhatsApp", phone || "—");
+    payload.append("Email", email || "—");
     payload.append(cfg.label, String(data.get("detail") || ""));
     payload.append("Notes", String(data.get("notes") || "—"));
 
@@ -164,13 +184,20 @@ export function EnquiryForm() {
           </div>
         </fieldset>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div>
-            <label htmlFor="ef-name" className={labelClass}>
-              Full name
-            </label>
-            <input id="ef-name" name="name" required autoComplete="name" className={inputClass} />
-          </div>
+        <div>
+          <label htmlFor="ef-name" className={labelClass}>
+            Full name
+          </label>
+          <input
+            id="ef-name"
+            name="name"
+            required
+            autoComplete="name"
+            className={inputClass}
+          />
+        </div>
+
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <div>
             <label htmlFor="ef-phone" className={labelClass}>
               Phone / WhatsApp
@@ -179,13 +206,29 @@ export function EnquiryForm() {
               id="ef-phone"
               name="phone"
               type="tel"
-              required
               autoComplete="tel"
               inputMode="tel"
               className={inputClass}
             />
           </div>
+          <div>
+            <label htmlFor="ef-email" className={labelClass}>
+              Email
+            </label>
+            <input
+              id="ef-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              className={inputClass}
+            />
+          </div>
         </div>
+        <p className="mt-1.5 text-[0.8125rem] text-muted">
+          Give us a phone number or an email &mdash; at least one so we can reach
+          you.
+        </p>
 
         <div className="mt-3">
           <label htmlFor="ef-detail" className={labelClass}>
@@ -233,6 +276,7 @@ export function EnquiryForm() {
         </button>
 
         <p aria-live="polite" className="mt-3 min-h-[1.25rem] text-[0.875rem]">
+          {status === "invalid" && <span className="text-maroon">{hint}</span>}
           {status === "error" && (
             <span className="text-maroon">
               That didn&rsquo;t go through. Please call {SITE.phonePrimary.display}{" "}
