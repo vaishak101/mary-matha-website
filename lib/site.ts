@@ -11,10 +11,10 @@ export const SITE = {
   tagline: "Real Estate & Construction",
   // TODO: set NEXT_PUBLIC_SITE_URL to the real domain before launch.
   url: rawUrl.replace(/\/$/, ""),
-  established: 1996,
+  established: 2000,
   region: "Vasai–Virar",
   description:
-    "Trusted real estate solutions and construction services across Vasai–Virar since 1996 — buy, sell, rent, build and renovate, built on quality, trust and excellence.",
+    "Trusted real estate solutions and construction services across Vasai–Virar since 2000 — buy, sell, rent, build and renovate, built on quality, trust and excellence.",
 
   phonePrimary: { display: "+91 80873 53144", tel: "+918087353144" },
   phoneSecondary: { display: "+91 96650 64257", tel: "+919665064257" },
@@ -51,11 +51,23 @@ export const SITE = {
     "Palghar",
   ],
 
-  // TODO: replace href values with the real profile URLs (leave "" to hide one).
+  // Leave an href "" to hide that icon.
   social: [
-    { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/" },
-    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/" },
-    { label: "YouTube", icon: "youtube", href: "https://www.youtube.com/" },
+    {
+      label: "Facebook",
+      icon: "facebook",
+      href: "https://www.facebook.com/share/19DDPdCG3c/",
+    },
+    {
+      label: "Instagram",
+      icon: "instagram",
+      href: "https://www.instagram.com/marymatha1970",
+    },
+    {
+      label: "YouTube",
+      icon: "youtube",
+      href: "https://www.youtube.com/@marymathaconstruction988",
+    },
   ],
 } as const;
 
