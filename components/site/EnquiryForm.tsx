@@ -51,16 +51,22 @@ export function EnquiryForm() {
   const [hint, setHint] = useState("");
   const cfg = INTENTS[intent];
 
-  // A "#contact?about=…" link (from a property card) pre-fills the form.
+  // A "#contact?intent=Sell&about=…" link (hero pill or property card)
+  // pre-selects the intent and pre-fills the detail field.
   useEffect(() => {
     const apply = () => {
       const hash = window.location.hash;
       const q = hash.indexOf("?");
       if (q === -1) return;
-      const about = new URLSearchParams(hash.slice(q + 1)).get("about");
-      if (!about) return;
-      setIntent("Buy");
-      setDetail(about);
+      const params = new URLSearchParams(hash.slice(q + 1));
+      const wanted = params.get("intent");
+      const about = params.get("about");
+      if (!wanted && !about) return;
+      if (wanted && wanted in INTENTS) setIntent(wanted as Intent);
+      if (about) {
+        setIntent("Buy");
+        setDetail(about);
+      }
       setStatus((s) => (s === "sent" ? "idle" : s));
       document
         .getElementById("contact")
