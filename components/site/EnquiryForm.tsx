@@ -62,22 +62,26 @@ export function EnquiryForm() {
     }
 
     setStatus("sending");
-    const payload = {
-      access_key: WEB3FORMS_KEY,
-      subject: `Website enquiry — ${intent} — ${data.get("name")}`,
-      from_name: SITE.legalName,
-      Intent: intent,
-      Name: data.get("name"),
-      "Phone / WhatsApp": data.get("phone"),
-      [cfg.label]: data.get("detail"),
-      Notes: data.get("notes") || "—",
-    };
+
+    // Send as FormData (no custom headers) so the request stays a "simple"
+    // CORS request — Web3Forms rejects the preflight that a JSON body triggers.
+    const payload = new FormData();
+    payload.append("access_key", WEB3FORMS_KEY);
+    payload.append(
+      "subject",
+      `Website enquiry — ${intent} — ${data.get("name") || ""}`,
+    );
+    payload.append("from_name", SITE.legalName);
+    payload.append("Intent", intent);
+    payload.append("Name", String(data.get("name") || ""));
+    payload.append("Phone / WhatsApp", String(data.get("phone") || ""));
+    payload.append(cfg.label, String(data.get("detail") || ""));
+    payload.append("Notes", String(data.get("notes") || "—"));
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
+        body: payload,
       });
       const json = await res.json();
       setStatus(json.success ? "sent" : "error");

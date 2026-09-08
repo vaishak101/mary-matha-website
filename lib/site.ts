@@ -79,5 +79,11 @@ export const NAV = [
   { label: "Enquire", href: "/#contact" },
 ] as const;
 
-/** Web3Forms access key — public by design. Set NEXT_PUBLIC_WEB3FORMS_KEY in the environment. */
-export const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+/**
+ * Web3Forms access key. Public by design — it's meant to live in client code
+ * (see web3forms.com docs). Baked in so the enquiry form works on every
+ * environment without extra config; set NEXT_PUBLIC_WEB3FORMS_KEY to override
+ * (e.g. a separate key for staging). Regenerate at web3forms.com if it's abused.
+ */
+export const WEB3FORMS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "b90ce043-3bf8-43e6-80a9-c6516a368800";
