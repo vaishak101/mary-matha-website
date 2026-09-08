@@ -34,6 +34,12 @@ export default function TermsPage() {
         not responsible for decisions made solely on the basis of information
         shown here.
       </p>
+      <p>
+        Some listing images are taken from the property&rsquo;s or
+        developer&rsquo;s official pages so the listing reflects the actual
+        project. Those images remain the property of their respective owners and
+        are used here only to represent the property accurately.
+      </p>
 
       <h2>Construction and renovation</h2>
       <p>
@@ -109,11 +115,6 @@ export default function TermsPage() {
         Questions about these terms:{" "}
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a>,{" "}
         <a href={`tel:${SITE.phonePrimary.tel}`}>{SITE.phonePrimary.display}</a>.
-      </p>
-
-      <p style={{ marginTop: "2.5rem", fontStyle: "italic" }}>
-        Placeholder text - please have this reviewed by a legal advisor and
-        confirm the RERA disclosures required for your listings before launch.
       </p>
     </LegalLayout>
   );
