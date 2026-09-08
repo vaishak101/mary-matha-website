@@ -4,50 +4,88 @@ import { SITE } from "@/lib/site";
 
 const PILLS = ["Buy", "Sell", "Rent", "Build", "Renovate"];
 
+// Resting layer: the original masks — feather only the outer edge into the
+// frame; the hard inner edge is hidden by the wash.
+const REST_MASK_L =
+  "linear-gradient(to right, transparent, #000 14%, #000 100%)";
+const REST_MASK_R = "linear-gradient(to left, transparent, #000 14%, #000 100%)";
+
+// Intro layer (no wash yet): feather the inner edge too, into the paper-toned
+// ground, so the two photos never meet at a hard seam.
+const INTRO_MASK_L =
+  "linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)";
+const INTRO_MASK_R =
+  "linear-gradient(to left, transparent, #000 12%, #000 88%, transparent)";
+
 export function Hero() {
   return (
     <section
       id="top"
       className="on-dark relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-maroon-deep px-[clamp(1.125rem,5vw,2.5rem)] py-20 text-center"
     >
-      {/* two background images - glide in from each side, then the text animates.
-         Inner edges fade out (mask) so the two halves never meet in a hard seam. */}
-      <div className="absolute inset-0 grid grid-cols-2" aria-hidden>
-        <div className="hero-img-l relative overflow-hidden">
+      {/* Load sequence: the photos glide in at full strength over a paper-toned
+         ground (no maroon), then that layer fades out while the resting
+         treatment + maroon wash fade in behind it, then the text. Both layers
+         frame the photos identically, so nothing shifts when they swap. */}
+
+      {/* Resting treatment — the original look, revealed as the intro fades. */}
+      <div className="hero-rest absolute inset-0 grid grid-cols-2" aria-hidden>
+        <div className="relative overflow-hidden">
+          <Image
+            src="/uploads/left-image.jpg"
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+            style={{ maskImage: REST_MASK_L, WebkitMaskImage: REST_MASK_L }}
+          />
+        </div>
+        <div className="relative overflow-hidden">
+          <Image
+            src="/uploads/right-image.jpg"
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
+            style={{ maskImage: REST_MASK_R, WebkitMaskImage: REST_MASK_R }}
+          />
+        </div>
+      </div>
+
+      {/* Full-strength intro — same framing as the resting layer, glides in
+         from each side over a paper-toned ground, then fades out. */}
+      <div
+        className="hero-intro absolute inset-0 grid grid-cols-2"
+        aria-hidden
+        style={{ background: "#f1ede1" }}
+      >
+        <div className="hero-intro-l relative overflow-hidden">
           <Image
             src="/uploads/left-image.jpg"
             alt=""
             fill
             priority
             sizes="50vw"
-            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, #000 14%, #000 100%)",
-            }}
+            className="object-cover object-center"
+            style={{ maskImage: INTRO_MASK_L, WebkitMaskImage: INTRO_MASK_L }}
           />
         </div>
-        <div className="hero-img-r relative overflow-hidden">
+        <div className="hero-intro-r relative overflow-hidden">
           <Image
             src="/uploads/right-image.jpg"
             alt=""
             fill
             priority
             sizes="50vw"
-            className="object-cover object-center opacity-[0.45] mix-blend-luminosity"
-            style={{
-              maskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to left, transparent, #000 14%, #000 100%)",
-            }}
+            className="object-cover object-center"
+            style={{ maskImage: INTRO_MASK_R, WebkitMaskImage: INTRO_MASK_R }}
           />
         </div>
       </div>
+
+      {/* Maroon wash — fades in as its own step. */}
       <div
-        className="absolute inset-0"
+        className="hero-veil absolute inset-0"
         aria-hidden
         style={{
           background:
