@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "./icons";
 import type { Testimonial } from "@/lib/content";
 
@@ -11,13 +11,15 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
   const [paused, setPaused] = useState(false);
   const total = items.length;
 
+  // Clamp rather than wrap: swiping, arrows, and autoplay all stop at the
+  // first/last testimonial instead of looping around.
   const go = useCallback(
-    (next: number) => setIndex((next + total) % total),
+    (next: number) => setIndex(Math.min(Math.max(next, 0), total - 1)),
     [total],
   );
 
   useEffect(() => {
-    if (total <= 1 || paused) return;
+    if (total <= 1 || paused || index >= total - 1) return;
     if (
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -29,6 +31,27 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
   }, [index, paused, total, go]);
 
   const current = items[index];
+  const touchRef = useRef<{ x: number; y: number } | null>(null);
+
+  function onTouchStart(e: React.TouchEvent) {
+    if (total <= 1) return;
+    const t = e.touches[0];
+    touchRef.current = { x: t.clientX, y: t.clientY };
+    setPaused(true);
+  }
+
+  function onTouchEnd(e: React.TouchEvent) {
+    const start = touchRef.current;
+    touchRef.current = null;
+    setPaused(false);
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      go(index + (dx < 0 ? 1 : -1));
+    }
+  }
 
   return (
     <div
@@ -37,6 +60,13 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      onTouchCancel={() => {
+        touchRef.current = null;
+        setPaused(false);
+      }}
+      style={{ touchAction: total > 1 ? "pan-y" : undefined }}
       aria-roledescription="carousel"
       aria-label="Client testimonials"
     >
@@ -78,8 +108,9 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
           <button
             type="button"
             onClick={() => go(index - 1)}
+            disabled={index === 0}
             aria-label="Previous testimonial"
-            className="flex size-11 items-center justify-center rounded-full border border-line-strong text-maroon transition-colors hover:bg-cream-alt"
+            className="flex size-11 items-center justify-center rounded-full border border-line-strong text-maroon transition-colors hover:bg-cream-alt disabled:pointer-events-none disabled:opacity-40"
           >
             <ChevronLeft />
           </button>
@@ -102,8 +133,9 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
           <button
             type="button"
             onClick={() => go(index + 1)}
+            disabled={index === total - 1}
             aria-label="Next testimonial"
-            className="flex size-11 items-center justify-center rounded-full border border-line-strong text-maroon transition-colors hover:bg-cream-alt"
+            className="flex size-11 items-center justify-center rounded-full border border-line-strong text-maroon transition-colors hover:bg-cream-alt disabled:pointer-events-none disabled:opacity-40"
           >
             <ChevronRight />
           </button>
