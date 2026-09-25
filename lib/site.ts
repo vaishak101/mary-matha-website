@@ -3,13 +3,13 @@
  * Header, hero, services, workflow, enquiry form and footer read from here.
  */
 
-const rawUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mary-matha.vercel.app";
+// Real domain. NEXT_PUBLIC_SITE_URL overrides this (e.g. for a staging deploy).
+const rawUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://marymatharealestate.com";
 
 export const SITE = {
   name: "Mary Matha",
   legalName: "Mary Matha Real Estate & Construction",
   tagline: "Real Estate & Construction",
-  // TODO: set NEXT_PUBLIC_SITE_URL to the real domain before launch.
   url: rawUrl.replace(/\/$/, ""),
   established: 2000,
   region: "Vasai–Virar",
