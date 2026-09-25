@@ -63,7 +63,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className="text-[0.8125rem] uppercase tracking-[0.1em] text-ink-soft transition-colors hover:text-maroon"
-              style={{ fontFamily: "var(--font-display)" }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               {item.label}
             </Link>
@@ -130,7 +130,7 @@ export function Header() {
               href={item.href}
               onClick={() => setOpen(false)}
               className="block border-b border-line/60 py-3 text-[0.9375rem] uppercase tracking-[0.1em] text-ink-soft last:border-0 hover:text-maroon"
-              style={{ fontFamily: "var(--font-display)" }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               {item.label}
             </Link>
