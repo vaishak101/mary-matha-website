@@ -54,8 +54,10 @@ export function Projects() {
           <Kicker>On site & delivered</Kicker>
           <h2 className="h-sec mt-3.5">Work you can walk through</h2>
           <p className="mt-4 text-[1rem] leading-relaxed text-ink-soft">
-            Open any project for photos and a walkthrough. Green marks what&rsquo;s
-            being built now; gold marks what&rsquo;s been handed over.
+            New residential projects and civil works across Vasai, Virar and
+            Nalasopara. Open any project for photos and a walkthrough. Green
+            marks what&rsquo;s being built now; gold marks what&rsquo;s been
+            handed over.
           </p>
         </Reveal>
 

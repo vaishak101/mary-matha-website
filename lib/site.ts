@@ -14,7 +14,7 @@ export const SITE = {
   established: 2000,
   region: "Vasai–Virar",
   description:
-    "Trusted real estate solutions and construction services across Vasai–Virar since 2000 - buy, sell, rent, build and renovate, built on quality, trust and excellence.",
+    "1, 2 & 3 BHK flats for sale and rent in Vasai, Virar and Nalasopara - plus new residential projects, civil contracting and interior design. Trusted since 2000.",
 
   phonePrimary: { display: "+91 80873 53144", tel: "+918087353144" },
   phoneSecondary: { display: "+91 96650 64257", tel: "+919665064257" },

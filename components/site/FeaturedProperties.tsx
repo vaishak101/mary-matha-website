@@ -14,6 +14,10 @@ export function FeaturedProperties() {
           <div>
             <Kicker align="left">Available now</Kicker>
             <h2 className="h-sec mt-2.5">Featured Properties</h2>
+            <p className="mt-2.5 max-w-[40rem] text-[1rem] text-ink-soft">
+              1, 2 and 3 BHK flats for sale and rent in Vasai, Virar and
+              Nalasopara - new projects added regularly.
+            </p>
           </div>
           <a
             href="#contact"

@@ -1,6 +1,7 @@
 import { Carousel } from "./Carousel";
 import { ArrowRight } from "./icons";
 import type { FeaturedProperty } from "@/lib/content";
+import { jsonLdScript, propertyJsonLd } from "@/lib/json-ld";
 
 function specChips(p: FeaturedProperty): string[] {
   const candidates = [
@@ -30,6 +31,10 @@ export function PropertyCard({ property }: { property: FeaturedProperty }) {
 
   return (
     <article className="flex h-full flex-col border border-line bg-cream-panel">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(propertyJsonLd(property))}
+      />
       <Carousel
         images={property.gallery}
         sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
