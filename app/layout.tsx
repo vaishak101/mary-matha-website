@@ -22,31 +22,41 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} - Real Estate & Construction in Vasai–Virar`,
+    default: `${SITE.name} - 1, 2 & 3 BHK Flats in Vasai, Virar & Nalasopara`,
     template: `%s - ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
   keywords: [
-    "Vasai real estate",
-    "Virar construction",
+    "1 BHK flat Vasai",
+    "2 BHK flat Vasai",
+    "3 BHK flat Vasai",
+    "1 BHK flat for rent Vasai",
+    "2 BHK flat for rent Vasai",
+    "flat for rent Virar",
+    "flat for rent Nalasopara",
+    "new residential projects Vasai Virar",
+    "interior design Vasai",
+    "civil contractor Vasai Virar Nalasopara",
     "buy flat Vasai",
-    "build home Vasai-Virar",
-    "home renovation Nalasopara",
+    "Vasai real estate",
     "MahaRERA builder",
   ],
   authors: [{ name: SITE.name }],
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} - Real Estate & Construction`,
+    title: `${SITE.name} - Flats in Vasai, Virar & Nalasopara`,
     description: SITE.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} - Real Estate & Construction`,
+    title: `${SITE.name} - Flats in Vasai, Virar & Nalasopara`,
     description: SITE.description,
   },
   alternates: {
