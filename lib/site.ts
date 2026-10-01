@@ -37,8 +37,7 @@ export const SITE = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.460871195323!2d72.825908!3d19.3924833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af77bb79e709%3A0xb698e07b0b3bf6cd!2sMary%20Matha%20Real%20Estates%20%26Constriction!5e0!3m2!1sen!2sin!4v1788775942538!5m2!1sen!2sin",
   mapLink: "https://maps.google.com/?q=Mary+Matha+Real+Estates+%26+Construction,+Vasai+West",
 
-  // TODO: replace with the real MahaRERA registration number.
-  maharera: "A00000000000000",
+  maharera: "A99000043171",
 
   areasServed: [
     "Vasai West",
