@@ -78,6 +78,22 @@ export function ArrowDown(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function ShareIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3v12M8 7l4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" />
+    </svg>
+  );
+}
+
+export function CheckIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
 const brand = {
   width: 18,
   height: 18,

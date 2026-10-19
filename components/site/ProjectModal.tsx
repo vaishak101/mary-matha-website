@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Carousel } from "./Carousel";
-import { CloseIcon, PlayIcon } from "./icons";
+import { CheckIcon, CloseIcon, PlayIcon, ShareIcon } from "./icons";
 import { resolveVideo } from "@/lib/video";
 import type { ProjectView } from "./project-types";
 
@@ -17,6 +17,31 @@ export function ProjectModal({
   const panelRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
   const video = resolveVideo(project.videoUrl);
+  const [shared, setShared] = useState(false);
+
+  async function handleShare() {
+    const url = `${window.location.origin}${window.location.pathname}#projects?open=${project.slug}`;
+    // The native share sheet is reliable on touch devices (and is where it
+    // matters most - WhatsApp etc.) but can misbehave on some desktop
+    // setups with no registered share handler, so desktops go straight to
+    // copy-to-clipboard instead.
+    const isTouchDevice = navigator.maxTouchPoints > 0;
+    if (isTouchDevice && navigator.share) {
+      try {
+        await navigator.share({ title: project.title, url });
+        return;
+      } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setShared(true);
+      setTimeout(() => setShared(false), 2000);
+    } catch {
+      // clipboard unavailable - nothing to fall back to
+    }
+  }
 
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null;
@@ -77,15 +102,29 @@ export function ProjectModal({
             className="aspect-[16/10]"
             fit="contain"
           />
-          <button
-            type="button"
-            data-autofocus
-            onClick={onClose}
-            aria-label="Close"
-            className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-full bg-maroon-dark/85 text-cream transition-colors hover:bg-maroon-dark"
-          >
-            <CloseIcon width={20} height={20} />
-          </button>
+          <div className="absolute right-3 top-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleShare}
+              aria-label={shared ? "Link copied" : `Share ${project.title}`}
+              className="flex size-10 items-center justify-center rounded-full bg-maroon-dark/85 text-cream transition-colors hover:bg-maroon-dark"
+            >
+              {shared ? (
+                <CheckIcon width={18} height={18} />
+              ) : (
+                <ShareIcon width={18} height={18} />
+              )}
+            </button>
+            <button
+              type="button"
+              data-autofocus
+              onClick={onClose}
+              aria-label="Close"
+              className="flex size-10 items-center justify-center rounded-full bg-maroon-dark/85 text-cream transition-colors hover:bg-maroon-dark"
+            >
+              <CloseIcon width={20} height={20} />
+            </button>
+          </div>
         </div>
 
         <div className="p-[clamp(1.375rem,4vw,2.25rem)]">
