@@ -8,6 +8,10 @@ type MediaImageProps = {
   className?: string;
   priority?: boolean;
   dark?: boolean;
+  /** "cover" (default) crops to fill the box; "contain" shows the whole
+   * photo letterboxed - use for galleries that mix portrait and landscape
+   * source images, so nothing gets cropped/zoomed. */
+  fit?: "cover" | "contain";
 };
 
 /**
@@ -22,6 +26,7 @@ export function MediaImage({
   className = "",
   priority = false,
   dark = false,
+  fit = "cover",
 }: MediaImageProps) {
   if (!src) {
     return <Placeholder label={alt} dark={dark} className="absolute inset-0" />;
@@ -33,7 +38,7 @@ export function MediaImage({
       fill
       sizes={sizes}
       priority={priority}
-      className={`object-cover ${className}`}
+      className={`${fit === "contain" ? "object-contain" : "object-cover"} ${className}`}
     />
   );
 }

@@ -75,6 +75,7 @@ export function ProjectModal({
             images={project.gallery}
             sizes="(min-width: 800px) 760px, 100vw"
             className="aspect-[16/10]"
+            fit="contain"
           />
           <button
             type="button"
