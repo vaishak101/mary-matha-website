@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MediaImage } from "./MediaImage";
 import { ProjectModal } from "./ProjectModal";
 import { PlayIcon } from "./icons";
+import { resolveVideo } from "@/lib/video";
 import type { ProjectView } from "./project-types";
 
 function Card({
@@ -15,6 +16,7 @@ function Card({
 }) {
   const ongoing = project.kind === "ongoing";
   const cover = project.gallery[0];
+  const hasVideo = resolveVideo(project.videoUrl) != null;
 
   return (
     <button
@@ -39,8 +41,12 @@ function Card({
         >
           {project.badge}
         </span>
-        <span className="on-dark absolute bottom-3 right-3 flex items-center gap-1.5 bg-maroon-dark/80 px-2.5 py-1 text-[11px] text-cream">
-          <PlayIcon width={12} height={12} /> View
+        <span
+          className={`absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 text-[11px] ${
+            hasVideo ? "bg-gold text-maroon-dark" : "on-dark bg-maroon-dark/80 text-cream"
+          }`}
+        >
+          <PlayIcon width={12} height={12} /> {hasVideo ? "Watch video" : "View"}
         </span>
       </div>
       <div className="p-[18px]">
