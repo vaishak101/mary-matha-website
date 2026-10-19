@@ -1,0 +1,23 @@
+{
+  "title": "Jasmine Interiors",
+  "description": "A complete interior fit-out for a home at Jasmine, Vasai West - planned down to the last detail.\n\nCustom furniture, a media wall with layered wood panelling, and modular kitchen cabinetry were built to fit the space exactly, while cove lighting, pendant fixtures and accent wall lights carry a warm, modern feel through every room.\n\nEvery corner was planned for efficient space management, from the compact kitchen run to the sit-out balcony, so the home feels open and uncluttered without losing storage.",
+  "location": "Vasai West",
+  "projectType": "Interior Design & Fit-out",
+  "completedYear": 2026,
+  "gallery": [
+    {
+      "image": "/uploads/jasmine-interior-1.jpg",
+      "alt": "Living room media wall with wood panelling and pendant lights"
+    },
+    {
+      "image": "/uploads/jasmine-interior-2.jpg",
+      "alt": "Dining area"
+    },
+    {
+      "image": "/uploads/jasmine-interior-3.jpg",
+      "alt": "Modular kitchen"
+    }
+  ],
+  "videoUrl": "/uploads/jasmine-interior.mp4",
+  "order": 3
+}

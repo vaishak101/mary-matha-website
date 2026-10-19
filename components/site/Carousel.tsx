@@ -11,11 +11,19 @@ type CarouselProps = {
   /** Extra content layered over the image, e.g. a badge. */
   overlay?: React.ReactNode;
   className?: string;
+  /** See MediaImage's `fit` prop. Defaults to "cover". */
+  fit?: "cover" | "contain";
 };
 
 type Drag = { startX: number; startY: number; dx: number; active: boolean };
 
-export function Carousel({ images, sizes, overlay, className = "" }: CarouselProps) {
+export function Carousel({
+  images,
+  sizes,
+  overlay,
+  className = "",
+  fit = "cover",
+}: CarouselProps) {
   const [index, setIndex] = useState(0);
   const [drag, setDrag] = useState<Drag | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -95,7 +103,7 @@ export function Carousel({ images, sizes, overlay, className = "" }: CarouselPro
             aria-hidden={i !== index}
             id={`${groupId}-slide-${i}`}
           >
-            <MediaImage src={img.image} alt={img.alt} sizes={sizes} />
+            <MediaImage src={img.image} alt={img.alt} sizes={sizes} fit={fit} />
           </div>
         ))}
       </div>

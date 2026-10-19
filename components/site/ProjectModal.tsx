@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Carousel } from "./Carousel";
-import { CloseIcon } from "./icons";
+import { CloseIcon, PlayIcon } from "./icons";
 import { resolveVideo } from "@/lib/video";
 import type { ProjectView } from "./project-types";
 
@@ -75,6 +75,7 @@ export function ProjectModal({
             images={project.gallery}
             sizes="(min-width: 800px) 760px, 100vw"
             className="aspect-[16/10]"
+            fit="contain"
           />
           <button
             type="button"
@@ -103,12 +104,12 @@ export function ProjectModal({
             {project.title}
           </h3>
           <p className="mt-1.5 font-mono text-[13px] text-muted">{project.meta}</p>
-          <p className="mt-4 text-[1rem] leading-[1.75] text-ink-soft">
-            {project.description}
-          </p>
 
           {video && (
-            <div className="mt-5">
+            <div className="mt-4 border border-gold bg-cream-alt p-3">
+              <p className="mb-2.5 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-maroon">
+                <PlayIcon width={13} height={13} /> Walkthrough video
+              </p>
               {video.kind === "embed" ? (
                 <div className="relative aspect-video w-full border border-line">
                   <iframe
@@ -133,6 +134,10 @@ export function ProjectModal({
               )}
             </div>
           )}
+
+          <p className="mt-4 text-[1rem] leading-[1.75] text-ink-soft">
+            {project.description}
+          </p>
         </div>
       </div>
     </div>,
