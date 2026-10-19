@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MediaImage } from "./MediaImage";
 import { ProjectModal } from "./ProjectModal";
 import { PlayIcon } from "./icons";
@@ -71,6 +71,23 @@ export function ProjectGrid({
 }) {
   const [active, setActive] = useState<ProjectView | null>(null);
 
+  // A "#projects?open=<slug>" link (from the modal's Share button) opens
+  // that project's modal directly - on load and if the hash changes.
+  useEffect(() => {
+    const applyFromHash = () => {
+      const hash = window.location.hash;
+      const q = hash.indexOf("?");
+      if (q === -1) return;
+      const slug = new URLSearchParams(hash.slice(q + 1)).get("open");
+      if (!slug) return;
+      const found = [...ongoing, ...completed].find((p) => p.slug === slug);
+      if (found) setActive(found);
+    };
+    applyFromHash();
+    window.addEventListener("hashchange", applyFromHash);
+    return () => window.removeEventListener("hashchange", applyFromHash);
+  }, [ongoing, completed]);
+
   return (
     <>
       {/* Ongoing */}
@@ -116,7 +133,23 @@ export function ProjectGrid({
         )}
       </div>
 
-      {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
+      {active && (
+        <ProjectModal
+          project={active}
+          onClose={() => {
+            setActive(null);
+            // Drop a "?open=<slug>" hash so closing (then refreshing, or
+            // using back) doesn't immediately reopen the same modal.
+            if (window.location.hash.includes("open=")) {
+              history.replaceState(
+                null,
+                "",
+                window.location.pathname + window.location.search + "#projects",
+              );
+            }
+          }}
+        />
+      )}
     </>
   );
 }
